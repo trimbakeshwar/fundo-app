@@ -1,10 +1,9 @@
-
   
 import React, { Component } from 'react';
 import {TextField,Button} from '@material-ui/core';
 import '../CSS/login.css';
 import "../CSS/recovery.css";
-export class RecoveryMail extends Component {
+export class ResetPassword extends Component {
     render() {
         return(
             <div className="logincontainer">
@@ -17,13 +16,11 @@ export class RecoveryMail extends Component {
                     <span className="red">o</span>
                 </div>
                 <div>
-                    <span className="signtext">Find your email</span>
+                    <span className="signtext">Set new password</span>
                 </div>
-                <div>
-                    <span className="signtext">Enter your recovery email</span>
-                </div>
-                    <div className="TextField">  <TextField id="outlined-search" label="Email" type="search" variant="outlined" size="small">Email</TextField></div>
-                
+                <div className="TextField">  <TextField id="outlined-search" label="password" text ="password" type="search" variant="outlined" size="small">password</TextField></div>
+                <div className="TextField">  <TextField id="outlined-search" label="confirm password" text ="password" type="search" variant="outlined" size="small">confirm password</TextField></div>
+
                  <div className= "eventButton">
                  <Button  variant="contained" color="primary" float='right'>submit</Button>
                  <Button  variant="contained" color="primary" float='right'>cancle</Button>
@@ -34,4 +31,4 @@ export class RecoveryMail extends Component {
     }
 }
 
-export default RecoveryMail;
+export default ResetPassword;
