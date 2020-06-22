@@ -2,7 +2,7 @@
   
 import React, { Component } from 'react';
 import {TextField,Button} from '@material-ui/core';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import '../CSS/login.css'
 export class Login extends Component {
     render() {

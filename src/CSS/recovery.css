@@ -1,0 +1,11 @@
+.eventButton{
+justify-content: space-between;
+display: flex;
+width: 72%;
+padding-top: 15%;
+float: left;
+position: relative;
+right: 0%;
+margin-bottom: 60px;  
+
+}
