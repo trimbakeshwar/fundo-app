@@ -5,7 +5,11 @@ import {TextField,Button} from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
 import "../CSS/login.css"
 import '../CSS/registration.css'
+
+
 export class Registration extends Component {
+   
+   
     render() {
         return(
             <div className="containersss">
@@ -30,7 +34,7 @@ export class Registration extends Component {
                         <span className="lable"> use my current email address instead</span>
                     </div> 
                     <div className="TextInputField">
-                        <TextField   id="outlined-search" label="password" type="password" variant="outlined" size="small">password</TextField>
+                        <TextField   id="outlined-search" label="password" type="password" variant="outlined"  size="small">password</TextField>
                         <TextField  id="outlined-search" label="confirm password" type="password" variant="outlined" size="small">confirm password</TextField>
                     </div>
                     <div>
