@@ -20,7 +20,7 @@ export class Login extends Component {
                     <span className="signtext">Sign In</span>
                 </div>
                 <div className="TextField">  <TextField id="outlined-search" label="Email" type="search" variant="outlined" size="small">Email</TextField></div>
-               <div className="TextField"> <TextField id="outlined-search" label="password" type="search" variant="outlined" size="small">password</TextField></div>
+               <div className="TextField"> <TextField id="outlined-search" label="password" type="password" variant="outlined" size="small">password</TextField></div>
                <div>
                     <div className="forgetpass">
                    Forgot Password?

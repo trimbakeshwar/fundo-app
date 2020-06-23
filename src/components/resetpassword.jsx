@@ -18,8 +18,8 @@ export class ResetPassword extends Component {
                 <div>
                     <span className="signtext">Set new password</span>
                 </div>
-                <div className="TextField">  <TextField id="outlined-search" label="password" text ="password" type="search" variant="outlined" size="small">password</TextField></div>
-                <div className="TextField">  <TextField id="outlined-search" label="confirm password" text ="password" type="search" variant="outlined" size="small">confirm password</TextField></div>
+                <div className="TextField">  <TextField id="outlined-search" label="password"  type="password" variant="outlined" size="small">password</TextField></div>
+                <div className="TextField">  <TextField id="outlined-search" label="confirm password"  type="password" variant="outlined" size="small">confirm password</TextField></div>
 
                  <div className= "eventButton">
                  <Button  variant="contained" color="primary" float='right'>submit</Button>

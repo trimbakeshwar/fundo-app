@@ -1,0 +1,44 @@
+.Registrationcontainer{
+    width: 50%;  
+    height: auto;   
+    position: relative;   
+    border-width: 0.1px;
+    line-height: 30px;
+    border-color:  rgb(247, 244, 244);
+    top:5em;        
+    background-color: #FFFFFF;    
+    display: flex;    
+    border-style: groove;
+    flex-direction: column;   
+    margin: auto;    
+    padding: 30px;   
+    align-items: start;  
+    justify-items: center;
+    margin-top: 5px; 
+
+
+}
+.labletext{
+    font-size:x-large;
+}
+.TextInputField{
+    justify-content: space-between;
+    display: flex;
+    width: 60%;
+    padding-top: 1%;
+    float: left;
+    position: relative;
+    right: 0%;
+    margin-bottom: 1px;  
+    margin-top: 10px;  
+}
+.lable{
+    font-size:small;
+}
+.linkages{
+    color: blue;
+}
+
+    .Field{
+        width: 60%;
+    }

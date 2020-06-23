@@ -28,6 +28,8 @@
     justify-items: center;
     font-size: 14px;
 }
+
+
 .TextField{
     margin-top: 15px;
     margin-bottom: 40px;
@@ -48,10 +50,10 @@
 
 }
 .buttons{
-    width: 20px;
+    width: 30px;
     float: right;
     position: relative;
-    right: 20%;
+    right: 25%;
     margin-bottom: 30px;  
 }
 .createAccount{
