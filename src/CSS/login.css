@@ -56,6 +56,9 @@
     right: 25%;
     margin-bottom: 30px;  
 }
+.invalidfeedback {
+    color: red;
+}
 .createAccount{
     color: blue;
 }

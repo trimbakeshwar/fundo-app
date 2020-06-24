@@ -14,16 +14,17 @@ export class Login extends Component {
     constructor(props){
         super(props);
         this.state={
-            Email:"",
+            email:"",
             password:"",
-            
+            EmailError:"",
+            passwordError:""
            
         }
     }
    
     EmailHandler=(e)=>{
         console.log("data",e.target.value); 
-       this.setState({Email:e.target.value});  
+       this.setState({email:e.target.value});  
        console.log("data later",this.state);
        
     };
@@ -33,19 +34,34 @@ export class Login extends Component {
        console.log("data later",this.state);
        
     };
-   
-    Login=(e)=> {
-        e.preventDefault();
+    Login=()=>{
+        if(!pattern.NamePattern.test(this.state.email))
+        {
+            this.setState({EmailError:"invalid email"})
+        }
+
+        if(!pattern.passwordPattern.test(this.state.password))
+        {
+            this.setState({passwordError:"invalid Password"})
+        }
+        this.LoginData()
+    }
+    LoginData=()=> {
+
         console.log("in email",this.state);
        
         let requestData ={
-          Email:this.state.Email, 
+          email:this.state.email, 
           password:this.state.password
         }
-        console.log(requestData);
-        service.LoginData(config.url ,requestData).then((Response=>{
+        console.log("request data",requestData);
+
+        service.LoginData(config.url ,requestData).then((Response)=>{
             console.log("data",Response)
-        }))
+        }) 
+        .catch((err) => {
+            console.log(err);
+        });
 
        
     }
@@ -64,8 +80,12 @@ export class Login extends Component {
                 <div>
                     <span className="signtext">Sign In</span>
                 </div>
-                <div className="TextField">  <TextField id="outlined-search" label="Email" type="text" variant="outlined"  onChange={this.EmailHandler} size="small">Email</TextField></div>
-               <div className="TextField"> <TextField id="outlined-search" label="password" type="password" variant="outlined"  onChange={this.passwordHandler}  size="small">password</TextField></div>
+                <div className="TextField">  <TextField id="outlined-search" label="email" type="text" variant="outlined"  
+                onChange={this.EmailHandler} error={this.state.EmailError}  size="small">email</TextField>
+              </div>
+               <div className="TextField"> <TextField id="outlined-search" label="password" type="password" variant="outlined" 
+                onChange={this.passwordHandler} error={this.state.passwordError} size="small">password</TextField>
+                </div>
                <div>
                     <div className="forgetpass">
                    Forgot Password?
