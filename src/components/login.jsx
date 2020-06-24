@@ -5,6 +5,8 @@ import {TextField,Button} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import config from "../services/configservices";
 import '../CSS/login.css';
+import Alert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
 import userservice from "../services/userservices";
 import pattern from "../configeration/regex";
 const patterns = new pattern();
@@ -17,7 +19,10 @@ export class Login extends Component {
             email:"",
             password:"",
             EmailError:"",
-            passwordError:""
+            passwordError:"",
+            snackbarOpen:false,
+            snackbarMessage:'',
+            snackServicity:'success'
            
         }
     }
@@ -34,19 +39,8 @@ export class Login extends Component {
        console.log("data later",this.state);
        
     };
-    Login=()=>{
-        if(!pattern.NamePattern.test(this.state.email))
-        {
-            this.setState({EmailError:"invalid email"})
-        }
-
-        if(!pattern.passwordPattern.test(this.state.password))
-        {
-            this.setState({passwordError:"invalid Password"})
-        }
-        this.LoginData()
-    }
-    LoginData=()=> {
+    
+    Login=()=> {
 
         console.log("in email",this.state);
        
@@ -56,11 +50,36 @@ export class Login extends Component {
         }
         console.log("request data",requestData);
 
-        service.LoginData(config.url ,requestData).then((Response)=>{
-            console.log("data",Response)
+        service.LoginData(config.url ,requestData).then((response)=>{
+            console.log("data",response.status)
+                if(response.status === 200){
+                    alert("Registration Sucessfull")
+    
+                    this.setState({
+                        snackbarOpen:true,
+                        snackbarMessage: "Registration sucessful",
+                        snackServicity:'sucess'
+                    })}
+
         }) 
         .catch((err) => {
-            console.log(err);
+            
+            console.log(err.response.data.error);
+            if (err.response.data.error.statusCode === 401) {
+                this.setState({
+                    snackbarOpen:true,
+                    snackbarMessage: "email not register",
+                    snackServicity:"error"
+                })
+            }
+            if (err.response.data.error.statusCode === 400) {
+                this.setState({
+                    snackbarOpen:true,
+                    snackbarMessage: "Email and password requir",
+                    snackServicity:"error"
+                })
+            }
+            
         });
 
        
@@ -69,6 +88,11 @@ export class Login extends Component {
     render() {
         return(
             <div className="logincontainer">
+                <Snackbar open={this.state.snackbarOpen} autoHideDuration={6000} onClose={this.handleClose}>
+                    <Alert onClose={this.handleClose} severity={this.state.snackServicity}>
+                        {this.state.snackbarMessage}
+                    </Alert>
+                </Snackbar> 
                 <div className="fundoonamecontainer">
                     <span className="blue">F</span>
                     <span className="red">u</span>
@@ -88,10 +112,10 @@ export class Login extends Component {
                 </div>
                <div>
                     <div className="forgetpass">
-                   Forgot Password?
+                    <Link to="/resetpassword">Forgot Password?</Link>
                     </div>
                     <div className="createAccount">   
-                     Create account     
+                     <Link to="./registration">Create account</Link>   
                         <div className="buttons" >       
                             <div  ><Button  variant="contained" color="primary" float='right' onClick={this.Login} >Login</Button></div>
                         </div>  

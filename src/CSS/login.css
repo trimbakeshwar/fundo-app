@@ -44,10 +44,15 @@
     justify-items: center;  
     font-size: x-small;
     margin-bottom: 40px;
-    color: blue;
+  
     top:10em;  
     line-height: 50px;
+   
 
+}
+.Link{
+    color: blue;
+    text-decoration: none;
 }
 .buttons{
     width: 30px;
@@ -61,6 +66,7 @@
 }
 .createAccount{
     color: blue;
+    text-decoration: none;
 }
 
 

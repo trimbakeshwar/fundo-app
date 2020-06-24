@@ -1,6 +1,7 @@
   
 import React, { Component } from 'react';
 import {TextField,Button} from '@material-ui/core';
+import {Link} from 'react-router-dom';
 import '../CSS/login.css';
 import "../CSS/recovery.css";
 export class ResetPassword extends Component {
@@ -22,8 +23,8 @@ export class ResetPassword extends Component {
                 <div className="TextField">  <TextField id="outlined-search" label="confirm password"  type="password" variant="outlined" size="small">confirm password</TextField></div>
 
                  <div className= "eventButton">
-                 <Button  variant="contained" color="primary" float='right'>submit</Button>
-                 <Button  variant="contained" color="primary" float='right'>cancle</Button>
+                <Button  variant="contained" color="primary" float='right'>submit</Button>
+                <Link to = "/"> <Button  variant="contained" color="primary" float='right'>cancle</Button></Link>
                  </div>
                 
             </div>
