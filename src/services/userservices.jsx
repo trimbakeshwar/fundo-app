@@ -8,9 +8,10 @@ import axios from "axios";
         return axios.post(url+"user/userSignUp",data);
     }
     ResetPassword(url,data){
-        return axios.post(url+"user/reset-password",data);
-      
+        return axios.post(url+"user/reset-password",data);     
     }
-  
+    Recover(url,data){
+        return axios.post(url+"user/reset",data);     
+    }
 }
 export default AxiosService;

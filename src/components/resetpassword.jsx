@@ -13,48 +13,39 @@ const patterns = new pattern();
 const service = new userservice(); 
 export class ResetPassword extends Component {
     constructor(props){
-        super(props);
+        super(props)
         this.state={
-            newPassword:'',
-            confirmpassword:'',
+            newPassword:"",
+            confirmpassword:"",
             snackbarOpen:false,
-            snackbarMessage:'',
+            snackbarMessage:"",
             snackServicity:'success'
         }
     }
     changePasswordHandler=(e)=>{
-        console.log("pass",e.target.value)
-        this.setState=({
-            newPassword:e.target.value
-        });
-        console.log("pass",this.state)
+        console.log("pass",e.target.value); 
+        this.setState({newPassword:e.target.value});  
+        console.log("pass later",this.state);
     }
     ChangeconfirmpasswordHandler=(e)=>{
-        console.log(" conf pass",e.target.value)
-        this.setState=({
-            confirmpassword:e.target.value
-        });
-        console.log("pass",this.state)
+        console.log("conf",e.target.value); 
+       this.setState({confirmpassword:e.target.value});  
+       console.log("conf later",this.state);
     }
-    submit=()=>{
-        
-        if(this.state.newPassword === this.state.confirmpassword){
-            this.reset();
-        } 
-    }
+ 
 
-    reset=()=>{
+    submit=()=>{
         let requestData ={
             newPassword: this.state.newPassword,
-            confirmpassword: this.state.confirmpassword,
+           
    
         }
         console.log("request data",requestData);
 
         service.ResetPassword(config.url ,requestData).then((response)=>{
             console.log("data",response)
-                if(response.status === 204){
-                    alert("Registration Sucessfull")
+               if(response.status === 204){
+                    alert("reset password Sucessfull")
     
                     this.setState({
                         snackbarOpen:true,
@@ -69,17 +60,11 @@ export class ResetPassword extends Component {
             if (err.response.data.error.statusCode === 401) {
                 this.setState({
                     snackbarOpen:true,
-                    snackbarMessage: "email not register",
+                    snackbarMessage: "unotherized ",
                     snackServicity:"error"
                 })
             }
-            if (err.response.data.error.statusCode === 400) {
-                this.setState({
-                    snackbarOpen:true,
-                    snackbarMessage: "Email and password requir",
-                    snackServicity:"error"
-                })
-            }
+           
             
         });
     }
@@ -98,7 +83,7 @@ export class ResetPassword extends Component {
                 <div>
                     <span className="signtext">Set new password</span>
                 </div>
-                <div className="TextField">  <TextField id="outlined-search" label="new password"  type="password" variant="outlined" onChange={this.changePasswordHandler} size="small">newPassword</TextField></div>
+                <div className="TextField">  <TextField id="outlined-search" label="new password"  type="password" variant="outlined" onChange={this.changePasswordHandler} size="small">new Password</TextField></div>
                 <div className="TextField">  <TextField id="outlined-search" label="confirm password"  type="password" variant="outlined"  onChange={this.ChangeconfirmpasswordHandler}  size="small">confirm password</TextField></div>
 
                  <div className= "eventButton">
