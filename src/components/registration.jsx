@@ -1,7 +1,7 @@
 
   
 import React, { Component } from 'react';
-
+import {Link} from 'react-router-dom';
 import { TextField, Button, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import "../CSS/login.css"
 import '../CSS/registration.css'
@@ -143,7 +143,7 @@ export class Registration extends Component {
                          </RadioGroup>
                     </div>
                     <div className= "TextInputField"> 
-                        <label className="linkages">sign in insted</label>
+                       <Link to ="/"> <label className="linkages">sign in insted</label></Link>
                         <Button  variant="contained" color="primary" float='right' onClick={this.Register}>submit</Button>
                     </div>      
                         

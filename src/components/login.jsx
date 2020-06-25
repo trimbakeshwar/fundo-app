@@ -112,7 +112,7 @@ export class Login extends Component {
                 </div>
                <div>
                     <div className="forgetpass">
-                    <Link to="/resetpassword">Forgot Password?</Link>
+                    <Link to="/recoverymail">Forgot Password?</Link>
                     </div>
                     <div className="createAccount">   
                      <Link to="./registration">Create account</Link>   

@@ -17,6 +17,7 @@ export class ResetPassword extends Component {
         this.state={
             newPassword:"",
             confirmpassword:"",
+            token:this.props.match.params.token,
             snackbarOpen:false,
             snackbarMessage:"",
             snackServicity:'success'
@@ -32,20 +33,27 @@ export class ResetPassword extends Component {
        this.setState({confirmpassword:e.target.value});  
        console.log("conf later",this.state);
     }
+  
+    checkEquality=()=>{
+        if(this.state.newPassword === this.state.confirmpassword){
+            console.log("suraj");
+            this.submit();
+        }
+        else{
+            alert("password and confirm password not same");
+        }
+    }
  
 
     submit=()=>{
         let requestData ={
             newPassword: this.state.newPassword,
-           
    
         }
-        console.log("request data",requestData);
-
-        service.ResetPassword(config.url ,requestData).then((response)=>{
+        service.ResetPassword(config.url ,requestData,this.state.token).then((response)=>{
             console.log("data",response)
-               if(response.status === 204){
-                    alert("reset password Sucessfull")
+              if(response.status === 204){
+                   
     
                     this.setState({
                         snackbarOpen:true,
@@ -63,11 +71,20 @@ export class ResetPassword extends Component {
                     snackbarMessage: "unotherized ",
                     snackServicity:"error"
                 })
+                
+            }
+            if (err.response.data.error.statusCode === 400) {
+                this.setState({
+                    snackbarOpen:true,
+                    snackbarMessage: "please enter all field ",
+                    snackServicity:"error"
+                })
             }
            
             
         });
     }
+
     render() {
         return(
             <div className="logincontainer">
@@ -87,7 +104,7 @@ export class ResetPassword extends Component {
                 <div className="TextField">  <TextField id="outlined-search" label="confirm password"  type="password" variant="outlined"  onChange={this.ChangeconfirmpasswordHandler}  size="small">confirm password</TextField></div>
 
                  <div className= "eventButton">
-                <Button  variant="contained" color="primary" onClick={this.submit} float='right'>submit</Button>
+                <Button  variant="contained" color="primary" onClick={this.checkEquality} float='right'>submit</Button>
                 <Link to = "/"> <Button  variant="contained" color="primary" float='right'>cancle</Button></Link>
                  </div>
                  <Snackbar open={this.state.snackbarOpen} autoHideDuration={6000} onClose={this.handleClose}>

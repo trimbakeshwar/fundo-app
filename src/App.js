@@ -12,7 +12,7 @@ function App() {
       <Router>
       <Route exact path="/" component={Login}/>
      <Route exact path="/registration" component={Registration}/> 
-     <Route exact path="/resetpassword" component={ResetPassword}/>
+     <Route exact path="/resetpassword/:token" component={ResetPassword}/>
      <Route exact path="/recoverymail" component={RecoveryMail}/>
      </Router>
     
