@@ -92,7 +92,8 @@ export class RecoveryMail extends Component {
                 <div>
                     <span className="signtext">Enter your recovery email</span>
                 </div>
-                    <div className="TextField">  <TextField id="outlined-search" label="Email" type="search" variant="outlined" onChange={this.handleEmailChange} error={this.state.EmailError} size="small">email</TextField></div>
+                    <div className="TextField">  <TextField id="outlined-search" label="Email" type="search" variant="outlined" 
+                    onChange={this.handleEmailChange} error={this.state.EmailError} helperText={this.state.EmailError} size="small">email</TextField></div>
                 
                  <div className= "eventButton">
                  <Link to ="/"><Button  variant="contained" color="primary" float='right'>cancle</Button></Link>

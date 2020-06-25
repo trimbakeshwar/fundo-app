@@ -103,13 +103,14 @@ export class Registration extends Component {
             service.RegisterData(config.url ,requestData).then((response)=>{
                 console.log("data",response.status)
                 if(response.status === 200){
-                   
+                    alert("registration sucessfull !!")
+                    this.props.history.push("/");
                     this.setState({
                         snackbarOpen:true,
                         snackbarMessage: "Registration sucessful",
                         snackServicity:'sucess'
                     })}
-                    this.props.history.push("/");
+                    
             }) 
             .catch((error) => {
                 console.log(error.response.data.error);
@@ -152,20 +153,20 @@ export class Registration extends Component {
                     </div>
                     <div className="TextInputField">
                         <TextField   id="outlined-search" label="First Name" type="text" variant="outlined" size="small"
-                         onChange={this.firstNameHandler} error={this.state.firstNameError} >first Name</TextField>
+                         onChange={this.firstNameHandler} error={this.state.firstNameError} helperText={this.state.firstNameError}>first Name</TextField>
                         <TextField  id="outlined-search" label="last Name" type="text" variant="outlined" size="small"
-                         onChange={this.lastNameHandler} error={this.state.lastNameError} >last Name</TextField>
+                         onChange={this.lastNameHandler} error={this.state.lastNameError} helperText={this.state.lastNameError}>last Name</TextField>
                      </div>
                     <div className="Field">
                         <br/><TextField id="outlined-search" label="Email" type="Email" variant="outlined" size="small" 
-                        onChange={this.emailHandler } error={this.state.EmailError} fullWidth>Email</TextField><br/>
+                        onChange={this.emailHandler } error={this.state.EmailError}  helperText={this.state.EmailError} fullWidth>Email</TextField><br/>
                         <span className="lable"> use my current email address instead</span>
                     </div> 
                     <div className="TextInputField">
                         <TextField   id="outlined-search" label="password" type="password" variant="outlined" 
-                        onChange={this.passwordHandler} error={this.state.passwordError} size="small">password</TextField>
+                        onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} size="small">password</TextField>
                         <TextField  id="outlined-search" label="confirm password" type="password" variant="outlined"
-                        onChange={this.confirmPasswordHandler} error={this.state.confirmPasswordError} size="small">confirm password</TextField>
+                        onChange={this.confirmPasswordHandler} error={this.state.confirmPasswordError} helperText={this.state.confirmPasswordError} size="small">confirm password</TextField>
                     </div>
                     <div>
                         <span className="lable"> use 8 or more charecter with a mix of letters, symbols & numbers </span>

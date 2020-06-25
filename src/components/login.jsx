@@ -40,7 +40,7 @@ export class Login extends Component {
     
     Login=()=> {
         
-    console.log("in email",this.state);
+   
     if(!patterns.EmailPattern.test(this.state.email))
     {
             this.setState({EmailError:"invalid mail"})
@@ -112,10 +112,10 @@ export class Login extends Component {
                     <span className="signtext">Sign In</span>
                 </div>
                 <div className="TextField">  <TextField id="outlined-search" label="email" type="text" variant="outlined"  
-                onChange={this.EmailHandler} error={this.state.EmailError}  size="small">email</TextField>
+                onChange={this.EmailHandler} error={this.state.EmailError} helperText={this.state.EmailError} size="small">email</TextField><br/>
               </div>
                <div className="TextField"> <TextField id="outlined-search" label="password" type="password" variant="outlined" 
-                onChange={this.passwordHandler} error={this.state.passwordError} size="small">password</TextField>
+                onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} size="small">password</TextField>
                 </div>
                <div>
                     <div className="forgetpass">

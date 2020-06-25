@@ -8,8 +8,8 @@ import config from "../services/configservices";
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import userservice from "../services/userservices";
-import pattern from "../configeration/regex";
-const patterns = new pattern();
+import patterns from "../configeration/regex";
+
 const service = new userservice(); 
 export class ResetPassword extends Component {
     constructor(props){
@@ -17,6 +17,8 @@ export class ResetPassword extends Component {
         this.state={
             newPassword:"",
             confirmpassword:"",
+            newPasswordError:"",
+            confirmpasswordError:"",
             token:this.props.match.params.token,
             snackbarOpen:false,
             snackbarMessage:"",
@@ -25,18 +27,18 @@ export class ResetPassword extends Component {
     }
     changePasswordHandler=(e)=>{
         console.log("pass",e.target.value); 
-        this.setState({newPassword:e.target.value});  
+        this.setState({newPassword:e.target.value, newPasswordError:""});  
         console.log("pass later",this.state);
     }
     ChangeconfirmpasswordHandler=(e)=>{
         console.log("conf",e.target.value); 
-       this.setState({confirmpassword:e.target.value});  
+       this.setState({confirmpassword:e.target.value,  confirmpasswordError:""});  
        console.log("conf later",this.state);
     }
   
     checkEquality=()=>{
         if(this.state.newPassword === this.state.confirmpassword){
-            console.log("suraj");
+          
             this.submit();
         }
         else{
@@ -46,6 +48,17 @@ export class ResetPassword extends Component {
  
 
     submit=()=>{
+        if(!patterns.passwordPattern.test(this.state.newPassword))
+        {
+           this.setState({newPasswordError:"invalid password"})
+        }
+         if(!patterns.passwordPattern.test(this.state.confirmpassword))
+        {
+           this.setState({confirmpasswordError:"invalid password"})
+        }
+      
+        if((patterns.passwordPattern .test(this.state.newPassword))&&(patterns.passwordPattern .test(this.state.confirmpassword)))
+        {
         let requestData ={
             newPassword: this.state.newPassword,
    
@@ -84,6 +97,7 @@ export class ResetPassword extends Component {
             
         });
     }
+}
 
     render() {
         return(
@@ -100,8 +114,10 @@ export class ResetPassword extends Component {
                 <div>
                     <span className="signtext">Set new password</span>
                 </div>
-                <div className="TextField">  <TextField id="outlined-search" label="new password"  type="password" variant="outlined" onChange={this.changePasswordHandler} size="small">new Password</TextField></div>
-                <div className="TextField">  <TextField id="outlined-search" label="confirm password"  type="password" variant="outlined"  onChange={this.ChangeconfirmpasswordHandler}  size="small">confirm password</TextField></div>
+                <div className="TextField">  <TextField id="outlined-search" label="new password"  type="password" variant="outlined"
+                 onChange={this.changePasswordHandler} error={this.state.newPasswordError}  helperText={this.state.newPasswordError }size="small">new Password</TextField></div>
+                <div className="TextField">  <TextField id="outlined-search" label="confirm password"  type="password" variant="outlined" 
+                 onChange={this.ChangeconfirmpasswordHandler} error={this.state.confirmpasswordError}  helperText={this.state.confirmpasswordError} size="small">confirm password</TextField></div>
 
                  <div className= "eventButton">
                 <Button  variant="contained" color="primary" onClick={this.checkEquality} float='right'>submit</Button>
