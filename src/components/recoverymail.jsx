@@ -4,18 +4,19 @@ import React, { Component } from 'react';
 import {TextField,Button} from '@material-ui/core';
 import '../CSS/login.css';
 import "../CSS/recovery.css";
+import {Link} from 'react-router-dom';
 import config from "../services/configservices";
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import userservice from "../services/userservices";
-import RejexPatterns from "../configeration/regex";
-const patterns = new RejexPatterns();
+import patterns from "../configeration/regex";
 const service = new userservice(); 
 export class RecoveryMail extends Component {
     constructor(props){
         super(props);
         this.state={
             email:"",
+            EmailError:"",
             snackbarOpen:false,
             snackbarMessage:'',
             snackServicity:'success'
@@ -27,12 +28,18 @@ export class RecoveryMail extends Component {
         
         
         console.log("data",e.target.value); 
-        this.setState({email:e.target.value});  
+        this.setState({email:e.target.value,
+                        EmailError:""});  
         console.log("data later",this.state);
     }
     submit=()=>{
         console.log("in email",this.state);
-       
+    if(!patterns.EmailPattern.test(this.state.email))
+    {
+            this.setState({EmailError:"invalid mail"})
+    }
+    else
+    {
         let requestData ={
           email:this.state.email, 
        
@@ -42,11 +49,11 @@ export class RecoveryMail extends Component {
         service.Recover(config.url ,requestData).then((response)=>{
             console.log("data",response)
                 if(response.status === 200){
-                    alert("Registration Sucessfull")
+                    alert("please check your mail for further process")
     
                     this.setState({
                         snackbarOpen:true,
-                        snackbarMessage: "Registration sucessful",
+                        snackbarMessage: "reset link send on email",
                         snackServicity:'sucess'
                     })}
 
@@ -55,13 +62,14 @@ export class RecoveryMail extends Component {
             if (err.response.data.error.statusCode === 404) {
                 this.setState({
                     snackbarOpen:true,
-                    snackbarMessage: "email not foundr",
+                    snackbarMessage: "email not found",
                     snackServicity:"error"
                 })
             }
             
         });
     }
+}
     render() {
         return(
             <div className="logincontainer">
@@ -84,11 +92,11 @@ export class RecoveryMail extends Component {
                 <div>
                     <span className="signtext">Enter your recovery email</span>
                 </div>
-                    <div className="TextField">  <TextField id="outlined-search" label="Email" type="search" variant="outlined" onChange={this.handleEmailChange} size="small">email</TextField></div>
+                    <div className="TextField">  <TextField id="outlined-search" label="Email" type="search" variant="outlined" onChange={this.handleEmailChange} error={this.state.EmailError} size="small">email</TextField></div>
                 
                  <div className= "eventButton">
+                 <Link to ="/"><Button  variant="contained" color="primary" float='right'>cancle</Button></Link>
                  <Button  variant="contained" color="primary" onClick={this.submit} float='right'>submit</Button>
-                 <Button  variant="contained" color="primary" float='right'>cancle</Button>
                  </div>
                 
             </div>
