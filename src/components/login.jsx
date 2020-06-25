@@ -8,8 +8,8 @@ import '../CSS/login.css';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import userservice from "../services/userservices";
-import pattern from "../configeration/regex";
-const patterns = new pattern();
+import patterns from "../configeration/regex";
+
 const service = new userservice(); 
 export class Login extends Component {
     
@@ -28,22 +28,29 @@ export class Login extends Component {
     }
    
     EmailHandler=(e)=>{
-        console.log("data",e.target.value); 
-       this.setState({email:e.target.value});  
-       console.log("data later",this.state);
+       this.setState({email:e.target.value,EmailError:""}); 
        
     };
     passwordHandler=(e)=>{
         console.log("data",e.target.value); 
-       this.setState({password:e.target.value});  
+       this.setState({password:e.target.value,passwordError:""});  
        console.log("data later",this.state);
        
     };
     
     Login=()=> {
-
-        console.log("in email",this.state);
-       
+        
+    console.log("in email",this.state);
+    if(!patterns.EmailPattern.test(this.state.email))
+    {
+            this.setState({EmailError:"invalid mail"})
+    }
+     if(!patterns.passwordPattern .test(this.state.password))
+    {
+            this.setState({passwordError:"invalid password"})
+    }
+    if((patterns.EmailPattern.test(this.state.email))||(patterns.passwordPattern .test(this.state.password)))
+    {
         let requestData ={
           email:this.state.email, 
           password:this.state.password
@@ -53,11 +60,11 @@ export class Login extends Component {
         service.LoginData(config.url ,requestData).then((response)=>{
             console.log("data",response.status)
                 if(response.status === 200){
-                    alert("Registration Sucessfull")
+                  
     
                     this.setState({
                         snackbarOpen:true,
-                        snackbarMessage: "Registration sucessful",
+                        snackbarMessage: "login sucessful",
                         snackServicity:'sucess'
                     })}
 
@@ -68,7 +75,7 @@ export class Login extends Component {
             if (err.response.data.error.statusCode === 401) {
                 this.setState({
                     snackbarOpen:true,
-                    snackbarMessage: "email not register",
+                    snackbarMessage: "invalid email or password",
                     snackServicity:"error"
                 })
             }
@@ -82,7 +89,7 @@ export class Login extends Component {
             
         });
 
-       
+       }   
     }
    
     render() {

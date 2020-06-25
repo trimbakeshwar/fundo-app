@@ -8,8 +8,8 @@ import config from "../services/configservices";
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import userservice from "../services/userservices";
-import pattern from "../configeration/regex";
-const patterns = new pattern();
+import RejexPatterns from "../configeration/regex";
+const patterns = new RejexPatterns();
 const service = new userservice(); 
 export class RecoveryMail extends Component {
     constructor(props){
@@ -22,7 +22,10 @@ export class RecoveryMail extends Component {
            
         }
     }
+    
     handleEmailChange=(e)=>{
+        
+        
         console.log("data",e.target.value); 
         this.setState({email:e.target.value});  
         console.log("data later",this.state);
