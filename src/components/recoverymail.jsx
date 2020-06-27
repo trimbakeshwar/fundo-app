@@ -2,8 +2,8 @@
   
 import React, { Component } from 'react';
 import {TextField,Button} from '@material-ui/core';
-import '../CSS/login.css';
-import "../CSS/recovery.css";
+import '../CSS/login.scss';
+import "../CSS/recovery.scss";
 import {Link} from 'react-router-dom';
 import config from "../services/configservices";
 import Alert from '@material-ui/lab/Alert';
@@ -93,7 +93,7 @@ export class RecoveryMail extends Component {
                     <span className="signtext">Enter your recovery email</span>
                 </div>
                     <div className="TextField">  <TextField id="outlined-search" label="Email" type="search" variant="outlined" 
-                    onChange={this.handleEmailChange} error={this.state.EmailError} helperText={this.state.EmailError} size="small">email</TextField></div>
+                    onChange={this.handleEmailChange} error={this.state.EmailError} helperText={this.state.EmailError} size="small" fullWidth>email</TextField></div>
                 
                  <div className= "eventButton">
                  <Link to ="/"><Button  variant="contained" color="primary" float='right'>cancle</Button></Link>

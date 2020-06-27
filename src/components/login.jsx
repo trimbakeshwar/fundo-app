@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import {TextField,Button} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import config from "../services/configservices";
-import '../CSS/login.css';
+import '../CSS/login.scss';
+import "../CSS/registration.scss"
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import userservice from "../services/userservices";
@@ -112,22 +113,20 @@ export class Login extends Component {
                     <span className="signtext">Sign In</span>
                 </div>
                 <div className="TextField">  <TextField id="outlined-search" label="email" type="text" variant="outlined"  
-                onChange={this.EmailHandler} error={this.state.EmailError} helperText={this.state.EmailError} size="small">email</TextField><br/>
+                onChange={this.EmailHandler} error={this.state.EmailError} helperText={this.state.EmailError} size="small" fullWidth>email</TextField><br/>
               </div>
                <div className="TextField"> <TextField id="outlined-search" label="password" type="password" variant="outlined" 
-                onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} size="small">password</TextField>
+                onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} size="small" fullWidth>password</TextField>
                 </div>
                <div>
                     <div className="forgetpass">
-                    <Link to="/recoverymail">Forgot Password?</Link>
+                    <Link to="/recoverymail" style={{ textDecoration: 'none' }} >Forgot Password?</Link>
                     </div>
-                    <div className="createAccount">   
-                     <Link to="./registration">Create account</Link>   
-                        <div className="buttons" >       
-                            <div  ><Button  variant="contained" color="primary" float='right' onClick={this.Login} >Login</Button></div>
-                        </div>  
-                    </div>
-                 </div>
+                    <div className="distancebetweenButtons">   
+                     <Link to="./registration"style={{ textDecoration: 'none' }} >Create account</Link>
+                     <Button  variant="contained" color="primary" float='right' onClick={this.Login} >Login</Button> 
+                     </div>
+               </div>
                 
             </div>
         );

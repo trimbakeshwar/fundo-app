@@ -3,8 +3,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { TextField, Button, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
-import "../CSS/login.css"
-import '../CSS/registration.css'
+import "../CSS/login.scss"
+import '../CSS/registration.scss'
 import config from "../services/configservices";
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -153,7 +153,7 @@ export class Registration extends Component {
                     </div>
                     <div className="TextInputField">
                         <TextField   id="outlined-search" label="First Name" type="text" variant="outlined" size="small"
-                         onChange={this.firstNameHandler} error={this.state.firstNameError} helperText={this.state.firstNameError}>first Name</TextField>
+                         onChange={this.firstNameHandler} error={this.state.firstNameError} helperText={this.state.firstNameError}>first Name</TextField><br/>
                         <TextField  id="outlined-search" label="last Name" type="text" variant="outlined" size="small"
                          onChange={this.lastNameHandler} error={this.state.lastNameError} helperText={this.state.lastNameError}>last Name</TextField>
                      </div>
@@ -164,7 +164,7 @@ export class Registration extends Component {
                     </div> 
                     <div className="TextInputField">
                         <TextField   id="outlined-search" label="password" type="password" variant="outlined" 
-                        onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} size="small">password</TextField>
+                        onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} size="small">password</TextField><br/>
                         <TextField  id="outlined-search" label="confirm password" type="password" variant="outlined"
                         onChange={this.confirmPasswordHandler} error={this.state.confirmPasswordError} helperText={this.state.confirmPasswordError} size="small">confirm password</TextField>
                     </div>
@@ -179,7 +179,7 @@ export class Registration extends Component {
                          </RadioGroup>
                     </div>
                     <div className= "TextInputField"> 
-                       <Link to ="/"> <label className="linkages">sign in insted</label></Link>
+                       <Link to ="/" style={{ textDecoration: 'none' }}> <label className="linkages">sign in insted</label></Link>
                         <Button  variant="contained" color="primary" float='right' onClick={this.Register}>submit</Button>
                     </div>      
                         

@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import {TextField,Button} from '@material-ui/core';
 import {Link} from 'react-router-dom';
-import '../CSS/login.css';
-import "../CSS/recovery.css";
+import '../CSS/login.scss';
+import "../CSS/recovery.scss";
 import config from "../services/configservices";
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -115,9 +115,9 @@ export class ResetPassword extends Component {
                     <span className="signtext">Set new password</span>
                 </div>
                 <div className="TextField">  <TextField id="outlined-search" label="new password"  type="password" variant="outlined"
-                 onChange={this.changePasswordHandler} error={this.state.newPasswordError}  helperText={this.state.newPasswordError }size="small">new Password</TextField></div>
+                 onChange={this.changePasswordHandler} error={this.state.newPasswordError}  helperText={this.state.newPasswordError }size="small" fullWidth>new Password</TextField></div>
                 <div className="TextField">  <TextField id="outlined-search" label="confirm password"  type="password" variant="outlined" 
-                 onChange={this.ChangeconfirmpasswordHandler} error={this.state.confirmpasswordError}  helperText={this.state.confirmpasswordError} size="small">confirm password</TextField></div>
+                 onChange={this.ChangeconfirmpasswordHandler} error={this.state.confirmpasswordError}  helperText={this.state.confirmpasswordError} size="small" fullWidth>confirm password</TextField></div>
 
                  <div className= "eventButton">
                 <Button  variant="contained" color="primary" onClick={this.checkEquality} float='right'>submit</Button>
