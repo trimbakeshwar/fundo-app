@@ -120,10 +120,10 @@ export class Login extends Component {
                 </div>
                <div>
                     <div className="forgetpass">
-                    <Link to="/recoverymail" style={{ textDecoration: 'none' }} >Forgot Password?</Link>
+                    <Link to="/recoverymail" style={{ textDecoration: 'none' }} fullWidth>Forgot Password?</Link>
                     </div>
-                    <div className="distancebetweenButtons">   
-                     <Link to="./registration"style={{ textDecoration: 'none' }} >Create account</Link>
+                    <div className="distancnButtons">   
+                     <Link to="./registration"style={{ textDecoration: 'none' }} fullWidth>Create account</Link>
                      <Button  variant="contained" color="primary" float='right' onClick={this.Login} >Login</Button> 
                      </div>
                </div>

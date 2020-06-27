@@ -35,6 +35,21 @@
     margin-top: 10px;  
     
 }
+#textbox{
+    width:40%
+}
+.TextInputFields{
+    justify-content: space-between;
+    display: flex;
+    width: 95%;
+    padding-top: 1%;
+    float: left;
+    position: relative;
+    right: 0%;
+    margin-bottom: 1px;  
+    margin-top: 10px;  
+}
+
 .lable{
     font-size:small;
 }
@@ -62,9 +77,15 @@
 .imgcontainer{
     width:244px;
     height: 244px;
-   
+    padding-top: 5px;
     
 }
+.visibility{
+
+   width:20px;
+   height:20px
+}
+
 .containersss{
     width: 50%;  
   
@@ -150,7 +171,7 @@
         }
        
     }
-    @media only screen and (max-width:720px){
+    @media only screen and (max-width:780px){
         .Registrationcontainer{
             align-self: center;
             width: 100%;
@@ -194,4 +215,108 @@
           
         }
        
+    }
+    @media only screen and (max-width:360px){
+        .Registrationcontainer{
+            width: 100%;  
+            line-height: 30px;
+            top:0;        
+            display: flex;    
+         
+            flex-direction: column;   
+            margin: auto;    
+            border-style: none;
+            align-items: start;  
+            justify-items: center;
+            margin-top: 0; 
+            flex-direction: column;
+            
+        
+        
+        }
+        .imageContainer{
+            display: none;
+        }
+        .TextInputField{
+            justify-content: space-between;
+            display: flex;
+            width: 95%;
+            padding-top: 1%;
+            float: left;
+            position: relative;
+            flex-direction: column;
+            line-height: 20px;
+            
+        }
+        .Field{
+            width: 95%;
+            line-height: 20px;
+        }
+        .labletext{
+            font-size:x-large;
+            line-height: 40px;
+        }
+        .containersss{
+            justify-content: center;
+            padding-bottom: 0px; 
+              width: 90%;  
+             margin-left: 0px;
+             margin-top: 0px;
+              line-height: 30px;
+           
+          
+        }
+      
+       
+    }
+    @media only screen and (max-width:414px){
+        .Registrationcontainer{
+            width: 100%;  
+            line-height: 30px;
+            top:0;        
+            display: flex;    
+         
+            flex-direction: column;   
+            margin: auto;    
+            border-style: none;
+            align-items: start;  
+            justify-items: center;
+            margin-top: 0; 
+            flex-direction: column;
+            
+        
+        
+        }
+        .imageContainer{
+            display: none;
+        }
+        .TextInputField{
+            justify-content: space-between;
+            display: flex;
+            width: 90%;
+            padding-top: 1%;
+            float: left;
+            position: relative;
+            flex-direction: column;
+            line-height: 25px;
+            
+        }
+        .Field{
+            width: 90%;
+            line-height: 25px;
+        }
+        .labletext{
+            font-size:x-large;
+            line-height: 60px;
+        }
+        .containersss{
+            justify-content: center;
+            padding-bottom: 0px; 
+              width: 95%;  
+             margin-left: 0px;
+             margin-top: 0px;
+              line-height: 30px;
+           
+          
+        }
     }

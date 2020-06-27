@@ -10,6 +10,8 @@ import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import userservice from "../services/userservices";
 import patterns from "../configeration/regex";
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 const service = new userservice(); 
 
 export class Registration extends Component {
@@ -27,6 +29,7 @@ export class Registration extends Component {
         passwordError:"",
         confirmPasswordError:"",
         service: 'basic',
+        visability:false,
          snackbarOpen:false,
             snackbarMessage:"",
             snackServicity:'success'
@@ -61,6 +64,11 @@ export class Registration extends Component {
         console.log("data",e.target.value); 
         this.setState({service:e.target.value});  
         console.log("data after setste confirm pass",this.state);
+    }
+    visableIconHandler = eve =>{
+        this.state.visability ? 
+            this.setState({ visability : false}) 
+            : this.setState({ visability : true})
     }
     Register=(e)=>{
        
@@ -163,10 +171,24 @@ export class Registration extends Component {
                         <span className="lable"> use my current email address instead</span>
                     </div> 
                     <div className="TextInputField">
-                        <TextField   id="outlined-search" label="password" type="password" variant="outlined" 
-                        onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} size="small">password</TextField><br/>
-                        <TextField  id="outlined-search" label="confirm password" type="password" variant="outlined"
-                        onChange={this.confirmPasswordHandler} error={this.state.confirmPasswordError} helperText={this.state.confirmPasswordError} size="small">confirm password</TextField>
+                        <TextField   id="outlined-search" label="password" variant="outlined" 
+                        onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} 
+                        type={ this.state.visability ? 'text' : 'password'} size="small" >password</TextField><br/>
+                       
+                        <TextField  id="outlined-search" label="confirm password"  variant="outlined"
+                        onChange={this.confirmPasswordHandler} error={this.state.confirmPasswordError} helperText={this.state.confirmPasswordError} 
+                        type={ this.state.visability ? 'text' : 'password'} size="small"
+                        InputProps={{
+                            endAdornment: (
+                                
+                                <div onClick={this.visableIconHandler}>   
+                                 {this.state.visability ? <VisibilityIcon className="visibility" />: <VisibilityOffIcon />} 
+                                 </div>
+                                   
+                            )
+                        }} >confirm password</TextField>
+                       
+                       
                     </div>
                     <div>
                         <span className="lable"> use 8 or more charecter with a mix of letters, symbols & numbers </span>
@@ -178,7 +200,7 @@ export class Registration extends Component {
                                     <FormControlLabel value="advance" control={<Radio color="primary" />} label="Advance" />
                          </RadioGroup>
                     </div>
-                    <div className= "TextInputField"> 
+                    <div className= "distancnButtons"> 
                        <Link to ="/" style={{ textDecoration: 'none' }}> <label className="linkages">sign in insted</label></Link>
                         <Button  variant="contained" color="primary" float='right' onClick={this.Register}>submit</Button>
                     </div>      

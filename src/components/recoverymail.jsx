@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import {TextField,Button} from '@material-ui/core';
 import '../CSS/login.scss';
-import "../CSS/recovery.scss";
 import {Link} from 'react-router-dom';
 import config from "../services/configservices";
 import Alert from '@material-ui/lab/Alert';

@@ -36,18 +36,25 @@
     margin-bottom: 40px;
     height: 10px;
 }
+.TextFields
+{
+    margin-top: 15px;
+    margin-bottom: 40px;
+    height: 10px;
+width:70%
+}
 .forgetpass{
         width: 22em;
-    margin-top: 1px;    
+    margin-top: 5px;    
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     justify-items: center;  
     font-size: x-small;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   
     top:10em;  
-    line-height: 50px;
+    line-height: 1px;
    
 
 }
@@ -65,7 +72,7 @@
 .invalidfeedback {
     color: red;
 }
-.distancebetweenButtons{
+.distancnButtons{
     justify-content: space-between;
     display: flex;
     width: 100%;
@@ -101,7 +108,7 @@
     .logincontainer{
         border-radius: 0.5px;
     border-width: 2px;}
-    .distancebetweenButtons{
+    .distancnButtons{
         justify-content: space-between;
         display: flex;
         width: 100%;
@@ -114,7 +121,7 @@
     }
    
   }
-  @media only screen and (max-width: 360PX) {
+  @media only screen and (max-width: 360X) {
     .logincontainer{
         border-radius: 0.5px;
     border-width: 2px;
@@ -127,7 +134,7 @@
         margin-top: 30px;
         font-size: xx-large; 
     }
-    .distancebetweenButtons{
+    .distancnButtons{
         justify-content: space-between;
         
         display: flex;
@@ -149,12 +156,14 @@
         height: 20px;
         width: 90%;
     }
+
     .eventButton{
         width: 90%;
     }
    
   }
-  @media only screen and  (max-width: 414PX) {
+  
+  @media only screen and  (max-width: 411PX) {
     .logincontainer{
         border-radius: 0.5px;
     border-width: 2px;
@@ -167,7 +176,7 @@
         margin-top: 30px;
         font-size: xx-large; 
     }
-    .distancebetweenButtons{
+    .distancnButtons{
         justify-content: space-between;
         
         display: flex;
@@ -188,6 +197,11 @@
         margin-bottom: 40px;
         height: 20px;
         width: 90%;
+    }
+    .TextFields
+    {
+        
+        width:90%
     }
     .eventButton{
         width: 90%;
