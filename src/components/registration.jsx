@@ -111,7 +111,6 @@ export class Registration extends Component {
             service.RegisterData(config.url ,requestData).then((response)=>{
                 console.log("data",response.status)
                 if(response.status === 200){
-                    alert("registration sucessfull !!")
                     this.props.history.push("/");
                     this.setState({
                         snackbarOpen:true,

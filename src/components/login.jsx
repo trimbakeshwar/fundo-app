@@ -67,7 +67,12 @@ export class Login extends Component {
                         snackbarOpen:true,
                         snackbarMessage: "login sucessful",
                         snackServicity:'sucess'
-                    })}
+                    })
+                    
+                    this.props.history.push('./toolBar');
+                     
+            }
+
 
         }) 
         .catch((err) => {
