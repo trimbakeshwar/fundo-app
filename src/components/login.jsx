@@ -69,7 +69,7 @@ export class Login extends Component {
                         snackServicity:'sucess'
                     })
                     
-                    this.props.history.push('./toolBar');
+                    this.props.history.push('./dashbord');
                      
             }
 

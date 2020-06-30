@@ -15,16 +15,18 @@
 
 .inputTextField
 {
-    width:38em;
+    width:45em;
    height: 45px;
    background-color: rgb(243, 241, 241);
    border-style: none;
 }
 .Menu{
-    width:15em;
+    width:17em;
+    
+    
 }
 .icon{
-    padding-left: 20em;
+    padding-left: 16em;
     display:flex;
     align-items: flex-end;
     justify-content:space-around;
@@ -38,6 +40,6 @@
         justify-content:space-around;
         flex-direction: row;
         width: 80px;
-        padding-left: 1px;
+        padding-left: 10px;
     
 }
