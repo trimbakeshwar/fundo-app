@@ -7,6 +7,8 @@ import RecoveryMail from "./components/recoverymail";
 import Registration from "./components/registration";
 import ResetPassword from "./components/resetpassword";
 import Dashbord from "./components/dashbord/dashbord";
+import TitleNote from "./components/dashbord/titleNote";
+import Notes from "./components/dashbord/notes";
 function App() {
   return (
     <div >
@@ -17,6 +19,8 @@ function App() {
      <Route exact path="/resetpassword/:token" component={ResetPassword}/>
      <Route exact path="/recoverymail" component={RecoveryMail}/>
      <Route exact path="/dashbord" component={Dashbord}/>
+     <Route exact path="/titleNote" component={TitleNote}/>
+     <Route exact path="/notes" component={Notes}/>
     
      </Router>
     

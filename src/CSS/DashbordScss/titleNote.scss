@@ -1,0 +1,42 @@
+.titleTextField{
+    border-style: none;
+    min-height: 30px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    width: 100%;
+    padding-left: 15px;
+}
+
+
+
+.titleNotecontainer{
+    width: 40em ;    
+    height: 65px;
+    position: relative;
+    flex-direction: row;
+    justify-content:start;
+    border: groove;
+    border-color:  rgba($color:#F1F3F4, $alpha: 0.5);      
+    margin-left: 25em;
+    top: 2em;    
+    left: 2em;
+    display: flex;    
+    border-radius: 10px !important;
+    text-decoration: none;
+    align-items: center;   
+    background-color: white ;
+    box-shadow: 2px 2px 2px 1px rgb(160, 155, 155)
+
+    
+}
+.titleNoteIcons{
+    width: 10em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: end;
+    justify-items: center;
+    padding-bottom: 3px;
+}
