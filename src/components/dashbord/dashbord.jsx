@@ -20,6 +20,7 @@ import SearchSharpIcon from '@material-ui/icons/SearchSharp';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import RefreshSharpIcon from '@material-ui/icons/RefreshSharp';
 import MenuSharpIcon from '@material-ui/icons/MenuSharp';
+import note from "../dashbord/note"
 import { TextField, FormControl } from '@material-ui/core';
 const drawerWidth = 250;
 const drawerTopMargin = 69;
@@ -144,6 +145,9 @@ export default function Dashboard() {
     </List>  
   </Drawer>
 </div>
+   
+      <note />
+  
 </div>
 );
 }

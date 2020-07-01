@@ -159,22 +159,22 @@ export class Registration extends Component {
                         <span className="labletext">Create your fundoo account</span>
                     </div>
                     <div className="TextInputField">
-                        <TextField   id="outlined-search" label="First Name" type="text" variant="outlined" size="small"
+                        <TextField   id="outlined-firstName" label="First Name" type="text" variant="outlined" size="small"
                          onChange={this.firstNameHandler} error={this.state.firstNameError} helperText={this.state.firstNameError}>first Name</TextField><br/>
-                        <TextField  id="outlined-search" label="last Name" type="text" variant="outlined" size="small"
+                        <TextField  id="outlined-lastName" label="last Name" type="text" variant="outlined" size="small"
                          onChange={this.lastNameHandler} error={this.state.lastNameError} helperText={this.state.lastNameError}>last Name</TextField>
                      </div>
                     <div className="Field">
-                        <br/><TextField id="outlined-search" label="Email" type="Email" variant="outlined" size="small" 
+                        <br/><TextField id="outlined-email" label="Email" type="Email" variant="outlined" size="small" 
                         onChange={this.emailHandler } error={this.state.EmailError}  helperText={this.state.EmailError} fullWidth>Email</TextField><br/>
                         <span className="lable"> use my current email address instead</span>
                     </div> 
                     <div className="TextInputField">
-                        <TextField   id="outlined-search" label="password" variant="outlined" 
+                        <TextField   id="outlined-password" label="password" variant="outlined" 
                         onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} 
                         type={ this.state.visability ? 'text' : 'password'} size="small" >password</TextField><br/>
                        
-                        <TextField  id="outlined-search" label="confirm password"  variant="outlined"
+                        <TextField  id="outlined-confirmPassword" label="confirm password"  variant="outlined"
                         onChange={this.confirmPasswordHandler} error={this.state.confirmPasswordError} helperText={this.state.confirmPasswordError} 
                         type={ this.state.visability ? 'text' : 'password'} size="small"
                         InputProps={{
@@ -201,7 +201,7 @@ export class Registration extends Component {
                     </div>
                     <div className= "distancnButtons"> 
                        <Link to ="/" style={{ textDecoration: 'none' }}> <label className="linkages">sign in insted</label></Link>
-                        <Button  variant="contained" color="primary" float='right' onClick={this.Register}>submit</Button>
+                        <Button id="contained-button"  variant="contained" color="primary" float='right' onClick={this.Register}>submit</Button>
                     </div>      
                         
                     </div>

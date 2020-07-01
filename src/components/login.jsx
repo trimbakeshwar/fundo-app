@@ -117,10 +117,10 @@ export class Login extends Component {
                 <div>
                     <span className="signtext">Sign In</span>
                 </div>
-                <div className="TextField">  <TextField id="outlined-search" label="email" type="text" variant="outlined"  
+                <div className="TextField">  <TextField id="outlined-email" label="email" type="text" variant="outlined"  
                 onChange={this.EmailHandler} error={this.state.EmailError} helperText={this.state.EmailError} size="small" fullWidth>email</TextField><br/>
               </div>
-               <div className="TextField"> <TextField id="outlined-search" label="password" type="password" variant="outlined" 
+               <div className="TextField"> <TextField id="outlined-password" label="password" type="password" variant="outlined" 
                 onChange={this.passwordHandler} error={this.state.passwordError} helperText={this.state.passwordError} size="small" fullWidth>password</TextField>
                 </div>
                <div>
