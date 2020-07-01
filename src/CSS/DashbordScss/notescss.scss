@@ -1,0 +1,39 @@
+.noteCotainer{
+    width: 40vw; 
+    min-height: 10em;   
+    background-color: white;
+    border: groove;
+    border-color:  rgba($color:#F1F3F4, $alpha: 0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-top: 1px;
+    margin-left: 25em;
+  
+    position: relative;
+    top: -40px;
+    left:2em;
+    box-shadow: 2px 2px 2px 1px rgb(160, 155, 155)
+}
+#tittle{
+    font-size: 20px ;    
+    font-weight: bold !important;   
+    width: 100% !important;     
+}
+.textFieldContainer{
+    width: 98%;
+   
+} 
+.textfield{
+    border-style: none;
+    min-height: 30px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    width: 100%;
+
+}
