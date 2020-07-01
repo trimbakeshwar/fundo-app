@@ -1,26 +1,27 @@
 .titleTextField{
     border-style: none;
-    min-height: 30px;
+    min-height: 20px;
     padding-top: 10px;
     padding-right: 15px;
     padding-bottom: 10px;
     padding-left: 15px;
     width: 100%;
     padding-left: 15px;
+   
 }
 
 
 
 .titleNotecontainer{
     width: 40em ;    
-    height: 65px;
+    height: 45px;
     position: relative;
     flex-direction: row;
     justify-content:start;
     border: groove;
     border-color:  rgba($color:#F1F3F4, $alpha: 0.5);      
-    margin-left: 25em;
-    top: 2em;    
+    margin-left: 15em;
+    top: -40px;   
     left: 2em;
     display: flex;    
     border-radius: 10px !important;
@@ -39,4 +40,5 @@
     align-items: end;
     justify-items: center;
     padding-bottom: 3px;
+    
 }

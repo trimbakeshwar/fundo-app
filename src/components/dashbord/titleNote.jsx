@@ -29,7 +29,7 @@ export default function SmallNotes(props){
     return(
         <div className='titleNotecontainer'>
              <div className='titleTextField'>
-                <TextField id='tittle'  placeholder='Take a note..' textdecaration='none' onClick={props.click}  multiline InputProps={{ classes }}   />       
+                <TextField id='tittle'  placeholder='Take a note..' textdecaration='none'  onClick={props.click}  multiline InputProps={{ classes }}   />       
             </div>
             <div className='titleNoteIcons'>
                 <div> <IconButton><CheckBoxOutlinedIcon fontSize='medium'/></IconButton> </div>

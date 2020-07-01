@@ -22,6 +22,7 @@ import RefreshSharpIcon from '@material-ui/icons/RefreshSharp';
 import MenuSharpIcon from '@material-ui/icons/MenuSharp';
 import Note from "./notes"
 import SmallNotes from "./titleNote"
+import CreateNote from "./createNote"
 import { TextField, FormControl } from '@material-ui/core';
 const drawerWidth = 250;
 const drawerTopMargin = 69;
@@ -69,14 +70,17 @@ export default function Dashboard() {
     const classes = useStyles();
     const theme = useTheme();
     const [Draweropen, DrawersetOpen] = React.useState(false);
-  
+  const [noteOpen,setNoteOpen] = React.useState(false)
     const handleDrawerMouseClose=()=>{
         DrawersetOpen(false);
       }
     const handleDrawerMouseopen=()=>{
         DrawersetOpen(true);
     }
-  
+    const NoteHandler = (eve) =>{    
+      setNoteOpen(!noteOpen);
+    
+   }; 
     return (
       <div>
           <div  className='container'>   
@@ -146,11 +150,10 @@ export default function Dashboard() {
     </List>  
   </Drawer>
 </div>
-   
-     
-      <SmallNotes />
+<div>
+  <CreateNote />
+</div>
 </div>
 );
 }
-
 
