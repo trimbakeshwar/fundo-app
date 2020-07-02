@@ -6,8 +6,17 @@ import axios from "axios";
 			headers: {
 				Authorization: token
 			},
-		});
-	}
+        });  
+    }
+    
+    GetNotes(url , token) {
+		return axios.get(url+"notes/getNotesList",  {
+			headers: {
+				Authorization: token
+			},
+        });  
+    }
+    
 }
 
 export default DashbordService;

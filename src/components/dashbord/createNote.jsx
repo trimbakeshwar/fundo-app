@@ -62,11 +62,10 @@ export class CreateNote extends React.Component {
       service.AddNote(config.url,requestData,tokens).then((Response)=>{
         this.setState({
          
-          title:'',
-          description:'',
-          noteOpen: false
+          noteOpen: false,
 
       });
+ 
           console.log(this.state) 
     
       }) .catch((err) => {
@@ -88,7 +87,7 @@ export class CreateNote extends React.Component {
               <div className='noteCotainer' onHandleClickaway={this.onHandleClickaway}>
               <div className='textFieldContainer'>
                  <TextField
-                   className='textfield' id='tittle'  placeholder='Title' textdecaration='none' onChange={this.titleHandler}  multiline InputProps={{ disableUnderline: true }}   />       
+                   className='textfield' id='tittle'  placeholder='Title' textdecaration='none' value={this.state.title} onChange={this.titleHandler}  multiline InputProps={{ disableUnderline: true }}   />       
              </div>
              <div className='textFieldContainer'>
                  <TextField className='textfield'  placeholder='Take a Note'  textdecaration='none' onChange={this.TakeanoteHandler} multiline InputProps={{ disableUnderline: true }}/>                

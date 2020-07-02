@@ -24,6 +24,7 @@ import CreateNote from "./createNote"
 import { TextField, FormControl } from '@material-ui/core';
 import keepimg from '../../image/keepimg.png'
 import Typography from "@material-ui/core/Typography";
+import GetAllNotes from "../../components/dashbord/getAllNotes";
 const drawerWidth = 250;
 const drawerTopMargin = 69;
 const useStyles = makeStyles((theme) => ({
@@ -162,6 +163,7 @@ export default function Dashboard() {
 </div>
 <div>
   <CreateNote />
+  <GetAllNotes />
 </div>
 </div>
 );
