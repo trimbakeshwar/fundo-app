@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import DashbordService from "../../services/dashbordservices";
 import config from "../../services/configservices";
+import Display from "./displayNotes"
 const service = new DashbordService();
 
 export class GetAllNotes extends Component{
@@ -27,7 +28,7 @@ export class GetAllNotes extends Component{
     render(){
         return(
             <div>
-             welcom to get
+                <Display  AllData={this.state.AllNotes} />
             </div>
         );
     }
