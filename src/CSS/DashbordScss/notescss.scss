@@ -20,8 +20,8 @@
 }
 #tittle{
     font-size: 20px ;    
-    font-weight: bold !important;   
-    width: 100% !important;     
+    font-weight: bold  ;
+    width: 100%    ;  
 }
 .textFieldContainer{
     width: 98%;
@@ -36,4 +36,22 @@
     padding-left: 15px;
     width: 100%;
 
+}
+.iconPositionSetting{
+    flex-direction: row;
+    justify-content: space-around;
+    justify-items: center;
+    display: flex;
+  
+}
+.closeButtonSetting{
+   
+   
+padding-top: 11px;
+ background-color: white;
+ display: flex;
+   
+}
+.button{
+    
 }

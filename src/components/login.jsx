@@ -23,6 +23,7 @@ export class Login extends Component {
             passwordError:"",
             snackbarOpen:false,
             snackbarMessage:'',
+            token:"",
             snackServicity:'success'
            
         }
@@ -62,13 +63,13 @@ export class Login extends Component {
             console.log("data",response.status)
                 if(response.status === 200){
                   
-    
+                    window.localStorage.setItem("token", response.data.id)
                     this.setState({
                         snackbarOpen:true,
                         snackbarMessage: "login sucessful",
                         snackServicity:'sucess'
                     })
-                    
+                   
                     this.props.history.push('./dashbord');
                      
             }

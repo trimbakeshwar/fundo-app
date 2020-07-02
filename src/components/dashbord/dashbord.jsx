@@ -20,10 +20,10 @@ import SearchSharpIcon from '@material-ui/icons/SearchSharp';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import RefreshSharpIcon from '@material-ui/icons/RefreshSharp';
 import MenuSharpIcon from '@material-ui/icons/MenuSharp';
-import Note from "./notes"
-import SmallNotes from "./titleNote"
 import CreateNote from "./createNote"
 import { TextField, FormControl } from '@material-ui/core';
+import keepimg from '../../image/keepimg.png'
+import Typography from "@material-ui/core/Typography";
 const drawerWidth = 250;
 const drawerTopMargin = 69;
 const useStyles = makeStyles((theme) => ({
@@ -84,9 +84,19 @@ export default function Dashboard() {
     return (
       <div>
           <div  className='container'>   
+     
               <div  className='Menu'> 
                  <IconButton  > <MenuSharpIcon/> </IconButton> 
               </div>
+              <div className="keepimage">
+                 <img src={keepimg} alt="Keep Logo" />
+             </div>
+             <div className="keep">
+                 <Typography className="keep" variant="h6" >
+                   Fundoo
+                 </Typography>
+            </div>
+        
           <div >
                 <TextField  className='inputTextField' type="text" variant="outlined"  
                  InputProps=
