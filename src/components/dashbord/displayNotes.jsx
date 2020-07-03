@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from '@material-ui/core/Card';
 import "../../CSS/DashbordScss/display.scss";
+import NoteIcons from "./iconButtons"
 export class Display extends Component{
     constructor(props){
     super(props);
@@ -22,14 +23,22 @@ export class Display extends Component{
      }
      
     render(){
-        let data = this.props.AllData
-        const notes = data.map((values, index) => {
+     
+        const notes = this.props.AllData.map((values, index) => {
             return(
-                <div key={index} className="displayContainer" onMouseEnter={()=>this.onCard(values.id)}  onMouseLeave={()=>this.leaveCard(values.id)} >
+                <div  className="displayContainer"
+                  onMouseEnter={()=>this.onCard(values.id)} 
+                  onMouseLeave={()=>this.leaveCard(values.id)} >
                     <Card className="cardContainer" >
-                    <div className="title" > {values.title} </div>
-                    <div className="Description"> {values.description}</div>
+                        <div className="title" > {values.title} </div>
+                        <div className="Description"> {values.description}</div>
+                        <div
+                            className= {(this.state.ID === values.id) ?
+                            'ShowIconButtons' :'hideIconButtons'} >
+                            <NoteIcons />                     
+                        </div>
                     </Card>
+                   
                 </div>
             );
          }) 

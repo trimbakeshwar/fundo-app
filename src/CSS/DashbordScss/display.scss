@@ -11,18 +11,38 @@
     flex-direction: row; 
   margin-left: 30em;    
 }
+.title{
+  padding-bottom: 5px;
+}
 .cardContainer{
     width: 600px;
-    min-height: 120px ;
+    min-height: 50px ;
     height: auto;
-    border-radius: 10px;
+    border-color: rgb(245, 245, 245);
+    border-style: groove;
     display: flex;
-   flex-direction: column; 
+    flex-direction: column; 
     justify-items: start;
-    padding: 20px ;  
+    padding: 21px ;  
    margin-left: 25em; 
-   min-height: 30px;
-  
    justify-content: start;
    align-items: flex-start;
+}
+.ShowIconButtons{
+  height : 35px;
+  visibility: visible;
+  align-self: flex-end;
+  width: 100%;
+  position : relative;
+  top:15px;
+ 
+}
+
+.hideIconButtons{
+  height: 25px;
+  margin-top: 15px;
+  visibility: hidden;
+  align-self:center;
+  width: 100%;
+  
 }
