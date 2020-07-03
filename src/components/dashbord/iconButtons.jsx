@@ -11,7 +11,6 @@ import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 
 export class NoteIcons extends Component {
     render() {
-        console.log("call iconbutton render",this.props.data.id);
         return (
             <div  className='iconsContainer'>
                 <div className="button"><IconButton> <AddAlertOutlinedIcon/> </IconButton></div>

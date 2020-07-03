@@ -3,7 +3,7 @@ import {MenuItem,Popper,Paper,Fade,Tooltip,ClickAwayListener,} from "@material-u
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import DashbordService from "../../services/dashbordservices";
 import config from "../../services/configservices";
-
+import "../../CSS/DashbordScss/moreOption.scss"
 const service = new DashbordService();
 
 
@@ -15,7 +15,6 @@ class MoreOptions extends Component {
       open: false,
     };
     this.clickMoreOptions = this.clickMoreOptions.bind(this);
-    this.handleDeleteNotes = this.handleDeleteNotes.bind(this);
   }
   clickMoreOptions(event) {
       const { currentTarget } = event;
@@ -29,7 +28,7 @@ class MoreOptions extends Component {
   handleDeleteNotes = () => {
     let token = localStorage.getItem("token");
     let requestData = {
-        noteIdList: [this.props.NoteId],
+      noteID: [this.props.NoteId],
       isDeleted: true
     };
     service.DeleteNotes(config.url,requestData,token).then((Response)=>{
