@@ -35,7 +35,7 @@ export class Display extends Component{
                         <div
                             className= {(this.state.ID === values.id) ?
                             'ShowIconButtons' :'hideIconButtons'} >
-                            <NoteIcons />                     
+                            <NoteIcons data={values} />                     
                         </div>
                     </Card>
                    

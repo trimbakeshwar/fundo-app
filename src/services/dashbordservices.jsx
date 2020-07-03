@@ -16,6 +16,14 @@ import axios from "axios";
 			},
         });  
     }
+	
+	DeleteNotes(url , token) {
+		return axios.post(url+"notes/deleteForeverNotes",  {
+			headers: {
+				Authorization: token
+			},
+        });  
+    }
     
 }
 

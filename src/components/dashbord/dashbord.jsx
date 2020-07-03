@@ -163,7 +163,9 @@ export default function Dashboard() {
 </div>
 <div>
   <CreateNote />
-  <GetAllNotes />
+</div>
+<div>
+<GetAllNotes />
 </div>
 </div>
 );
