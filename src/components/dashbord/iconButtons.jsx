@@ -18,7 +18,7 @@ export class NoteIcons extends Component {
                 <div className="button"><IconButton> <ColorLensOutlinedIcon/> </IconButton></div>
                 <div className="button"><IconButton> <ImageOutlinedIcon/> </IconButton></div>
                 <div className="button"><IconButton> <ArchiveOutlinedIcon/> </IconButton></div>
-                <div className="button"><IconButton > <MoreOptions NoteId={this.props.data.id}/> </IconButton></div>
+                <div className="button"><IconButton > <MoreOptions NoteId={this.props.data}/> </IconButton></div>
             </div>
         );
     }

@@ -13,23 +13,24 @@
 
 
 .titleNotecontainer{
-    width: 40em ;    
+    width: 45em ;    
     height: 45px;
     position: relative;
     flex-direction: row;
     justify-content:start;
-    border: groove;
-    border-color:  rgba($color:#F1F3F4, $alpha: 0.5);      
+    border: groove;   
     margin-left: 15em;
-    top: -40px;   
+    margin-bottom: 40px;
+    top: 40px;   
     left: 2em;
     display: flex;    
     border-radius: 10px !important;
     text-decoration: none;
     align-items: center;   
-    background-color: white ;
-    box-shadow: 2px 2px 2px 1px rgb(160, 155, 155)
-
+    border-color: rgba(0,0,0,.2);
+    background-clip: padding-box;
+    border-width: 1px 2px 2px 2px;
+    
     
 }
 .titleNoteIcons{

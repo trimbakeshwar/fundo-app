@@ -11,14 +11,35 @@
     border-color: rgb(255, 252, 252);   
     padding-top: 8px; 
     padding-bottom: 8px; 
+    position: sticky;
 }
-
-.inputTextField
-{
+/*.searchBar{
+    flex-direction: row;
+    display: flex;
+    background-color: #f1f3f4;
     width:45em;
-   height: 45px;
-   background-color: rgb(243, 241, 241);
+    height: 45px;
+    justify-items: center;
+}*/
+.searchBar{
+    position: relative;
+    left:8em;
+    flex-direction: row;
+    display: flex;
+    width:50em;
+    background-color: #f1f3f4;
+    padding-right:20px;
+    
+   
+}
+.inputtextField
+{
+
+    width:100%;
+   height: 30px;
    border-style: none;
+   position: relative;
+   top:8px;
 }
 .Menu{
     width:1em;
@@ -26,7 +47,9 @@
     left:-7px;
 }
 .icon{
-    padding-left: 16em;
+    position: relative;
+    left:30em;
+    padding-left: 1em;
     display:flex;
     align-items: flex-end;
     justify-content:space-around;
@@ -41,13 +64,20 @@
         flex-direction: row;
         width: 80px;
         padding-left: 10px;
+        position: relative;
+        left:29em;
     
 }
 .keepimage{
-    padding-left: 0.5em;;
+    padding-left: 0.5em;
+   
 }
 .keep{
-   margin-top: 5px;
-   left: -10px;
+   margin-bottom:10px;
+   left: 5px;
   position : relative;
+  
+}
+.marginOpen{
+    margin-left: 20em;
 }

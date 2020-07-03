@@ -23,7 +23,6 @@ export class Display extends Component{
      }
      
     render(){
-     
         const notes = this.props.AllData.map((values, index) => {
             return(
                 <div  className="displayContainer"

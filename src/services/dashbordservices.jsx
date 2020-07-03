@@ -17,8 +17,8 @@ import axios from "axios";
         });  
     }
 	
-	DeleteNotes(url , token) {
-		return axios.post(url+"notes/deleteForeverNotes",  {
+	DeleteNotes(url , data, token) {
+		return axios.post(url+"notes/deleteForeverNotes", data ,{
 			headers: {
 				Authorization: token
 			},

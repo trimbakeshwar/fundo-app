@@ -1,7 +1,6 @@
 .noteCotainer{
-    width: 40vw; 
+    width: 45em ;  
     min-height: 10em;   
-    background-color: white;
     border: groove;
     border-color:  rgba($color:#F1F3F4, $alpha: 0.5);
     color: white;
@@ -12,11 +11,14 @@
     padding-left: 15px;
     padding-top: 1px;
     margin-left: 15em;
-  
+    margin-bottom: 40px;
     position: relative;
-    top: -40px;
+    top: 40px;
     left:2em;
-    box-shadow: 2px 2px 2px 1px rgb(160, 155, 155)
+    
+    border-color: rgba(0,0,0,.2);
+    background-clip: padding-box;
+    border-width: 1px 3px 3px 2px;
 }
 #tittle{
     font-size: 20px ;    
@@ -51,7 +53,4 @@ padding-top: 11px;
  background-color: white;
  display: flex;
    
-}
-.button{
-    
 }

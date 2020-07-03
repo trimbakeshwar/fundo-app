@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import "../../CSS/DashbordScss/display.scss";
 import DashbordService from "../../services/dashbordservices";
 import config from "../../services/configservices";
 import Display from "./displayNotes"
@@ -27,7 +28,7 @@ export class GetAllNotes extends Component{
     }
     render(){
         return(
-            <div>
+            <div className="storage">
                 <Display  AllData={this.state.AllNotes} />
             </div>
         );

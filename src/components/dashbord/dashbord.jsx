@@ -25,12 +25,24 @@ import { TextField, FormControl } from '@material-ui/core';
 import keepimg from '../../image/keepimg.png'
 import Typography from "@material-ui/core/Typography";
 import GetAllNotes from "../../components/dashbord/getAllNotes";
+
+import { BrowserRouter as Router, Route,Redirect } from 'react-router-dom';
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import SearchIcon from "@material-ui/icons/Search";
+import RefreshOutlinedIcon from "@material-ui/icons/RefreshOutlined";
+import MenuIcon from "@material-ui/icons/Menu";
+import { Tooltip } from "@material-ui/core";
+import {Link } from "react-router-dom";
 const drawerWidth = 250;
 const drawerTopMargin = 69;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     marginTop: "100px",
+    
   },
  
  
@@ -40,11 +52,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: drawerTopMargin,
     flexShrink: 0,
     whiteSpace: "nowrap",
+  
+    
   },
   drawerOpensetting: {
     width: drawerWidth,
    
     marginTop: drawerTopMargin,
+
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -82,41 +97,51 @@ export default function Dashboard() {
       setNoteOpen(!noteOpen);
     
    }; 
+   const handleDrawerOpen = () => {
+    DrawersetOpen(true);
+  };
+  const handleDrawerClose = () => {
+    DrawersetOpen(false);
+  };
     return (
-      <div>
-          <div  className='container'>   
-     
-              <div  className='Menu'> 
-                 <IconButton  > <MenuSharpIcon/> </IconButton> 
-              </div>
-              <div className="keepimage">
-                 <img src={keepimg} alt="Keep Logo" />
-             </div>
-             <div className="keep">
-                 <Typography className="keep" variant="h6" >
-                   Fundoo
-                 </Typography>
-            </div>
+      <div > 
         
-          <div >
-                <TextField  className='inputTextField' type="text" variant="outlined"  
-                 InputProps=
-                {{startAdornment: (<IconButton> <SearchSharpIcon/> </IconButton>
-                  ),
-                 }} 
-                size="small"placeholder="search" >search</TextField>
+    <div className="{classes.root}">
+      <CssBaseline />
+      <AppBar position="fixed" color="white" className={clsx(classes.appBar, {[classes.appBarShift]: Draweropen,})} >
+        <Toolbar>
+          <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen}  onClose={handleDrawerClose}  edge="start"
+            className={clsx(classes.menuButton)} ><MenuIcon /> </IconButton>
+          <div className="keepimage">
+            <img src={keepimg} alt="Keep Logo" />
           </div>
-
-           <div className="icon">
+          <div className="keep">
+            <Typography className="keep" variant="h6" noWrap>
+              Fundoo
+            </Typography>
+          </div>
+          <div className="searchBar">
+            <div>
+            <IconButton><SearchIcon /></IconButton>
+            </div>
+            <div  className="inputtextField">
+              <TextField placeholder="Search"    
+              InputProps={{disableUnderline: true,}} multiline fullWidth>search</TextField>
+            </div>
+          </div>
+          <div className="icon">
                 <IconButton> <RefreshSharpIcon/> </IconButton>
                 <IconButton> <ViewStreamSharpIcon/> </IconButton>
-                <IconButton> <SettingsOutlinedIcon/> </IconButton>
+               
            </div> 
 
            <div className="account">
-                <IconButton> <Apps/> </IconButton>
+              
                 <IconButton> <AccountCircle/> </IconButton> 
           </div>
+            
+        </Toolbar>
+      </AppBar>
           </div>
             <div className="drawer">
                <Drawer   
@@ -134,9 +159,9 @@ export default function Dashboard() {
   
      <List  onMouseEnter={handleDrawerMouseopen} onMouseLeave={handleDrawerMouseClose}>
      
-      <ListItem button key={'Notes'} className="notes">
-       <ListItemIcon><EmojiObjectsOutlinedIcon /></ListItemIcon>
-        <ListItemText primary={'Notes'}/>
+      <ListItem button key={'Notes'}  className="notes">
+       <ListItemIcon ><EmojiObjectsOutlinedIcon  /></ListItemIcon>
+        <ListItemText  primary={'Notes'}/>
       </ListItem>
 
       <ListItem button key={'Remainders'} className="remainder">
