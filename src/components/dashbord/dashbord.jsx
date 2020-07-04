@@ -55,6 +55,22 @@ const useStyles = makeStyles((theme) => ({
   
     
   },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: -drawerWidth,
+  },
+  contentShift: {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  },
   drawerOpensetting: {
     width: drawerWidth,
    
@@ -186,12 +202,18 @@ export default function Dashboard() {
     </List>  
   </Drawer>
 </div>
+<main
+        className={clsx(classes.content, {
+          [classes.contentShift]: Draweropen,
+        })}
+      >
 <div>
   <CreateNote />
 </div>
 <div>
 <GetAllNotes />
 </div>
+</main>
 </div>
 );
 }

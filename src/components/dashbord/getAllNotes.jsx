@@ -18,8 +18,7 @@ export class GetAllNotes extends Component{
 
     }
     getAllNotes=()=>{
-        let token = localStorage.getItem("token");
-       service.GetNotes(config.url,token).then((Response=>{
+       service.GetNotes().then((Response=>{
          console.log(Response.data.data.data)
           this.setState({AllNotes:Response.data.data.data })
        })).catch((err)=>{

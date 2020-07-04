@@ -19,7 +19,7 @@
     flex-direction: row;
     justify-content:start;
     border: groove;   
-    margin-left: 15em;
+    margin-left: 30em;
     margin-bottom: 40px;
     top: 40px;   
     left: 2em;
@@ -41,5 +41,19 @@
     align-items: end;
     justify-items: center;
     padding-bottom: 3px;
+    
+} 
+
+@media only screen and (max-width: 360pX) {
+    .titleNotecontainer{
+        width:15em ;
+        margin-left: 18em;  
+        height: 60px; 
+        top: -5px;  
+        
+    }
+    .titleNoteIcons{
+        width: 25em;
+    }
     
 }

@@ -8,3 +8,13 @@
 .button{
     padding-left:5%;
 }
+
+@media only screen and (max-width: 360pX) {
+    .iconsContainer{
+        width:70%;
+        display: flex;    
+        flex-direction: row;
+        justify-content: space-evenly;
+        
+    } 
+}

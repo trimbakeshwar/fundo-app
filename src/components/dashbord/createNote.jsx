@@ -11,8 +11,6 @@ import Container from "@material-ui/core/Container";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import DashbordService from "../../services/dashbordservices";
 import config from "../../services/configservices";
-import Alert from '@material-ui/lab/Alert';
-import Snackbar from '@material-ui/core/Snackbar';
 const service = new DashbordService();
 
 
@@ -23,9 +21,7 @@ export class CreateNote extends React.Component {
         noteOpen: false,
         title:'',
         description:'',
-        snackbarOpen:false,
-        snackbarMessage: "",
-        snackServicity:''
+       
       
     };
   }
@@ -58,8 +54,7 @@ export class CreateNote extends React.Component {
         title: this.state.title,
         description: this.state.description,
       }
-      let tokens= window.localStorage.getItem("token");
-      service.AddNote(config.url,requestData,tokens).then((Response)=>{
+      service.AddNote(requestData).then((Response)=>{
         this.setState({
          
           noteOpen: false,
@@ -101,11 +96,7 @@ export class CreateNote extends React.Component {
                   </div>
                     
              </div>    
-             <Snackbar open={this.state.snackbarOpen} autoHideDuration={6000} onClose={this.handleClose}>
-                    <Alert onClose={this.handleClose} severity={this.state.snackServicity}>
-                        {this.state.snackbarMessage}
-                    </Alert>
-                </Snackbar>           
+                       
          </div>
               ):
             (

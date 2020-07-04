@@ -24,6 +24,7 @@ justify-content: start;
     flex-wrap: wrap;
    justify-content: start;
    align-items: flex-start;
+   
 }
 /*.cardContainer{
     width: 600px;
@@ -61,7 +62,7 @@ justify-content: start;
   
 }
 .storage{
-  width: 100em;
+  width: 80%;
   top:50px;
     height: auto;
    
@@ -69,7 +70,35 @@ justify-content: start;
     flex-direction: row; 
     padding: 21px ;  
     flex-wrap: wrap;
-   margin-left: 10em; 
+   margin-left: 25em; 
    align-items: flex-start;
    justify-items: start;
+}
+ 
+@media only screen and (max-width: 360pX) {
+  .titleNotecontainer{
+      width: 35em ;
+  }
+  .displayContainer{    
+    margin-left: 3em;   
+  }
+  .cardContainer{
+    width: 20em;
+    font-size: 22px;
+  }
+  .storage{
+    margin-left: 20em; 
+  }
+  .ShowIconButtons{
+    height : 35px;
+    visibility: visible;
+    align-self: flex-start;
+    width: 40%;
+    position : relative;
+    top:15px;
+    left:80px;
+    top: 10px;
+  
+   
+  }
 }

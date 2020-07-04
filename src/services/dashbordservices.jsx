@@ -1,28 +1,19 @@
 import axios from "axios";
+import config from "../services/configservices";
+import AxiosServices from "../services/axiosservice";
+const Axios = new AxiosServices();
  class DashbordService {  
     
-    AddNote(url , data, token) {
-		return axios.post(url+"notes/addNotes", data, {
-			headers: {
-				Authorization: token
-			},
-        });  
+    AddNote(data) {
+		return Axios.Post(config.url+"notes/addNotes", data);  
     }
     
-    GetNotes(url , token) {
-		return axios.get(url+"notes/getNotesList",  {
-			headers: {
-				Authorization: token
-			},
-        });  
+    GetNotes() {
+		return Axios.Get (config.url+"notes/getNotesList");
     }
 	
-	DeleteNotes(url , data, token) {
-		return axios.post(url+"notes/deleteForeverNotes", data ,{
-			headers: {
-				Authorization: token
-			},
-        });  
+	DeleteNotes(data) {
+		return Axios.Post(config.url+"notes/trashNotes", data );			
     }
     
 }

@@ -13,6 +13,9 @@ class MoreOptions extends Component {
     this.state = {
       anchorEl: null,
       open: false,
+      noteID:"",
+      isDeleted: false
+
     };
     this.clickMoreOptions = this.clickMoreOptions.bind(this);
   }
@@ -28,10 +31,10 @@ class MoreOptions extends Component {
   handleDeleteNotes = () => {
     let token = localStorage.getItem("token");
     let requestData = {
-      noteID: [this.props.NoteId],
+      noteIdList: [this.props.NoteId.id],
       isDeleted: true
     };
-    service.DeleteNotes(config.url,requestData,token).then((Response)=>{
+    service.DeleteNotes(requestData).then((Response)=>{
         console.log("deleted",Response);
     }).catch((err)=>{
         console.log("deleted",err);
@@ -46,8 +49,7 @@ class MoreOptions extends Component {
   }
 
   render() {
-      console.log("call menu render");
-    
+     
     return (
       <div>
         <Tooltip title="More Options">
