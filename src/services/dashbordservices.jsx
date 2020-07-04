@@ -15,7 +15,9 @@ const Axios = new AxiosServices();
 	DeleteNotes(data) {
 		return Axios.Post(config.url+"notes/trashNotes", data );			
     }
-    
+    GetTrashNotes(){
+		return Axios.Get (config.url+"notes/getTrashNotesList");
+	}
 }
 
 export default DashbordService;
