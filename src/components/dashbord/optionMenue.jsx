@@ -70,6 +70,7 @@ class MoreOptions extends Component {
         </Popper>
       </div>
     );
+    
   }
 }
 export default MoreOptions;

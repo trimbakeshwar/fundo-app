@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Card from '@material-ui/core/Card';
 import "../../CSS/DashbordScss/display.scss";
 import NoteIcons from "./iconButtons"
-
+import Masonry from 'react-masonry-css'
 import "../../CSS/DashbordScss/trash.scss";
 import IconButton from '@material-ui/core/IconButton';
 import DashbordService from "../../services/dashbordservices";
@@ -16,7 +16,14 @@ export class AllTrashNotes extends Component{
         this.state={
             TrashNotes: [],
             title:"",
-            discription:""
+            discription:"",
+            breakpointColumnsObj : {
+                default:4,
+               1717: 4,
+               1432: 3,
+               1084: 2,
+               750: 1
+               },
         };
         this.getTrashAllNotes()
 
@@ -39,13 +46,11 @@ export class AllTrashNotes extends Component{
            console.log(err)
        });
     }
+   
     render(){
         const TrashData = this.state.TrashNotes.map((values, index) => {
             return(
-                <div  className="displayContainer"
-                  onMouseEnter={()=>this.onCard(values.id)} 
-                  onMouseLeave={()=>this.leaveCard(values.id)} >
-                    <Card className="cardContainer" >
+                    <Card className="cardContainer" onMouseEnter={()=>this.onCard(values.id)}   onMouseLeave={()=>this.leaveCard(values.id)} >
                         <div className="title" > {values.title} </div>
                         <div className="Description"> {values.description}</div>
                         <div
@@ -56,10 +61,20 @@ export class AllTrashNotes extends Component{
                         </div>
                     </Card>
                    
-                </div>
+              
             );
          }) 
-         return(TrashData)   ;
+         return (
+            <div className="trashdisplay">
+            <Masonry
+                      breakpointCols={this.state.breakpointColumnsObj}
+                      className="masonry-grid"
+                      columnClassName="masonry-grid_column"
+            >
+              {TrashData}
+            </Masonry>
+            </div>
+         );
      }
 }
 export default AllTrashNotes;

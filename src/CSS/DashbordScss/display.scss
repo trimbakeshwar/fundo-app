@@ -70,30 +70,55 @@ justify-content: start;
     flex-direction: row; 
     padding: 21px ;  
     flex-wrap: wrap;
-   margin-left: 25em; 
+   margin-left: 20em; 
    align-items: flex-start;
    justify-items: start;
 }
+.masonry-grid {
+  width: 50%;
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    flex-grow: initial;
+    overflow-wrap: initial;
+    margin-left: 10px; /* gutter size offset */
+    
+}
+.masonry-grid_column {
+  padding-left: 15px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.masonry-grid_column > div {
+  margin: 15px auto;
+}
+.display{
+  width:40%;
  
+  display:flex;
+  margin-top:1px;
+  align-items:flex-start;
+  flex-direction:row !important;
+}
 @media only screen and (max-width: 360pX) {
-  .titleNotecontainer{
-      width: 35em ;
-  }
+ 
   .displayContainer{    
     margin-left: 3em;   
   }
   .cardContainer{
-    width: 20em;
+    width: 21em;
     font-size: 22px;
   }
   .storage{
-    margin-left: 20em; 
+    margin-left: 15em; 
+    margin-right: 5px;
   }
   .ShowIconButtons{
     height : 35px;
     visibility: visible;
     align-self: flex-start;
-    width: 40%;
+    width:60%;
     position : relative;
     top:15px;
     left:80px;

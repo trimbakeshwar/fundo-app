@@ -11,12 +11,13 @@ import Container from "@material-ui/core/Container";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import DashbordService from "../../services/dashbordservices";
 import config from "../../services/configservices";
+import GetAllNotes from "./getAllNotes"
 const service = new DashbordService();
 
 
 export class CreateNote extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
         noteOpen: false,
         title:'',
@@ -55,19 +56,15 @@ export class CreateNote extends React.Component {
         description: this.state.description,
       }
       service.AddNote(requestData).then((Response)=>{
-        this.setState({
-         
-          noteOpen: false,
-
-      });
- 
-          console.log(this.state) 
+        this.setState({ noteOpen: false });
+        console.log(this.state) ;
+      
     
       }) .catch((err) => {
         console.log(err) 
     });
   }
-  
+  this.props.updateOnAdd();
 }
 
   render() {
@@ -82,7 +79,7 @@ export class CreateNote extends React.Component {
               <div className='noteCotainer' onHandleClickaway={this.onHandleClickaway}>
               <div className='textFieldContainer'>
                  <TextField
-                   className='textfield' id='tittle'  placeholder='Title' textdecaration='none' value={this.state.title} onChange={this.titleHandler}  multiline InputProps={{ disableUnderline: true }}   />       
+                   className='textfield' id='tittle'  placeholder='Title' textdecaration='none'  onChange={this.titleHandler}  multiline InputProps={{ disableUnderline: true }}   />       
              </div>
              <div className='textFieldContainer'>
                  <TextField className='textfield'  placeholder='Take a Note'  textdecaration='none' onChange={this.TakeanoteHandler} multiline InputProps={{ disableUnderline: true }}/>                
@@ -94,15 +91,16 @@ export class CreateNote extends React.Component {
                   <div className="closeButtonSetting">
                       <button class="btn btnprimary" onClick={this.close}>close</button>
                   </div>
-                    
+                
              </div>    
                        
          </div>
               ):
             (
-            <div className='titleNotecontainer'  >
+              
+            <div className='titleNoteContainer'  >
             <div className='titleTextField' onClick={this.handleClick}>
-               <TextField id='tittle'  placeholder='Take a note..' textdecaration='none'    multiline InputProps={{ disableUnderline: true }}   />       
+               <TextField id='tittle'  placeholder='Take a note..' textdecaration='none' value=""    multiline InputProps={{ disableUnderline: true }}   />       
            </div>
            <div className='titleNoteIcons'>
                <div> <IconButton><CheckBoxOutlinedIcon fontSize='medium'/></IconButton> </div>
@@ -112,6 +110,7 @@ export class CreateNote extends React.Component {
                        
        </div>)  }
           </div>
+          
         </ClickAwayListener>
         </Container>
       

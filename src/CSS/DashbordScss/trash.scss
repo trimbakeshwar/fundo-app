@@ -20,3 +20,25 @@
     width: 100%;
     
   }
+  .masonry-grid {
+    width: 100%;
+      display: -webkit-box; /* Not needed if autoprefixing */
+      display: -ms-flexbox; /* Not needed if autoprefixing */
+      display: flex;
+      flex-grow: initial;
+      overflow-wrap: initial;
+      margin-left: 50px; /* gutter size offset */
+      width: auto;
+  }
+  .masonry-grid_column {
+   // padding-left: 1px; /* gutter size */
+    background-clip: padding-box;
+  }
+  
+  /* Style your items */
+  .masonry-grid_column > div {
+    margin: 15px auto;
+  }
+  .trashdisplay{
+    margin-top:100px;
+}

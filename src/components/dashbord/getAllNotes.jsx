@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "../../CSS/DashbordScss/display.scss";
 import DashbordService from "../../services/dashbordservices";
 import config from "../../services/configservices";
+import CreateNote from "./createNote"
 import Display from "./displayNotes"
 const service = new DashbordService();
 
@@ -25,10 +26,18 @@ export class GetAllNotes extends Component{
            console.log(err)
        });
     }
+    UpdateOnChange=()=>{
+        this.getAllNotes();
+    }
     render(){
         return(
-            <div className="storage">
+            <div> 
+               <div className="refresh data">
+               <CreateNote updateOnAdd={()=>this.getAllNotes()}></CreateNote>
+               </div>
+              <div className="storage">
                 <Display  AllData={this.state.AllNotes} />
+                </div>
             </div>
         );
     }

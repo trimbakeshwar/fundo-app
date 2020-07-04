@@ -208,9 +208,6 @@ export default function Dashboard() {
         })}
       >
 <div>
-  <CreateNote />
-</div>
-<div>
 <GetAllNotes />
 </div>
 </main>
