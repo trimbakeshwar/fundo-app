@@ -34,8 +34,9 @@ export class AllArchiveNotes extends Component{
     render(){
        
        return(
-           
+            <div className="storage">
         <Display data={ this.state.ArchiveNotes.filter((data)=>data.isArchived === true) }/>
+        </div>
        );
      }
 }

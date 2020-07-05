@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import Card from '@material-ui/core/Card';
 import "../../CSS/DashbordScss/display.scss";
+import "../../CSS/DashbordScss/trash.scss";
 import NoteIcons from "./iconButtons"
-
+import IconButton from '@material-ui/core/IconButton';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import RestoreFromTrashIcon from '@material-ui/icons/RestoreFromTrash';
 import Masonry from 'react-masonry-css'
 export class Display extends Component{
     constructor(props){
@@ -40,18 +43,24 @@ export class Display extends Component{
                     <Card className="cardContainer" onMouseEnter={()=>this.onCard(values.id)} onMouseLeave={()=>this.leaveCard(values.id)} > 
                         <div className="title" > {values.title} </div>
                         <div className="Description"> {values.description}</div>
-                        <div
-                            className= {(this.state.ID === values.id) ?
-                            'ShowIconButtons' :'hideIconButtons'} >
-                            <NoteIcons data={values} />                     
-                        </div>
+                        
+                       { values.isDeleted? 
+                       <div className= {(this.state.ID === values.id) ?'ShowIconButton' :'hideIconButton'} > 
+                            <IconButton><DeleteForeverIcon /></IconButton>   
+                            <IconButton><RestoreFromTrashIcon /></IconButton>
+                       </div> : 
+                       <div className= {(this.state.ID === values.id) ?'ShowIconButtons' :'hideIconButtons'} >
+                           <NoteIcons data={values} />
+                       </div>}
+                                                
+                        
                     </Card>
-                   
+                    
                 
             );
          }) 
          return(
-         <div className="display">
+           <div className= 'display' >
          <Masonry
                    breakpointCols={this.state.breakpointColumnsObj}
                    className="masonry-grid"

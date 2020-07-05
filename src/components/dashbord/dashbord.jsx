@@ -25,7 +25,8 @@ import { TextField, FormControl } from '@material-ui/core';
 import keepimg from '../../image/keepimg.png'
 import Typography from "@material-ui/core/Typography";
 import GetAllNotes from "../../components/dashbord/getAllNotes";
-
+import AllArchiveNotes from "./archiveNote" 
+import AllTrashNotes from "./trashNotes"
 import { BrowserRouter as Router, Route,Redirect } from 'react-router-dom';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -102,6 +103,9 @@ export default function Dashboard() {
     const classes = useStyles();
     const theme = useTheme();
     const [Draweropen, DrawersetOpen] = React.useState(false);
+    const [trashclick,setTrashClick] = React.useState(false);
+    const [ Archiveclick,setArchiveClick] = React.useState(false);
+    const [ getAll,setGetAll] = React.useState(true);
   const [noteOpen,setNoteOpen] = React.useState(false)
     const handleDrawerMouseClose=()=>{
         DrawersetOpen(false);
@@ -119,6 +123,26 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     DrawersetOpen(false);
   };
+  const trashHandler=()=>{ 
+    setTrashClick(true);
+    setArchiveClick(false);
+    setGetAll(false);
+  };
+  const ArchiveHandler=()=>{ 
+    setTrashClick(false);
+    setArchiveClick(true);
+    setGetAll(false);
+  };
+  var displayData;
+  if(getAll === true){
+   displayData = <GetAllNotes />
+  }
+  else if(Archiveclick === true ){
+    displayData =  <AllArchiveNotes />
+  }
+  else{
+    displayData = <AllTrashNotes />
+  }
     return (
       <div > 
         
@@ -191,12 +215,12 @@ export default function Dashboard() {
       </ListItem>
 
       <ListItem button key={'Archive'} className="archive">
-      <Link to="/archiveNote"><ListItemIcon><ArchiveOutlinedIcon/></ListItemIcon></Link>
+     <ListItemIcon onClick={ArchiveHandler}><ArchiveOutlinedIcon/></ListItemIcon>
         <ListItemText primary={'Archive'}/>
       </ListItem>
 
       <ListItem button key={'Trash'} className="trash">
-      <Link to="/dashbord/trashNotes"><ListItemIcon>< DeleteOutlinedIcon/></ListItemIcon></Link>
+     <ListItemIcon onClick={trashHandler}>< DeleteOutlinedIcon/></ListItemIcon>
         <ListItemText primary={'Trash'}/>
       </ListItem>         
     </List>  
@@ -208,7 +232,8 @@ export default function Dashboard() {
         })}
       >
 <div>
-<GetAllNotes />
+  {displayData}
+
 </div>
 </main>
 </div>

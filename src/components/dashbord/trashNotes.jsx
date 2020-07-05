@@ -35,8 +35,9 @@ export class AllTrashNotes extends Component{
     render(){
        
        return(
-           
+            <div className="storage">
         <Display data={ this.state.TrashNotes.filter((data)=>data.isDeleted === true) }/>
+        </div>
        );
      }
 }
