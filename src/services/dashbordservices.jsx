@@ -17,7 +17,10 @@ const Axios = new AxiosServices();
     }
     GetTrashNotes(){
 		return Axios.Get (config.url+"notes/getTrashNotesList");
-	}
+  }
+  AddInArchive(data){
+    return Axios.Post(config.url+"notes/archiveNotes", data );	
+  }
 	
 }
 

@@ -9,15 +9,31 @@ import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 
+import DashbordService from "../../services/dashbordservices";
+const service = new DashbordService();
+
 export class NoteIcons extends Component {
+    
+    ArchiveNoteHandler=()=>{
+        let requestData={
+            noteIdList: [this.props.data.id],
+            isArchived: true
+        }
+       service.AddInArchive(requestData).then((Response)=>{
+           console.log(Response)
+       }).catch((err)=>{
+        console.log(err)
+       })
+    }
     render() {
+       
         return (
             <div  className='iconsContainer'>
                 <div className="button"><IconButton> <AddAlertOutlinedIcon/> </IconButton></div>
                 <div className="button"><IconButton> <PersonAddOutlinedIcon/> </IconButton></div>
                 <div className="button"><IconButton> <ColorLensOutlinedIcon/> </IconButton></div>
                 <div className="button"><IconButton> <ImageOutlinedIcon/> </IconButton></div>
-                <div className="button"><IconButton> <ArchiveOutlinedIcon/> </IconButton></div>
+                <div className="button"><IconButton onClick={this.ArchiveNoteHandler}> <ArchiveOutlinedIcon/> </IconButton></div>
                 <div className="button"><IconButton > <MoreOptions NoteId={this.props.data}/> </IconButton></div>
             </div>
         );
