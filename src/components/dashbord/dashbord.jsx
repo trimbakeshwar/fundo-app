@@ -196,7 +196,7 @@ export default function Dashboard() {
       </ListItem>
 
       <ListItem button key={'Trash'} className="trash">
-      <Link to="/trashNotes"><ListItemIcon>< DeleteOutlinedIcon/></ListItemIcon></Link>
+      <Link to="/dashbord/trashNotes"><ListItemIcon>< DeleteOutlinedIcon/></ListItemIcon></Link>
         <ListItemText primary={'Trash'}/>
       </ListItem>         
     </List>  

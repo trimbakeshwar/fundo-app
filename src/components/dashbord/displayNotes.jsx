@@ -32,7 +32,8 @@ export class Display extends Component{
      }
      
     render(){
-        const notes = this.props.AllData.reverse().map((values, index) => {
+        
+        const notes = this.props.data.reverse().map((values, index) => {
             return(
               
                   
