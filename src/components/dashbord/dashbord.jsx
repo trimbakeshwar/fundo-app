@@ -106,17 +106,13 @@ export default function Dashboard() {
     const [trashclick,setTrashClick] = React.useState(false);
     const [ Archiveclick,setArchiveClick] = React.useState(false);
     const [ getAll,setGetAll] = React.useState(true);
-  const [noteOpen,setNoteOpen] = React.useState(false)
     const handleDrawerMouseClose=()=>{
         DrawersetOpen(false);
       }
     const handleDrawerMouseopen=()=>{
         DrawersetOpen(true);
     }
-    const NoteHandler = (eve) =>{    
-      setNoteOpen(!noteOpen);
-    
-   }; 
+  
    const handleDrawerOpen = () => {
     DrawersetOpen(true);
   };
@@ -132,6 +128,11 @@ export default function Dashboard() {
     setTrashClick(false);
     setArchiveClick(true);
     setGetAll(false);
+  };
+  const NotesHandler=()=>{
+    setTrashClick(false);
+    setArchiveClick(false);
+    setGetAll(true);
   };
   var displayData;
   if(getAll === true){
@@ -200,7 +201,7 @@ export default function Dashboard() {
      <List  onMouseEnter={handleDrawerMouseopen} onMouseLeave={handleDrawerMouseClose}>
      
       <ListItem button key={'Notes'}  className="notes">
-       <ListItemIcon ><EmojiObjectsOutlinedIcon  /></ListItemIcon>
+       <ListItemIcon onClick={NotesHandler} ><EmojiObjectsOutlinedIcon  /></ListItemIcon>
         <ListItemText  primary={'Notes'}/>
       </ListItem>
 

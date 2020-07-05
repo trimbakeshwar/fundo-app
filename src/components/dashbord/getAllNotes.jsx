@@ -7,7 +7,6 @@ import config from "../../services/configservices";
 import CreateNote from "./createNote"
 import Display from "./displayNotes"
 const service = new DashbordService();
-
 export class GetAllNotes extends Component{
     constructor(props){
         super(props);
@@ -34,15 +33,15 @@ export class GetAllNotes extends Component{
         return(
             <div> 
                <div className="refresh data">
-               <CreateNote updateOnAdd={()=>this.getAllNotes()}></CreateNote>
+               <CreateNote ></CreateNote>
                </div>
               <div className="storage">
                 <Display data = { this.state.AllNotes.filter((data)=> data.isDeleted === false)
                                   .filter((data)=> data.isArchived === false)
                                   .filter((data)=> data.isPined === false)
-                                  .slice(0)
-                          }      
-                reload = {this.props.reload}
+                                  .slice(0)}
+                                 updateOnAdd={()=>this.getAllNotes()}
+             
                  />
                 </div>
             </div>

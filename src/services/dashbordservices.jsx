@@ -24,7 +24,9 @@ const Axios = new AxiosServices();
   GetArchiveNotes(){
     return Axios.Get (config.url+"notes/getArchiveNotesList");
   }
+  UpdateNotes(data){
+    return Axios.Post(config.url+"notes/updateNotes", data );	
+  }
 	
 }
-
 export default DashbordService;
