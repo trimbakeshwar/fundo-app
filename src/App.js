@@ -8,7 +8,7 @@ import Registration from "./components/registration";
 import ResetPassword from "./components/resetpassword";
 import Dashbord from "./components/dashbord/dashbord";
 import  AllTrashNotes from "./components/dashbord/trashNotes"
-  
+import AllArchiveNotes from "./components/dashbord/archiveNote"
 function App() {
   return (
     <div >
@@ -20,6 +20,7 @@ function App() {
      <Route exact path="/recoverymail" component={RecoveryMail}/>
      <Route exact path="/dashbord" component={Dashbord}/>
      <Route exact path="/trashNotes" component={AllTrashNotes} />
+     <Route exact path="/archiveNote" component={AllArchiveNotes} />
      </Router>
     
     </div>

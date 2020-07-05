@@ -191,7 +191,7 @@ export default function Dashboard() {
       </ListItem>
 
       <ListItem button key={'Archive'} className="archive">
-        <ListItemIcon><ArchiveOutlinedIcon/></ListItemIcon>
+      <Link to="/archiveNote"><ListItemIcon><ArchiveOutlinedIcon/></ListItemIcon></Link>
         <ListItemText primary={'Archive'}/>
       </ListItem>
 

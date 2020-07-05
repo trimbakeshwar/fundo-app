@@ -21,6 +21,9 @@ const Axios = new AxiosServices();
   AddInArchive(data){
     return Axios.Post(config.url+"notes/archiveNotes", data );	
   }
+  GetArchiveNotes(){
+    return Axios.Get (config.url+"notes/getArchiveNotesList");
+  }
 	
 }
 
