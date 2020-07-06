@@ -8,6 +8,7 @@ import Card from "@material-ui/core/Card";
 import {TextField} from '@material-ui/core'
 import NoteIcons from "./iconButtons"
 import DashbordService from "../../services/dashbordservices";
+import "../../CSS/DashbordScss/update.scss"
 const service = new DashbordService();
 export class UpdateNotes extends Component {
   constructor(props) {
@@ -57,7 +58,7 @@ render() {
     return (
         <div>
           
-          <div className='dialogFieldsContainer'>
+          <div className='dialogContainer'>
           <Dialog
           
             open ={this.props.OpenCard}
@@ -67,33 +68,33 @@ render() {
             aria-describedby="alert-dialog-description"
             
           >
-            <div className='dialog'>
-                  <div className='dialogtextFieldsContainer'>
+            <div className='dialogField'>
+                  <div className='dialogtextsFields'>
                       <TextField
-                          id='tittle'
+                          className='tittle'
                           multiline
                           placeholder='Title'
                           defaultValue={this.props.title}                            
                           textdecaration='none'
-                         
+                          InputProps={{ disableUnderline: true }} 
                           onChange={this.onTitleChange} 
                                       
                       />       
                   </div>
-                  <div className='dialogtextFieldsContainer'>
+                  <div className='dialogtextFields'>
                       <TextField
                           className='takeNote'
                           multiline
                           defaultValue={this.props.description}
                           placeholder='Take a Note'                            
                           textdecaration='none'
-                         
+                          InputProps={{ disableUnderline: true }} 
                            
                           onChange={this.onBodyTextChange}             
                       />                
                   </div>
-                  <div className='dialogiconSet' >  
-                          <div className='noteIconsContainer'> <NoteIcons /> </div>
+                  <div className='iconfordialog' >  
+                          <div className='IconsContainer'> <NoteIcons /> </div>
                           <Button onClick={this.onClose} float='right'>Close</Button>
                   </div>
             </div>

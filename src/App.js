@@ -19,7 +19,7 @@ function App() {
      <Route exact path="/resetpassword/:token" component={ResetPassword}/>
      <Route exact path="/recoverymail" component={RecoveryMail}/>
      <Route exact path="/dashbord" component={Dashbord}/>
-     <Route  path="/dashbord/trashNotes" component={AllTrashNotes} />
+     <Route  path="/trashNotes" component={AllTrashNotes} />
      <Route exact path="/archiveNote" component={AllArchiveNotes} />
      </Router>
     

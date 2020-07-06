@@ -39,18 +39,30 @@
     width: 100%;
 
 }
+.textfields
+{
+    border-style: none;
+    min-height: 30px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    width: 100%;
+    font-size: x-large;
+    font-weight: bold;
+}
 .iconPositionSetting{
     flex-direction: row;
     justify-content: space-around;
     justify-items: center;
     display: flex;
+    padding-left: 10px;
   
 }
 .closeButtonSetting{
    
-   
-padding-top: 11px;
- background-color: white;
+    position: relative;
+    left: 50px;
  display: flex;
    
 }

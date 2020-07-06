@@ -24,17 +24,18 @@ export class NoteIcons extends Component {
        }).catch((err)=>{
         console.log(err)
        })
+       this.props.refreshh();
     }
     render() {
        
         return (
             <div  className='iconsContainer'>
-                <div className="button"><IconButton> <AddAlertOutlinedIcon/> </IconButton></div>
-                <div className="button"><IconButton> <PersonAddOutlinedIcon/> </IconButton></div>
-                <div className="button"><IconButton> <ColorLensOutlinedIcon/> </IconButton></div>
-                <div className="button"><IconButton> <ImageOutlinedIcon/> </IconButton></div>
-                <div className="button"><IconButton onClick={this.ArchiveNoteHandler}> <ArchiveOutlinedIcon/> </IconButton></div>
-                <div className="button"><IconButton > <MoreOptions NoteId={this.props.data}/> </IconButton></div>
+                <div className="button" ><IconButton > <AddAlertOutlinedIcon fontSize="small"/> </IconButton></div>
+                <div className="button"><IconButton > <PersonAddOutlinedIcon fontSize="small"/> </IconButton></div>
+                <div className="button"><IconButton> <ColorLensOutlinedIcon fontSize="small"/> </IconButton></div>
+                <div className="button"><IconButton > <ImageOutlinedIcon fontSize="small"/> </IconButton></div>
+                <div className="button"><IconButton onClick={this.ArchiveNoteHandler}> <ArchiveOutlinedIcon fontSize="small"/> </IconButton></div>
+                <div className="button"><IconButton > <MoreOptions NoteId={this.props.data}  refresh={()=>this.props.refreshh()} fontSize="small"/> </IconButton></div>
             </div>
         );
     }

@@ -34,6 +34,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import SearchIcon from "@material-ui/icons/Search";
 import RefreshOutlinedIcon from "@material-ui/icons/RefreshOutlined";
 import MenuIcon from "@material-ui/icons/Menu";
+import "../../CSS/DashbordScss/dashborditem.scss"
 import { Tooltip } from "@material-ui/core";
 import {Link } from "react-router-dom";
 const drawerWidth = 250;
@@ -91,9 +92,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: "hidden",
-    width: "40px",
+    width: "20px",
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9) + 1,
+      width: theme.spacing(7) + 1,
     },
   },
  
@@ -115,6 +116,7 @@ export default function Dashboard() {
   
    const handleDrawerOpen = () => {
     DrawersetOpen(true);
+    
   };
   const handleDrawerClose = () => {
     DrawersetOpen(false);
@@ -198,9 +200,9 @@ export default function Dashboard() {
                     }),
                   }} >
   
-     <List  onMouseEnter={handleDrawerMouseopen} onMouseLeave={handleDrawerMouseClose}>
+     <List   onMouseEnter={handleDrawerMouseopen} onMouseLeave={handleDrawerMouseClose}>
      
-      <ListItem button key={'Notes'}  className="notes">
+      <ListItem  button key={'Notes'}  className="notes"  alt="Notes">
        <ListItemIcon onClick={NotesHandler} ><EmojiObjectsOutlinedIcon  /></ListItemIcon>
         <ListItemText  primary={'Notes'}/>
       </ListItem>

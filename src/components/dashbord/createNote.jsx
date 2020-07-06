@@ -11,6 +11,7 @@ import Container from "@material-ui/core/Container";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import DashbordService from "../../services/dashbordservices";
 import config from "../../services/configservices";
+import Button from '@material-ui/core/Button';
 import GetAllNotes from "./getAllNotes"
 const service = new DashbordService();
 
@@ -79,7 +80,7 @@ export class CreateNote extends React.Component {
               <div className='noteCotainer' onHandleClickaway={this.onHandleClickaway}>
               <div className='textFieldContainer'>
                  <TextField
-                   className='textfield' id='tittle'  placeholder='Title' textdecaration='none'  onChange={this.titleHandler}  multiline InputProps={{ disableUnderline: true }}   />       
+                   className='textfields' id='tittle'  placeholder='Title' textdecaration='none'  onChange={this.titleHandler}  multiline InputProps={{ disableUnderline: true }}   />       
              </div>
              <div className='textFieldContainer'>
                  <TextField className='textfield'  placeholder='Take a Note'  textdecaration='none' onChange={this.TakeanoteHandler} multiline InputProps={{ disableUnderline: true }}/>                
@@ -89,7 +90,7 @@ export class CreateNote extends React.Component {
                   <NoteIcons />  
                   </div>
                   <div className="closeButtonSetting">
-                      <button class="btn btnprimary" onClick={this.close}>close</button>
+                      <Button color="primary" onClick={this.close}>close</Button>
                   </div>
                 
              </div>    

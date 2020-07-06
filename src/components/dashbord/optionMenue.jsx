@@ -39,7 +39,7 @@ class MoreOptions extends Component {
     }).catch((err)=>{
         console.log("deleted",err);
     })
-  
+    this.props.refresh();
   };
 
   closeMenu() {

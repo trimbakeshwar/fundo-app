@@ -22,7 +22,8 @@ export class Display extends Component{
                1717: 4,
                1500: 3,
                1084: 2,
-               600: 1
+               800: 1,
+               
                },
          }
      }
@@ -72,7 +73,7 @@ export class Display extends Component{
                             <IconButton><RestoreFromTrashIcon /></IconButton>
                        </div> : 
                        <div className= {(this.state.ID === values.id) ?'ShowIconButtons' :'hideIconButtons'} >
-                           <NoteIcons data={values}   />
+                           <NoteIcons data={values}  refreshh={()=>this.props.updateOnAdd()}  />
                        </div>}
                                                 
                         

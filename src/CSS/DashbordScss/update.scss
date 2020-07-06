@@ -1,0 +1,55 @@
+.noteIconsContainer{
+    width: 65% ;
+}
+
+.dialogContainer{
+    width: 50em !important;
+    padding: 10px !important;
+}
+.dialogField{
+    width: 33em !important;
+
+   
+}
+.dialogtextFields{
+    width: 30em !important;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: start;
+    padding-left: 20px;
+    
+    
+}
+.dialogtextsFields{
+    width: 30em !important;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: start;
+    padding-left: 20px;
+  
+    
+}
+
+.tittle{
+width: 100%;
+font-size: 20px;
+
+}
+.takeNote{
+    width: 100%;
+   
+}
+.iconfordialog{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-left: 180px;
+    padding-right:100px;
+   
+    width:90%;
+    position: relative;
+    left:10px;
+   
+    
+   
+}

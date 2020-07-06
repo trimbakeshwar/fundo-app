@@ -33,7 +33,7 @@ export class GetAllNotes extends Component{
         return(
             <div> 
                <div className="refresh data">
-               <CreateNote ></CreateNote>
+               <CreateNote updateOnAdd={()=>this.getAllNotes()}></CreateNote>
                </div>
               <div className="storage">
                 <Display data = { this.state.AllNotes.filter((data)=> data.isDeleted === false)

@@ -12,6 +12,7 @@ justify-content: start;
 }
 .title{
   padding-bottom: 5px;
+  font-size: 20px;
 }
 .cardContainer{
     width: 300px;
@@ -44,12 +45,12 @@ justify-content: start;
   height : 35px;
   visibility: visible;
   align-self: flex-start;
-  width: 100%;
+  width: 70%;
   position : relative;
   top:15px;
   left:80px;
   top: 10px;
-
+  
  
 }
 
@@ -58,11 +59,11 @@ justify-content: start;
   margin-top: 15px;
   visibility: hidden;
   align-self:center;
-  width: 100%;
+  width: 80%;
   
 }
-.storage{
-  width: 80%;
+/*.storage{
+  width: 60%;
   top:50px;
     height: auto;
    
@@ -73,20 +74,21 @@ justify-content: start;
    margin-left: 20em; 
    align-items: flex-start;
    justify-items: start;
-}
+}*/
 .masonry-grid {
-  width: 50%;
+  width: 90%;
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */
     display: flex;
     flex-grow: initial;
     overflow-wrap: initial;
-    margin-left: 10px; /* gutter size offset */
+    padding-left:300px; /* gutter size offset */
     
 }
 .masonry-grid_column {
   padding-left: 15px; /* gutter size */
   background-clip: padding-box;
+  
 }
 
 /* Style your items */
@@ -99,7 +101,7 @@ justify-content: start;
   display:flex;
   margin-top:1px;
   align-items:flex-start;
-  flex-direction:row !important;
+  flex-direction:row 
 }
 @media only screen and (max-width: 360pX) {
  
