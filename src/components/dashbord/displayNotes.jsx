@@ -72,10 +72,14 @@ export class Display extends Component{
                             <IconButton><RestoreFromTrashIcon /></IconButton>
                        </div> : 
                        <div className= {(this.state.ID === values.id) ?'ShowIconButtons' :'hideIconButtons'} >
-                           <NoteIcons data={values}  refreshh={()=>this.props.updateOnAdd()}  />
+                           <NoteIcons onMouseEnter={()=>this.onCard(values.id)} 
+                           onMouseLeave={()=>this.leaveCard(values.id)}
+                            data={values} 
+                            close={()=>this.handleClose}   
+                             refreshh={()=>this.props.updateOnAdd()}  />
                        </div>}
                                                 
-                        
+                       
                     </Card>
                     
                 

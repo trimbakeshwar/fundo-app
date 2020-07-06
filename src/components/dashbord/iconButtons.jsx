@@ -32,7 +32,8 @@ export class NoteIcons extends Component {
             <div  className='iconsContainer'>
                 <div className="button" ><IconButton > <AddAlertOutlinedIcon fontSize="small"/> </IconButton></div>
                 <div className="button"><IconButton > <PersonAddOutlinedIcon fontSize="small"/> </IconButton></div>
-                <div className="button"><IconButton> <ColorLensOutlinedIcon fontSize="small"/> </IconButton></div>
+                <div className="button"><IconButton> <ColorLensOutlinedIcon
+                                                closefontSize="small"/> </IconButton></div>
                 <div className="button"><IconButton > <ImageOutlinedIcon fontSize="small"/> </IconButton></div>
                 <div className="button"><IconButton onClick={this.ArchiveNoteHandler}> <ArchiveOutlinedIcon fontSize="small"/> </IconButton></div>
                 <div className="button"><IconButton > <MoreOptions NoteId={this.props.data}  refresh={()=>this.props.refreshh()} fontSize="small"/> </IconButton></div>
