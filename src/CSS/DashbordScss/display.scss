@@ -76,19 +76,18 @@ justify-content: start;
    justify-items: start;
 }*/
 .masonry-grid {
-  width: 90%;
+  width: 100%;
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */
     display: flex;
     flex-grow: initial;
     overflow-wrap: initial;
-    padding-left:300px; /* gutter size offset */
-    
+    padding-left:300px;; /* gutter size offset */
+    width: auto;
 }
 .masonry-grid_column {
   padding-left: 15px; /* gutter size */
   background-clip: padding-box;
-  
 }
 
 /* Style your items */
@@ -99,33 +98,62 @@ justify-content: start;
   width:40%;
  
   display:flex;
-  margin-top:1px;
+  margin-top:50px;
   align-items:flex-start;
   flex-direction:row 
 }
 @media only screen and (max-width: 360pX) {
  
   .displayContainer{    
-    margin-left: 3em;   
+    margin-left: 1em;  
   }
   .cardContainer{
-    width: 21em;
-    font-size: 22px;
+    width: 400px;
+    min-height: 50px ;
+    height: auto;
+    display: flex;
+    flex-direction: column; 
+    justify-items: start;
+    padding: 21px ;  
+    flex-wrap: wrap;
+   justify-content: start;
+   align-items: flex-start;
+   
   }
   .storage{
-    margin-left: 15em; 
-    margin-right: 5px;
+    width: 100%;
+    top:50px;
+      height: auto;
+      display: flex;
+      flex-direction: row; 
+      padding: 21px ;  
+      flex-wrap: wrap;
+     margin-left: 2em; 
+     align-items: flex-start;
+     justify-items: start;
   }
   .ShowIconButtons{
+    
     height : 35px;
-    visibility: visible;
-    align-self: flex-start;
-    width:60%;
-    position : relative;
-    top:15px;
-    left:80px;
-    top: 10px;
+  visibility: visible;
+  align-self: flex-start;
+  width: 20%;
+  position : relative;
+  top:15px;
+  left:100px;
+  top: 10px;
   
    
+  }
+  .masonry-grid {
+    width: 100%;
+      display: -webkit-box; /* Not needed if autoprefixing */
+      display: -ms-flexbox; /* Not needed if autoprefixing */
+      display: flex;
+      flex-grow: initial;
+      overflow-wrap: initial;
+      padding-left:200px;; /* gutter size offset */
+     
+      width: auto;
   }
 }

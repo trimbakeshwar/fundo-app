@@ -68,12 +68,20 @@
 }
 @media only screen and (max-width: 360pX) {
     .noteCotainer{
-        width:33em ;
-        margin-left: 18em;  
+        width:30em ;
+        margin-left: 15em;  
         height: 60px; 
         top: -5px;  
     }
-  
+    .iconPositionSetting{
+        flex-direction: row;
+        justify-content: space-around;
+        justify-items: center;
+        display: flex;
+        padding-left: 10px;
+      left:300px;
+      width:80%
+    }
     
    
     

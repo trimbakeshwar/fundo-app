@@ -35,7 +35,7 @@ export class GetAllNotes extends Component{
                <div className="refresh data">
                <CreateNote updateOnAdd={()=>this.getAllNotes()}></CreateNote>
                </div>
-              <div className="storage">
+              
                 <Display data = { this.state.AllNotes.filter((data)=> data.isDeleted === false)
                                   .filter((data)=> data.isArchived === false)
                                   .filter((data)=> data.isPined === false)
@@ -43,7 +43,7 @@ export class GetAllNotes extends Component{
                                  updateOnAdd={()=>this.getAllNotes()}
              
                  />
-                </div>
+                
             </div>
         );
     }

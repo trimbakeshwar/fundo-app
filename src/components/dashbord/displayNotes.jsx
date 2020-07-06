@@ -20,10 +20,9 @@ export class Display extends Component{
             breakpointColumnsObj : {
                 default:4,
                1717: 4,
-               1500: 3,
+               1432: 3,
                1084: 2,
-               800: 1,
-               
+               750: 1
                },
          }
      }
