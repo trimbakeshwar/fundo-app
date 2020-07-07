@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+   // paddingLeft:0,
    
    
   },
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0,
+    //paddingLeft:drawerWidth ,
    
     
   },
@@ -97,8 +97,8 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: "hidden",
-    width: "20px",
-    [theme.breakpoints.up("sm")]: {
+    width: "60px",
+    [theme.breakpoints.up("xl")]: {
       width: theme.spacing(9) + 1,
     },
   },
@@ -152,7 +152,7 @@ export default function Dashboard() {
     displayData = <AllTrashNotes />
   }
     return (
-      <div > 
+      <div className="dashbordcontainer" > 
         
     <div className="{classes.root}">
       <CssBaseline />

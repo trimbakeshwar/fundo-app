@@ -95,17 +95,17 @@ justify-content: start;
   margin: 15px auto;
 }
 .display{
-  width:40%;
+  width:100%;
  
   display:flex;
   margin-top:50px;
   align-items:flex-start;
   flex-direction:row 
 }
-@media only screen and (max-width: 360pX) {
+@media only screen and (max-width: 414pX) {
  
   .displayContainer{    
-    margin-left: 1em;  
+    margin-left: 1px;  
   }
   .cardContainer{
     width: 400px;
@@ -128,7 +128,7 @@ justify-content: start;
       flex-direction: row; 
       padding: 21px ;  
       flex-wrap: wrap;
-     margin-left: 2em; 
+     margin-left: 1px; 
      align-items: flex-start;
      justify-items: start;
   }
@@ -152,7 +152,7 @@ justify-content: start;
       display: flex;
       flex-grow: initial;
       overflow-wrap: initial;
-      padding-left:200px;; /* gutter size offset */
+      padding-left:18px;; /* gutter size offset */
      
       width: auto;
   }
