@@ -17,7 +17,8 @@ export class Display extends Component{
             ID:"",
             openCard:false,
             Data:"",
-            breakpointColumnsObj : {
+            
+               breakpointColumnsObj : {
                 default:4,
                1717: 4,
                1432: 3,

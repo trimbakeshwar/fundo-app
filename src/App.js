@@ -9,7 +9,8 @@ import ResetPassword from "./components/resetpassword";
 import Dashbord from "./components/dashbord/dashbord";
 import  AllTrashNotes from "./components/dashbord/trashNotes"
 import AllArchiveNotes from "./components/dashbord/archiveNote"
-import protectedRoute from "./authgards/authgard"
+import GetAllNotes from  "./components/dashbord/getAllNotes"
+import PrivateRoute from "./authgards/authgard"
 function App() {
   return (
     <div >
@@ -19,12 +20,10 @@ function App() {
      <Route exact path="/registration" component={Registration}/> 
      <Route exact path="/resetpassword/:token" component={ResetPassword}/>
      <Route exact path="/recoverymail" component={RecoveryMail}/>
+     <PrivateRoute path="/dashbord" to="/dashbord/Notes"	component={Dashbord}/>
      
-     <Route exact path="/dashbord" component={Dashbord}/>
-     <Route exact path="/trashNotes" component={AllTrashNotes} />
-     <Route exact path="/archiveNote" component={AllArchiveNotes} />
      </Router>
-    
+     
     </div>
   );
 }

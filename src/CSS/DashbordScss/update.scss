@@ -3,16 +3,16 @@
 }
 
 .dialogContainer{
-    width: 50em !important;
-    padding: 10px !important;
+    width: 50em ;
+    padding: 10px ;
 }
 .dialogField{
-    width: 33em !important;
+    width: 33em ;
 
    
 }
 .dialogtextFields{
-    width: 30em !important;
+    width: 30em ;
     display: flex;
     flex-wrap: wrap;
     text-align: start;
@@ -21,7 +21,7 @@
     
 }
 .dialogtextsFields{
-    width: 30em !important;
+    width: 30em ;
     display: flex;
     flex-wrap: wrap;
     text-align: start;
@@ -53,7 +53,7 @@ font-size: 20px;
     
    
 }
-@media only screen and (max-width: 360pX) {
+@media only screen and (max-width: 414pX) {
     .iconfordialog{
         display: flex;
         flex-direction: row;
@@ -68,4 +68,10 @@ font-size: 20px;
         
        
     }
+    .dialogContainer{
+        width: 100%;
+        padding: 10px !important;
+    }
+
+    
 }

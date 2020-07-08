@@ -1,4 +1,7 @@
-
+.dashbordcontainer{
+width: 1400px;
+// //width: 100%
+}
 .notes:hover{
     width:300px;
    
@@ -53,4 +56,9 @@
    border-bottom-right-radius:30px;
    border-bottom-left-radius:28px;
    border-top-left-radius:28px;
+}
+@media only screen and (max-width: 414pX) {
+    .dashbordcontainer{
+           width: 100%;
+    }
 }

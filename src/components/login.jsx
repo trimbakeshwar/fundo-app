@@ -10,7 +10,7 @@ import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import userservice from "../services/userservices";
 import patterns from "../configeration/regex";
-
+import auth from "../authgards/auth"
 const service = new userservice(); 
 export class Login extends Component {
     
@@ -69,8 +69,10 @@ export class Login extends Component {
                         snackbarMessage: "login sucessful",
                         snackServicity:'sucess'
                     })
-                   
-                    this.props.history.push('./dashbord');
+                    auth.login();
+                    if(auth.isAuthenticated){
+                    this.props.history.push('./dashbord/Notes');
+                    }
                      
             }
 

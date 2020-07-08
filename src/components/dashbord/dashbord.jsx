@@ -37,6 +37,11 @@ import MenuIcon from "@material-ui/icons/Menu";
 import "../../CSS/DashbordScss/dashborditem.scss"
 import { Tooltip } from "@material-ui/core";
 import {Link } from "react-router-dom";
+import PrivateRoute from "../../authgards/authgard";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import getAllNotes from "./getAllNotes";
+import trashNotes from "./trashNotes";
+import archiveNote from "./archiveNote"
 const drawerWidth = 250;
 const drawerTopMargin = 69;
 
@@ -45,6 +50,18 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     marginTop: "100px",
     
+  },
+  appBar: {
+    width:"100%",
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    [theme.breakpoints.up('md')]: {
+      check:1 ,
+    },
+    check:0 ,
   },
  
  
@@ -64,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-   // paddingLeft:0,
+    paddingLeft:0,
    
    
   },
@@ -72,11 +89,14 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
+      
     }),
-    //paddingLeft:drawerWidth ,
-   
-    
+    [theme.breakpoints.up('md')]: {
+      paddingLeft:drawerWidth ,
+    },
+    paddingLeft:0 ,
   },
+
   drawerOpensetting: {
     
     width: drawerWidth,
@@ -141,22 +161,26 @@ export default function Dashboard() {
     setArchiveClick(false);
     setGetAll(true);
   };
-  var displayData;
-  if(getAll === true){
+ /* var displayData;
+  var Path;
+  if(getAll === true){  
+    Path = "/dashbord/getAllNotes"
    displayData = <GetAllNotes />
   }
   else if(Archiveclick === true ){
+    Path = "/dashbord/trashNotes"
     displayData =  <AllArchiveNotes />
   }
   else{
+    Path = "/dashbord/archiveNote"
     displayData = <AllTrashNotes />
-  }
+  }*/
     return (
       <div className="dashbordcontainer" > 
         
     <div className="{classes.root}">
       <CssBaseline />
-      <AppBar position="fixed" color="white" className={clsx(classes.appBar, {[classes.appBarShift]: Draweropen,})} >
+      <AppBar position="fixed" color="white" className={clsx(classes.appBar)} >
         <Toolbar>
           <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen}  onClose={handleDrawerClose}  edge="start"
             className={clsx(classes.menuButton)} ><MenuIcon /> </IconButton>
@@ -168,7 +192,8 @@ export default function Dashboard() {
               Fundoo
             </Typography>
           </div>
-          <div className="searchBar">
+          <div className= "searchBar">
+            
             <div>
             <IconButton><SearchIcon /></IconButton>
             </div>
@@ -191,6 +216,7 @@ export default function Dashboard() {
         </Toolbar>
       </AppBar>
           </div>
+         
             <div className="drawer">
                <Drawer   
                  variant="permanent"
@@ -208,7 +234,7 @@ export default function Dashboard() {
      <List   onMouseEnter={handleDrawerMouseopen} onMouseLeave={handleDrawerMouseClose}>
      
       <ListItem  button key={'Notes'}  className="notes"  alt="Notes">
-       <ListItemIcon onClick={NotesHandler} ><EmojiObjectsOutlinedIcon  /></ListItemIcon>
+      <Link to="/dashbord/Notes"> <ListItemIcon onClick={NotesHandler} ><EmojiObjectsOutlinedIcon  /></ListItemIcon></Link>
         <ListItemText  primary={'Notes'}/>
       </ListItem>
 
@@ -223,28 +249,31 @@ export default function Dashboard() {
       </ListItem>
 
       <ListItem button key={'Archive'} className="archive">
-     <ListItemIcon onClick={ArchiveHandler}><ArchiveOutlinedIcon/></ListItemIcon>
+      <Link to="/dashbord/archive"><ListItemIcon onClick={ArchiveHandler}><ArchiveOutlinedIcon/></ListItemIcon></Link>
         <ListItemText primary={'Archive'}/>
       </ListItem>
 
       <ListItem button key={'Trash'} className="trash">
-     <ListItemIcon onClick={trashHandler}>< DeleteOutlinedIcon/></ListItemIcon>
+      <Link to="/dashbord/trash"> <ListItemIcon onClick={trashHandler}>< DeleteOutlinedIcon/></ListItemIcon></Link>
         <ListItemText primary={'Trash'}/>
       </ListItem>         
     </List>  
   </Drawer>
 </div>
+
+
 <main
         className={clsx(classes.content, {
           [classes.contentShift]: Draweropen,
         })}
       >
-<div>
-  {displayData}
-
-</div>
-</main>
-</div>
+<switch>
+									<PrivateRoute 	path={"/dashbord/Notes"} component={getAllNotes} />
+									<PrivateRoute   path={"/dashbord/trash"}	component={trashNotes}/>
+									<PrivateRoute   path={"/dashbord/archive"} component={archiveNote}/>
+								</switch>
+                </main>
+</div>  
 );
 }
 

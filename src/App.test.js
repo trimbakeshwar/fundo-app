@@ -46,11 +46,9 @@ describe('Email input', () => {
     })
   })
   describe('Registration Component', () => {
-    //testing rendering of login component
       it('should render without throwing an error', () => {
           expect(shallow(< Registration />).exists()).toBe(true)
       })
-      //testing the email and password input existence
       it('renders a firstname input', () => {
           expect(shallow( < Registration /> ).find('#outlined-firstName').length).toEqual(1)
         })
@@ -68,7 +66,6 @@ describe('Email input', () => {
         })
   })
   describe('firstName input', () => {
-    //testing email input for Fundoo notes
       it('change event and change the firstName of the Registration Component', () => {
         const wrapper = shallow( < Registration /> );
         wrapper.find('#outlined-firstName').simulate('change', {
@@ -81,7 +78,6 @@ describe('Email input', () => {
       })
     })
     describe('lastName input', () => {
-      //testing email input for Fundoo notes
         it('change the lastName of the Registration Component', () => {
           const wrapper = shallow( < Registration /> );
           wrapper.find('#outlined-lastName').simulate('change', {
@@ -94,7 +90,6 @@ describe('Email input', () => {
         })
       })
       describe('Email input', () => {
-        //testing email input for Fundoo notes
           it('change event and change the email of the Registration Component', () => {
             const wrapper = shallow( < Registration /> );
             wrapper.find('#outlined-email').simulate('change', {
@@ -107,7 +102,6 @@ describe('Email input', () => {
           })
         })
         describe('confirmPassword input', () => {
-          //testing email input for Fundoo notes
             it('change event and change the confirmPassword of the registratrion Component', () => {
               const wrapper = shallow( < Registration /> );
               wrapper.find('#outlined-confirmPassword').simulate('change', {
@@ -120,7 +114,6 @@ describe('Email input', () => {
             })
           })
     describe('Password input', () => {
-      //testing password input for Fundoo notes
       it(' change event and change the Password of the registratrion Component', () => {
         const wrapper = shallow( < Registration /> );
         wrapper.find('#outlined-password')
@@ -131,6 +124,19 @@ describe('Email input', () => {
             }
           });
         expect(wrapper.state('password')).toEqual('Suraj@123');
+      })
+    })
+    describe('wrong Password input', () => {
+      it(' change event and change the Password of the registratrion Component', () => {
+        const wrapper = shallow( < Registration /> );
+        wrapper.find('#outlined-password')
+          .simulate('change', {
+            target: {
+              name: 'password',
+              value: ''
+            }
+          });
+        expect(wrapper.state('passwordError')).toEqual('invalid password');
       })
     })
   

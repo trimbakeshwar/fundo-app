@@ -10,12 +10,12 @@
     border-radius: 10px;
     padding-left: 15px;
     padding-top: 1px;
-    margin-left: 22em;;
+    margin-left: 23em;;
     margin-bottom: 40px;
     position: relative;
     top: 40px;
     left:2em;
-    margin-left: 30em;
+   
     border-color: rgba(0,0,0,.2);
     background-clip: padding-box;
     border-width: 1px 3px 3px 2px;
@@ -73,6 +73,7 @@
         height: 60px; 
         top: -5px;  
     }
+    
     .iconPositionSetting{
         flex-direction: row;
         justify-content: space-around;
@@ -82,7 +83,13 @@
       left:300px;
       width:80%
     }
-    
+    .closeButtonSetting{
+   
+       
+        right: 1px;
+     
+       
+    }
    
     
 }
