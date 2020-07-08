@@ -120,8 +120,9 @@ justify-content: start;
     justify-items: start;
     padding: 21px ;  
     flex-wrap: wrap;
-   justify-content: start;
-   align-items: flex-start;
+   justify-content: stretch;
+  // align-items: flex-start;
+   align-items:stretch ; ;
    
   }
   
@@ -138,8 +139,17 @@ justify-content: start;
   
    
   }
+  
   .masonry-grid {
     padding-left:15px;;
+    padding-right:150px;
   }
+  .masonry-grid_column {
+    padding-left: 15px; /* gutter size */
+    padding-right: 15px;
+    background-clip: padding-box;
+    width: 296px !important;
+  }
+  
   
 }

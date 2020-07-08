@@ -24,21 +24,16 @@ import CreateNote from "./createNote"
 import { TextField, FormControl } from '@material-ui/core';
 import keepimg from '../../image/keepimg.png'
 import Typography from "@material-ui/core/Typography";
-import GetAllNotes from "../../components/dashbord/getAllNotes";
-import AllArchiveNotes from "./archiveNote" 
-import AllTrashNotes from "./trashNotes"
-import { BrowserRouter as Router, Route,Redirect } from 'react-router-dom';
+
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import SearchIcon from "@material-ui/icons/Search";
-import RefreshOutlinedIcon from "@material-ui/icons/RefreshOutlined";
 import MenuIcon from "@material-ui/icons/Menu";
 import "../../CSS/DashbordScss/dashborditem.scss"
 import { Tooltip } from "@material-ui/core";
 import {Link } from "react-router-dom";
 import PrivateRoute from "../../authgards/authgard";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import getAllNotes from "./getAllNotes";
 import trashNotes from "./trashNotes";
 import archiveNote from "./archiveNote"
@@ -161,20 +156,7 @@ export default function Dashboard() {
     setArchiveClick(false);
     setGetAll(true);
   };
- /* var displayData;
-  var Path;
-  if(getAll === true){  
-    Path = "/dashbord/getAllNotes"
-   displayData = <GetAllNotes />
-  }
-  else if(Archiveclick === true ){
-    Path = "/dashbord/trashNotes"
-    displayData =  <AllArchiveNotes />
-  }
-  else{
-    Path = "/dashbord/archiveNote"
-    displayData = <AllTrashNotes />
-  }*/
+
     return (
       <div className="dashbordcontainer" > 
         
@@ -182,7 +164,8 @@ export default function Dashboard() {
       <CssBaseline />
       <AppBar position="fixed" color="white" className={clsx(classes.appBar)} >
         <Toolbar>
-          <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen}  onClose={handleDrawerClose}  edge="start"
+          
+          <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen}  onClick={handleDrawerClose}  edge="start"
             className={clsx(classes.menuButton)} ><MenuIcon /> </IconButton>
           <div className="keepimage">
             <img src={keepimg} alt="Keep Logo" />

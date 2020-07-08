@@ -10,9 +10,7 @@ import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import Container from "@material-ui/core/Container";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import DashbordService from "../../services/dashbordservices";
-import config from "../../services/configservices";
 import Button from '@material-ui/core/Button';
-import GetAllNotes from "./getAllNotes"
 const service = new DashbordService();
 
 

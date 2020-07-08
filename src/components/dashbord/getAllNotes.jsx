@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import MoreOptions from "./optionMenue"
-import AllArchiveNotes from "./archiveNote"
 import "../../CSS/DashbordScss/display.scss";
 import DashbordService from "../../services/dashbordservices";
-import config from "../../services/configservices";
 import CreateNote from "./createNote"
 import Display from "./displayNotes"
 const service = new DashbordService();
