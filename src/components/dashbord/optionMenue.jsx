@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {MenuItem,Popper,Paper,Fade,Tooltip,ClickAwayListener,} from "@material-ui/core";
+import { MenuItem, Popper, Paper, Fade, Tooltip, ClickAwayListener, } from "@material-ui/core";
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import DashbordService from "../../services/dashbordservices";
 import config from "../../services/configservices";
@@ -13,20 +13,20 @@ class MoreOptions extends Component {
     this.state = {
       anchorEl: null,
       open: false,
-      noteID:"",
+      noteID: "",
       isDeleted: false
 
     };
     this.clickMoreOptions = this.clickMoreOptions.bind(this);
   }
   clickMoreOptions(event) {
-      const { currentTarget } = event;
-      this.setState((state) => ({
-        anchorEl: currentTarget,
-        open: !state.open,
-      })); 
+    const { currentTarget } = event;
+    this.setState((state) => ({
+      anchorEl: currentTarget,
+      open: !state.open,
+    }));
   }
- 
+
 
   handleDeleteNotes = () => {
     let token = localStorage.getItem("token");
@@ -34,10 +34,10 @@ class MoreOptions extends Component {
       noteIdList: [this.props.NoteId.id],
       isDeleted: true
     };
-    service.DeleteNotes(requestData).then((Response)=>{
-        console.log("deleted",Response);
-    }).catch((err)=>{
-        console.log("deleted",err);
+    service.DeleteNotes(requestData).then((Response) => {
+      console.log("deleted", Response);
+    }).catch((err) => {
+      console.log("deleted", err);
     })
     this.props.refresh();
   };
@@ -49,7 +49,7 @@ class MoreOptions extends Component {
   }
 
   render() {
-     
+
     return (
       <div>
         <Tooltip title="More Options">
@@ -61,7 +61,7 @@ class MoreOptions extends Component {
               <Paper className="paper">
                 <ClickAwayListener onClickAway={() => this.closeMenu()}>
                   <div className="MoreOptions">
-                    <MenuItem  className="menuItems" onClick={this.handleDeleteNotes} > Delete Note </MenuItem>  
+                    <MenuItem className="menuItems" onClick={this.handleDeleteNotes} > Delete Note </MenuItem>
                   </div>
                 </ClickAwayListener>
               </Paper>
@@ -70,7 +70,7 @@ class MoreOptions extends Component {
         </Popper>
       </div>
     );
-    
+
   }
 }
 export default MoreOptions;

@@ -4,43 +4,41 @@ import DashbordService from "../../services/dashbordservices";
 import CreateNote from "./createNote"
 import Display from "./displayNotes"
 const service = new DashbordService();
-export class GetAllNotes extends Component{
-    constructor(props){
+export class GetAllNotes extends Component {
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             AllNotes: [],
-            title:"",
-            discription:""
+            title: "",
+            discription: ""
         };
         this.getAllNotes()
 
     }
-    getAllNotes=()=>{
-       service.GetNotes().then((Response=>{
-         console.log(Response.data.data.data)
-          this.setState({AllNotes:Response.data.data.data })
-       })).catch((err)=>{
-           console.log(err)
-       });
+    getAllNotes = () => {
+        service.GetNotes().then((Response => {
+            console.log(Response.data.data.data)
+            this.setState({ AllNotes: Response.data.data.data })
+        })).catch((err) => {
+            console.log(err)
+        });
     }
-    UpdateOnChange=()=>{
-        this.getAllNotes();
-    }
-    render(){
-        return(
-            <div> 
-               <div className="refresh data">
-               <CreateNote updateOnAdd={()=>this.getAllNotes()}></CreateNote>
-               </div>
-              
-                <Display data = { this.state.AllNotes.filter((data)=> data.isDeleted === false)
-                                  .filter((data)=> data.isArchived === false)
-                                  .filter((data)=> data.isPined === false)
-                                  .slice(0)}
-                                 updateOnAdd={()=>this.getAllNotes()}
-             
-                 />
-                
+   
+    render() {
+        return (
+            <div>
+                <div className="refresh data">
+                    <CreateNote updateOnAdd={() => this.getAllNotes()}></CreateNote>
+                </div>
+
+                <Display data={this.state.AllNotes.filter((data) => data.isDeleted === false)
+                    .filter((data) => data.isArchived === false)
+                    .filter((data) => data.isPined === false)
+                    .slice(0)}
+                    updateOnAdd={() => this.getAllNotes()}
+
+                />
+
             </div>
         );
     }

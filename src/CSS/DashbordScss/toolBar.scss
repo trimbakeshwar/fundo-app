@@ -86,14 +86,35 @@
   
     .searchBar{
         position: relative;
-        left:3em;
+        left:9em;
         flex-direction: row;
         display: flex;
-        width:10em;
-        background-color: #f1f3f4;
+        width:0em;
+        background-color:rgb(255, 252, 252); 
         padding-right:2px;
         
        
+    }
+    .searchBaronclick{
+        position: relative;
+        left:9em;
+        flex-direction: row;
+        display: flex;
+        width:0em;
+        background-color:white;
+        padding-right:2px;
+        
+       
+    }
+    .keepimageonclick{
+        padding-left: 0.5em;
+       
+    }
+    .keeponClick{
+       margin-bottom:10px;
+       left: 5px;
+      position : relative;
+      
     }
     .inputtextField
     {
@@ -111,7 +132,7 @@
     }
     .icon{
         position: relative;
-        left:0.25em;
+        left:9em;
         padding-left: 7em;
         display:flex;
         align-items: flex-end;
@@ -128,7 +149,7 @@
             width: 80px;
             padding-left: 12px;
             position: relative;
-            left:2em;
+            left:11em;
         
     }
     .keepimage{
