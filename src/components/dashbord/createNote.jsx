@@ -85,14 +85,15 @@ export class CreateNote extends React.Component {
               (
                 <div className='noteCotainer' onHandleClickaway={this.onHandleClickaway}>
                    <div>
-              {(this.state.file != null)? 
+              {(this.state.file != "")? 
               <img
                 src={(this.state.file)}
                 alt="Curently image is not available"
-                width="700px"
-                height="400px"
+                width="300px"
+                height="200px"
+              
               />
-              : null 
+              : "" 
               }
             </div>
                   <div className='textFieldContainer'>

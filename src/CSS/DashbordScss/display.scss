@@ -96,6 +96,9 @@ justify-content: start;
 .masonry-grid_column > div {
   margin: 15px 0 !important;
 }
+.imagecontainer{
+  height: 250px ; width: 250px ; margin-Right : 10px;
+}
 .display{
   width:100%;
   //width:1100px;
@@ -111,9 +114,7 @@ justify-content: start;
   .displayContainer{    
     margin-left: 1px;  
   }
-  .imagecontainer{
-     height: 250px ; width: 250px ; margin-Right : 10px;
-  }
+  
   .cardContainer{
     width: 400px;
     min-height: 50px ;

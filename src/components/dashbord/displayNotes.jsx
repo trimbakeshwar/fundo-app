@@ -94,6 +94,7 @@ export class Display extends Component {
                 <div>
                     <UpdateNotes OpenCard={this.state.openCard}
                         id={this.state.Data.id}
+                        imageUrl={this.state.Data.imageUrl}
                         title={this.state.Data.title}
                         description={this.state.Data.description}
                         close={() => this.handleClose}

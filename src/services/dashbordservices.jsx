@@ -27,10 +27,10 @@ const Axios = new AxiosServices();
   UpdateNotes(data){
     return Axios.Post(config.url+"notes/updateNotes", data );	
   }
- /* ChangeColour(data){
+   ChangeColour(data){
     return Axios.Post(config.url+"notes/changesColorNotes", data );	
 
-  }*/
+  }
 	
 }
 export default DashbordService;

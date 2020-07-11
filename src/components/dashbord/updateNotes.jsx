@@ -5,6 +5,8 @@ import { TextField } from '@material-ui/core'
 import NoteIcons from "./iconButtons"
 import DashbordService from "../../services/dashbordservices";
 import "../../CSS/DashbordScss/update.scss"
+
+const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
 const service = new DashbordService();
 export class UpdateNotes extends Component {
   constructor(props) {
@@ -13,6 +15,8 @@ export class UpdateNotes extends Component {
       noteId: "",
       title: "",
       description: "",
+      file: "",
+      imageUrl: "",
       openDilogBox: false,
       closeDilogBox: true
     };
@@ -33,7 +37,8 @@ export class UpdateNotes extends Component {
     let requestData = {
       noteId: this.props.id,
       title: (this.state.title === "") ? this.props.title : this.state.title,
-      description: (this.state.description === "") ? this.props.description : this.state.description
+      description: (this.state.description === "") ? this.props.description : this.state.description,
+      file : (Boolean (this.state.newFile)) ?  this.state.newFile : this.props.imageUrl
     }
     service.UpdateNotes(requestData).then((Response => {
       console.log(Response)
@@ -57,6 +62,12 @@ export class UpdateNotes extends Component {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description">
             <div className='dialogField'>
+            <div>
+            {Boolean(this.props.imageUrl) ? 
+              <img src={commonUrl+this.props.imageUrl} style={{ paddingLeft : '10px' ,  paddingTop: '10px',height: '250px' , width: '400px' , marginRight : '10px'}} />
+              : undefined
+            }
+        </div>
               <div className='dialogtextsFields'>
                 <TextField
                   className='tittle'
