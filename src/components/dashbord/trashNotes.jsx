@@ -4,17 +4,13 @@ import "../../CSS/DashbordScss/trash.scss";
 import DashbordService from "../../services/dashbordservices";
 import Display from "./displayNotes"
 const service = new DashbordService();
-
 export class AllTrashNotes extends Component {
     constructor(props) {
         super(props);
         this.state = {
             TrashNotes: [],
-
-
         };
         this.getTrashAllNotes()
-
     }
     getTrashAllNotes = () => {
         service.GetTrashNotes().then((Response => {
@@ -23,11 +19,8 @@ export class AllTrashNotes extends Component {
         })).catch((err) => {
             console.log(err)
         });
-
     }
-
     render() {
-
         return (
             <div className="storage">
                 <Display data={this.state.TrashNotes.filter((data) => data.isDeleted === true)} />

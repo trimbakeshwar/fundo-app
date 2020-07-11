@@ -8,6 +8,8 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import RestoreFromTrashIcon from '@material-ui/icons/RestoreFromTrash';
 import Masonry from 'react-masonry-css';
 import UpdateNotes from "./updateNotes"
+
+const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
 export class Display extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +19,6 @@ export class Display extends Component {
             ID: "",
             openCard: false,
             Data: "",
-
             breakpointColumnsObj: {
                 default: 4,
                 1717: 4,
@@ -43,14 +44,11 @@ export class Display extends Component {
             openCard: true
         })
         console.log("update val", this.state.Data)
-
     }
     onClickOnClose = () => {
         this.setState({
             Data: "",
-
         })
-
     }
     handleClose = () => {
         this.setState({
@@ -58,15 +56,18 @@ export class Display extends Component {
         })
     }
     render() {
-
         const notes = this.props.data.reverse().map((values, index) => {
             return (
-
-
                 <Card className="cardContainer" onMouseEnter={() => this.onCard(values.id)} onMouseLeave={() => this.leaveCard(values.id)} >
+                     <div>
+                {Boolean(values.imageUrl) ? 
+                  <img src={commonUrl+values.imageUrl} className="imagecontainer"
+                  refreshh={() => this.props.updateOnAdd()} />
+                  : undefined
+                }
+              </div>
                     <div className="title" onClick={() => this.updatenote(values)}> {values.title} </div>
                     <div className="Description" onClick={() => this.updatenote(values)}> {values.description}</div>
-
                     {values.isDeleted ?
                         <div className={(this.state.ID === values.id) ? 'ShowIconButton' : 'hideIconButton'} >
                             <IconButton><DeleteForeverIcon /></IconButton>
@@ -75,14 +76,9 @@ export class Display extends Component {
                         <div className={(this.state.ID === values.id) ? 'ShowIconButtons' : 'hideIconButtons'} >
                             <NoteIcons
                                 data={values}
-
                                 refreshh={() => this.props.updateOnAdd()} />
                         </div>}
-
-
                 </Card>
-
-
             );
         })
         return (
@@ -91,26 +87,20 @@ export class Display extends Component {
                     <Masonry
                         breakpointCols={this.state.breakpointColumnsObj}
                         className="masonry-grid"
-                        columnClassName="masonry-grid_column"
-                    >
+                        columnClassName="masonry-grid_column" >
                         {notes}
                     </Masonry>
                 </div>
                 <div>
                     <UpdateNotes OpenCard={this.state.openCard}
-
                         id={this.state.Data.id}
                         title={this.state.Data.title}
                         description={this.state.Data.description}
                         close={() => this.handleClose}
                         refreshh={() => this.props.updateOnAdd()}
-
                     />
                 </div>
             </div>);
     }
 }
-
-
-
 export default Display;

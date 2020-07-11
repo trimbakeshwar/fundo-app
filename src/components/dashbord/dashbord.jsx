@@ -15,23 +15,16 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ArchiveOutlinedIcon from "@material-ui/icons/ArchiveOutlined";
 import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
-import Apps from '@material-ui/icons/Apps';
-import SearchSharpIcon from '@material-ui/icons/SearchSharp';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import RefreshSharpIcon from '@material-ui/icons/RefreshSharp';
-import MenuSharpIcon from '@material-ui/icons/MenuSharp';
-import CreateNote from "./createNote"
 import { TextField, FormControl } from '@material-ui/core';
 import keepimg from '../../image/keepimg.png'
 import Typography from "@material-ui/core/Typography";
-
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import SearchIcon from "@material-ui/icons/Search";
 import MenuIcon from "@material-ui/icons/Menu";
 import "../../CSS/DashbordScss/dashborditem.scss"
-import { Tooltip } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import PrivateRoute from "../../authgards/authgard";
 import getAllNotes from "./getAllNotes";
@@ -39,12 +32,10 @@ import trashNotes from "./trashNotes";
 import archiveNote from "./archiveNote"
 const drawerWidth = 250;
 const drawerTopMargin = 69;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     marginTop: "100px",
-
   },
   appBar: {
     width: "100%",
@@ -58,16 +49,11 @@ const useStyles = makeStyles((theme) => ({
     },
     check: 0,
   },
-
-
   drawer: {
-
     width: drawerWidth,
     marginTop: drawerTopMargin,
     flexShrink: 0,
     whiteSpace: "nowrap",
-
-
   },
   content: {
     flexGrow: 1,
@@ -77,33 +63,25 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     paddingLeft: 0,
-
-
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
-
     }),
     [theme.breakpoints.up('md')]: {
       paddingLeft: drawerWidth,
     },
     paddingLeft: 0,
   },
-
   drawerOpensetting: {
-
     width: drawerWidth,
-
     marginTop: drawerTopMargin,
-
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-
   drawerClosesetting: {
     marginTop: drawerTopMargin,
     borderStyle: "none",
@@ -117,8 +95,6 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9) + 1,
     },
   },
-
-
 }));
 export default function Dashboard() {
   const classes = useStyles();
@@ -134,10 +110,8 @@ export default function Dashboard() {
   const handleDrawerMouseopen = () => {
     DrawersetOpen(true);
   }
-
   const handleDrawerOpen = () => {
     DrawersetOpen(true);
-
   };
   const handleDrawerClose = () => {
     DrawersetOpen(false);
@@ -157,18 +131,15 @@ export default function Dashboard() {
     setArchiveClick(false);
     setGetAll(true);
   };
-
   const searchClick = () => {
     setsearchtextField(true)
   }
   return (
     <div className="dashbordcontainer" >
-
       <div className="{classes.root}">
         <CssBaseline />
         <AppBar position="fixed" color="white" className={clsx(classes.appBar)} >
           <Toolbar>
-
             <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} onChange={handleDrawerClose} edge="start"
               className={clsx(classes.menuButton)} ><MenuIcon /> </IconButton>
             <div className="keepimage">
@@ -180,7 +151,6 @@ export default function Dashboard() {
             </Typography>
             </div>
             <div className="searchBar" onClick={searchClick}>
-
               <div>
                 <IconButton><SearchIcon /></IconButton>
               </div>
@@ -192,18 +162,13 @@ export default function Dashboard() {
             <div className="icon">
               <IconButton> <RefreshSharpIcon /> </IconButton>
               <IconButton> <ViewStreamSharpIcon /> </IconButton>
-
             </div>
-
             <div className="account">
-
               <IconButton> <AccountCircle /> </IconButton>
             </div>
-
           </Toolbar>
         </AppBar>
       </div>
-
       <div className="drawer">
         <Drawer
           variant="permanent"
@@ -217,29 +182,23 @@ export default function Dashboard() {
               [classes.drawerClosesetting]: !Draweropen,
             }),
           }} >
-
           <List onMouseEnter={handleDrawerMouseopen} onMouseLeave={handleDrawerMouseClose}>
-
             <ListItem button key={'Notes'} className="notes" onClick={NotesHandler} alt="Notes">
               <Link to="/dashbord/Notes"> <ListItemIcon  ><EmojiObjectsOutlinedIcon /></ListItemIcon></Link>
               <ListItemText primary={'Notes'} />
             </ListItem>
-
             <ListItem button key={'Remainders'} className="remainder">
               <ListItemIcon><NotificationsOutlinedIcon /></ListItemIcon>
               <ListItemText primary={'Remainders'} />
             </ListItem>
-
             <ListItem button key={'Editlabels'} className="editlabels">
               <ListItemIcon>< EditOutlinedIcon /></ListItemIcon>
               <ListItemText primary={'Edit labels'} />
             </ListItem>
-
             <ListItem button key={'Archive'} className="archive" onClick={ArchiveHandler}>
               <Link to="/dashbord/archive"><ListItemIcon ><ArchiveOutlinedIcon /></ListItemIcon></Link>
               <ListItemText primary={'Archive'} />
             </ListItem>
-
             <ListItem button className="trash" onClick={trashHandler}>
               <Link to="/dashbord/trash"> <ListItemIcon >< DeleteOutlinedIcon /></ListItemIcon></Link>
               <ListItemText primary={'Trash'} />
@@ -247,13 +206,10 @@ export default function Dashboard() {
           </List>
         </Drawer>
       </div>
-
-
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: Draweropen,
-        })}
-      >
+        })} >
         <switch>
           <PrivateRoute path={"/dashbord/Notes"} component={getAllNotes} />
           <PrivateRoute path={"/dashbord/trash"} component={trashNotes} />
@@ -263,4 +219,3 @@ export default function Dashboard() {
     </div>
   );
 }
-

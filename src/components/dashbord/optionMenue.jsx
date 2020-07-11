@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import { MenuItem, Popper, Paper, Fade, Tooltip, ClickAwayListener, } from "@material-ui/core";
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import DashbordService from "../../services/dashbordservices";
-import config from "../../services/configservices";
 import "../../CSS/DashbordScss/moreOption.scss"
 const service = new DashbordService();
-
-
 class MoreOptions extends Component {
   constructor() {
     super();
@@ -15,7 +12,6 @@ class MoreOptions extends Component {
       open: false,
       noteID: "",
       isDeleted: false
-
     };
     this.clickMoreOptions = this.clickMoreOptions.bind(this);
   }
@@ -26,8 +22,6 @@ class MoreOptions extends Component {
       open: !state.open,
     }));
   }
-
-
   handleDeleteNotes = () => {
     let token = localStorage.getItem("token");
     let requestData = {
@@ -41,15 +35,12 @@ class MoreOptions extends Component {
     })
     this.props.refresh();
   };
-
   closeMenu() {
     this.setState({
       open: false,
     });
   }
-
   render() {
-
     return (
       <div>
         <Tooltip title="More Options">
@@ -70,7 +61,6 @@ class MoreOptions extends Component {
         </Popper>
       </div>
     );
-
   }
 }
 export default MoreOptions;

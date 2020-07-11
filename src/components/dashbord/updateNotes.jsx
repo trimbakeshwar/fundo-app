@@ -35,17 +35,12 @@ export class UpdateNotes extends Component {
       title: (this.state.title === "") ? this.props.title : this.state.title,
       description: (this.state.description === "") ? this.props.description : this.state.description
     }
-
     service.UpdateNotes(requestData).then((Response => {
       console.log(Response)
-
-
     })).catch((err => {
       console.log(err)
-
     }))
     this.props.refreshh();
-
   }
   handleClose = () => { };
   render() {
@@ -55,17 +50,12 @@ export class UpdateNotes extends Component {
     console.log("id", this.props.id)
     return (
       <div>
-
         <div className='dialogContainer'>
           <Dialog
-
             open={this.props.OpenCard}
             onClose={this.props.close()}
-
             aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-
-          >
+            aria-describedby="alert-dialog-description">
             <div className='dialogField'>
               <div className='dialogtextsFields'>
                 <TextField
@@ -76,7 +66,6 @@ export class UpdateNotes extends Component {
                   textdecaration='none'
                   InputProps={{ disableUnderline: true }}
                   onChange={this.onTitleChange}
-
                 />
               </div>
               <div className='dialogtextFields'>
@@ -87,14 +76,12 @@ export class UpdateNotes extends Component {
                   placeholder='Take a Note'
                   textdecaration='none'
                   InputProps={{ disableUnderline: true }}
-
                   onChange={this.onBodyTextChange}
                 />
               </div>
               <div className='iconfordialog' >
                 <div className='IconsContainer' > <NoteIcons /> </div>
                 <Button onClick={this.onClose} style={{ "padding-left": "50px" }} float='right'>Close</Button>
-
               </div>
             </div>
           </Dialog>

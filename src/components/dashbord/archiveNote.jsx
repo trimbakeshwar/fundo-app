@@ -9,11 +9,8 @@ export class AllArchiveNotes extends Component {
       super(props);
       this.state = {
          ArchiveNotes: [],
-
-
       };
       this.getArchiveAllNotes()
-
    }
    getArchiveAllNotes = () => {
       service.GetArchiveNotes().then((Response => {
@@ -22,11 +19,8 @@ export class AllArchiveNotes extends Component {
       })).catch((err) => {
          console.log(err)
       });
-
    }
-
    render() {
-
       return (
          <div className="storage">
             <Display data={this.state.ArchiveNotes.filter((data) => data.isArchived === true)} />
@@ -35,4 +29,3 @@ export class AllArchiveNotes extends Component {
    }
 }
 export default AllArchiveNotes;
-

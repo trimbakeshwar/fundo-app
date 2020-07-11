@@ -111,6 +111,9 @@ justify-content: start;
   .displayContainer{    
     margin-left: 1px;  
   }
+  .imagecontainer{
+     height: 250px ; width: 250px ; margin-Right : 10px;
+  }
   .cardContainer{
     width: 400px;
     min-height: 50px ;
@@ -126,7 +129,9 @@ justify-content: start;
    align-items:stretch ; ;
    
   }
-  
+  .imagecontainer{
+    height: 300px ; width: 360px ; margin-Right : 10px;
+ }
   .ShowIconButtons{
     
     height : 35px;
