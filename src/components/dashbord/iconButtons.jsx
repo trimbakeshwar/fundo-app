@@ -15,8 +15,11 @@ export class NoteIcons extends Component {
     constructor(props){
         super(props)
         this.state={
-            file:''
+            file:'',
+            collaboratorOpen: false,
+            open:false
         }
+        this.handlercollaborator = this.handlercollaborator.bind(this);
     }
     ArchiveNoteHandler = () => {
         let requestData = {
@@ -37,6 +40,9 @@ export class NoteIcons extends Component {
         console.log("prop",this.props)
         this.props.image(event.target.files[0]);
     }
+    handlercollaborator=()=>{
+        this.setState({ collaboratorOpen: true });
+    }
     render() {
         return (
             <div className='iconsContainer'>
@@ -44,7 +50,7 @@ export class NoteIcons extends Component {
                     <div className="button" ><IconButton > <AddAlertOutlinedIcon fontSize="small" /> </IconButton></div>
                 </Tooltip>
                 <Tooltip title="Colabrator">
-                    <div className="button"><IconButton > <PersonAddOutlinedIcon fontSize="small" /> </IconButton></div>
+                    <div className="button"><IconButton > <PersonAddOutlinedIcon onClick={() => this.handlercollaborator()} fontSize="small" /> </IconButton></div>
                 </Tooltip>
                 <Tooltip title="change Color">
                     <div className="button"><IconButton> <ColourPallet  NoteId={this.props.data} refresh={() => this.props.refreshh()} closefontSize="small" /> </IconButton></div>
@@ -64,6 +70,15 @@ export class NoteIcons extends Component {
                     <div className="button"><IconButton onClick={this.ArchiveNoteHandler}> <ArchiveOutlinedIcon fontSize="small" /> </IconButton></div>
                 </Tooltip>
                 <div className="button"><IconButton > <MoreOptions NoteId={this.props.data} refresh={() => this.props.refreshh()} fontSize="small" /> </IconButton></div>
+           <div>
+               {this.state.collaboratorOpen?(Boolean(this.props.data)?(
+                   <dialog id="collaboraterdilogBox"
+                    maxWidth="false"
+                     open={this.state.collaboratorOpen}>
+                         <Collaborator NoteId={this.props.data} />
+                     </dialog>
+               ):(<Collaborator NoteId={this.props.data} />)):undefined}
+           </div>
             </div>
         );
     }
