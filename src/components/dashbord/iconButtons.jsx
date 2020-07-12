@@ -9,7 +9,10 @@ import ColorLensOutlinedIcon from '@material-ui/icons/ColorLensOutlined';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import { Tooltip } from "@material-ui/core";
+
+import Dialog from "@material-ui/core/Dialog";
 import DashbordService from "../../services/dashbordservices";
+import Collaborator from "./collaborator"
 const service = new DashbordService();
 export class NoteIcons extends Component {
     constructor(props){
@@ -72,11 +75,11 @@ export class NoteIcons extends Component {
                 <div className="button"><IconButton > <MoreOptions NoteId={this.props.data} refresh={() => this.props.refreshh()} fontSize="small" /> </IconButton></div>
            <div>
                {this.state.collaboratorOpen?(Boolean(this.props.data)?(
-                   <dialog id="collaboraterdilogBox"
+                   <Dialog id="collaboraterdilogBox"
                     maxWidth="false"
                      open={this.state.collaboratorOpen}>
                          <Collaborator NoteId={this.props.data} />
-                     </dialog>
+                     </Dialog>
                ):(<Collaborator NoteId={this.props.data} />)):undefined}
            </div>
             </div>

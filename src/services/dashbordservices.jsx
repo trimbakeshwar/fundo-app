@@ -29,7 +29,12 @@ const Axios = new AxiosServices();
   }
    ChangeColour(data){
     return Axios.Post(config.url+"notes/changesColorNotes", data );	
-
+  }
+  searchUser(data){
+    return Axios.Post(config.url+"user/searchUserList", data );	
+  } 
+  AddCollaborator(id , data){
+    return Axios.Post(config.url+"notes/"+id+"/AddcollaboratorsNotes", data );	
   }
 	
 }
