@@ -20,6 +20,7 @@ export class NoteIcons extends Component {
         this.state={
             file:'',
             collaboratorOpen: false,
+            collaboratorclose: false,
             open:false
         }
         this.handlercollaborator = this.handlercollaborator.bind(this);
@@ -45,6 +46,9 @@ export class NoteIcons extends Component {
     }
     handlercollaborator=()=>{
         this.setState({ collaboratorOpen: true });
+    }
+    CloseCollaborater=()=>{
+        this.setState({ collaboratorOpen: false });
     }
     render() {
         return (
@@ -77,8 +81,11 @@ export class NoteIcons extends Component {
                {this.state.collaboratorOpen?(Boolean(this.props.data)?(
                    <Dialog id="collaboraterdilogBox"
                     maxWidth="false"
-                     open={this.state.collaboratorOpen}>
-                         <Collaborator NoteId={this.props.data} />
+                     open={this.state.collaboratorOpen}
+                     onClose={this.state.collaboratorclose}
+                   >
+                         <Collaborator NoteId={this.props.data} 
+                          closeCollaborater={()=>this.CloseCollaborater()}/>
                      </Dialog>
                ):(<Collaborator NoteId={this.props.data} />)):undefined}
            </div>

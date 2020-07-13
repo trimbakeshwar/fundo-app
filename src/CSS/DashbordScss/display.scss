@@ -107,6 +107,18 @@ justify-content: start;
   align-items:flex-start;
   flex-direction:row 
 }
+.collaboratorsetting {
+  display: flex;
+  padding-top:10px;
+  padding-right: 5px;
+  flex-direction: row;
+  padding-left: 0px;
+  opacity: 1.0;
+  
+}
+.colaborater{
+  padding-right: 5px;
+}
 @media only screen and (max-width: 414pX) {
   .display{
     width:100%;

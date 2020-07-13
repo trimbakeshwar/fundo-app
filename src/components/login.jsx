@@ -46,9 +46,12 @@ export class Login extends Component {
             }
             console.log("request data", requestData);
             service.LoginData(config.url, requestData).then((response) => {
-                console.log("data", response.status)
+                console.log("data", response)
                 if (response.status === 200) {
                     window.localStorage.setItem("token", response.data.id)
+                    window.localStorage.setItem("firstName", response.data.firstName)
+                    window.localStorage.setItem("lastName", response.data.lastName)
+                    window.localStorage.setItem("email", response.data.email)
                     this.setState({
                         snackbarOpen: true,
                         snackbarMessage: "login sucessful",

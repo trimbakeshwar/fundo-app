@@ -18,6 +18,7 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import RefreshSharpIcon from '@material-ui/icons/RefreshSharp';
 import { TextField, FormControl } from '@material-ui/core';
 import keepimg from '../../image/keepimg.png'
+import {  Avatar } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -32,6 +33,12 @@ import trashNotes from "./trashNotes";
 import archiveNote from "./archiveNote"
 const drawerWidth = 250;
 const drawerTopMargin = 69;
+function randomColor() {
+  let hex = Math.floor(Math.random() * 0xFFFFFF);
+  let color = "#" + hex.toString(16);
+
+  return color;
+}
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -164,7 +171,9 @@ export default function Dashboard() {
               <IconButton> <ViewStreamSharpIcon /> </IconButton>
             </div>
             <div className="account">
-              <IconButton> <AccountCircle /> </IconButton>
+            <Avatar style={{ backgroundColor: randomColor() }}
+                                  alt={localStorage.getItem("firstName")} size="small" src="/"  ></Avatar>
+
             </div>
           </Toolbar>
         </AppBar>

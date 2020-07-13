@@ -7,7 +7,14 @@ import Card from "@material-ui/core/Card";
 import { MenuItem, Divider, TextField, Popover, MenuList, Button } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import DashbordService from "../../services/dashbordservices";
+import {  Avatar } from "@material-ui/core";
 const service = new DashbordService();
+function randomColor() {
+    let hex = Math.floor(Math.random() * 0xFFFFFF);
+    let color = "#" + hex.toString(16);
+  
+    return color;
+  }
 export class Collaborator extends Component {
     constructor(props) {
         super(props);
@@ -33,7 +40,7 @@ export class Collaborator extends Component {
         });
     }
     handleClose = () => {
-        this.setState({ open: false });
+        this.props.closeCollaborater();
     }
     Collaborator = (data) => {
         if (Boolean(this.props.NoteId)) {
@@ -42,12 +49,13 @@ export class Collaborator extends Component {
             console.log("noteid", this.props.NoteId.id)
             service.AddCollaborator(this.props.NoteId.id, collaborators).then((Response) => {
                 console.log("Collab Data", Response);
+                this.props.closeCollaborater();
             }).catch((err) => {
                 console.log("Collab Data", err);
             })
 
 
-            this.handleClose();
+          
         } else {
             this.props.addcollaborator(data);
         }
@@ -62,6 +70,7 @@ export class Collaborator extends Component {
         };
         service.searchUser(requestData).then((Response) => {
             console.log("x", Response)
+            console.log("localstorage",localStorage.getItem("firstName"))
             if (Response.status === 200) {
                 this.setState({
                     anchorEl: event.currentTarget,
@@ -74,6 +83,7 @@ export class Collaborator extends Component {
         })
     }
     render() {
+       
         const userList = this.state.userList.map((values, index) => {
             return (
                 <MenuItem key={index} onClick={() => this.selectUser(values)}>
@@ -91,11 +101,12 @@ export class Collaborator extends Component {
                     <div>
                         <div className="userInformation">
                             <div className="userProfile">
-                                <div><AccountCircle /> </div>
+                                <div ><Avatar style={{ backgroundColor: randomColor() }}
+                                  alt={localStorage.getItem("firstName")} size="small" src="/"  ></Avatar> </div>
                                 <div className="information">
                                     <div>{localStorage.getItem("firstName") + " " +
                                     localStorage.getItem("lastName") + " " + "(Owner)"}</div>
-                                    <div>{localStorage.email}</div>
+                                    <div>{localStorage.getItem("email")}</div>
                                 </div>
                             </div>
                         </div>
