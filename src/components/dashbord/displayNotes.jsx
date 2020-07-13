@@ -85,6 +85,7 @@ export class Display extends Component {
                 </Card>
             );
         })
+        
         return (
             <div>
                 <div className='display' >

@@ -1,48 +1,73 @@
-.collaborationdialog{
-    width: 700px;
-	margin-left: 25%;
-} .dialogtext{
+.collaboratorContainer{
+    width: 600px;
+
+} 
+.Title{
+	padding-top: 12px;
+	padding-left: 20px;
+	font-size: large;
+	height: 50px;
+	font-weight: bold;
+}
+.userInformation{
 
     width: 500px !important;
 	padding-top: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
-} .ownerProfile {
+}
+ .userProfile {
     display: flex;
 	flex-direction: row;
 	padding-top: 10px;
 	padding-right: 100px;
 }
- .menuLists{
-	 width:200px
+ .userLists{
+	 width:250px
  }
-.nameAndMail{
+.information{
     padding-left: 15px;
 } 
-.dialogSearch{
+.SearchMail{
     display: flex;
 	flex-direction: row;
 	background-color: white;
-	padding-bottom: 30px;
-	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-top: 5px;
 	padding-left: 20px;
 	padding-right: 20px;
 } 
-.dialogimage{
+.Collaboratorimage{
     padding-top: 18px;
 	padding-right:15px;
 }
-.dialogtextfield{
-    padding-left: 20px;
+.collaboratortextfield{
+    padding-left: 2px;
 	width: 100%;
 }    
-.collaboratorMenu{
+.registerUserMainueMenu{
     max-height: 365px;
 	max-width: 300px;
 }
  .dialogbutton{
-    padding-top: 15px !important;
-	padding-bottom: 15px !important;
-	padding-left: 550px !important;
+	flex-direction: row;
+	display: flex;
+    padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	padding-left: 450px !important;
 	background-color: #E8E8E8;
+}
+@media only screen and (max-width: 414pX) {
+	.collaborationdialog{
+		width: 445px;
+	
+	} 
+	.dialogbutton{
+		flex-direction: row;
+		display: flex;
+		padding-top: 10px !important;
+		padding-bottom: 10px !important;
+		padding-left: 300px !important;
+		background-color: #E8E8E8;
+	}
 }
