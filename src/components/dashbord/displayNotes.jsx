@@ -8,7 +8,8 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import RestoreFromTrashIcon from '@material-ui/icons/RestoreFromTrash';
 import Masonry from 'react-masonry-css';
 import UpdateNotes from "./updateNotes"
-
+import { Tooltip, Avatar } from "@material-ui/core";
+import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
 export class Display extends Component {
     constructor(props) {
@@ -72,6 +73,19 @@ export class Display extends Component {
               </div>
                     <div className="title" onClick={() => this.updatenote(values)}> {values.title} </div>
                     <div className="Description" onClick={() => this.updatenote(values)}> {values.description}</div>
+                    <div className="collaborator">
+        {Boolean(values.collaborators)?
+        values.collaborators.map((colaboratorData, index)=>{
+            return(
+                <div>
+                    <Tooltip title={colaboratorData.email} placement="bottom">
+                        <Avatar alt={colaboratorData.firstName} fontSize="small" src="/" ></Avatar>
+                    </Tooltip>
+                </div>
+            );
+        }):undefined}
+
+    </div>
                     {values.isDeleted ?
                         <div className={(this.state.ID === values.id) ? 'ShowIconButton' : 'hideIconButton'} >
                             <IconButton><DeleteForeverIcon /></IconButton>
@@ -85,7 +99,7 @@ export class Display extends Component {
                 </Card>
             );
         })
-        
+      
         return (
             <div>
                 <div className='display' >
@@ -107,6 +121,8 @@ export class Display extends Component {
                     />
                 </div>
             </div>);
+
+            
     }
 }
 export default Display;
