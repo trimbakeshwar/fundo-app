@@ -12,10 +12,11 @@ export const PrivateRoute = ({ component:Component,...rest }) => {
 		<Route
 			{...rest}
 			render={props =>{
-        if(auth.isAuthenticated()){
-          return <Component 	{...rest}/>
-        }
-        else{
+				return <Component 	{...rest}/>
+			 if(auth.isAuthenticat()){
+          
+         }
+         else{
           return(<Redirect
 						to={{
 							pathname: "/",

@@ -58,7 +58,11 @@ export class Display extends Component {
     render() {
         const notes = this.props.data.reverse().map((values, index) => {
             return (
-                <Card className="cardContainer" onMouseEnter={() => this.onCard(values.id)} onMouseLeave={() => this.leaveCard(values.id)} >
+                <Card className="cardContainer" 
+                onMouseEnter={() => this.onCard(values.id)}
+                 onMouseLeave={() => this.leaveCard(values.id)}
+              style={{
+                backgroundColor: `${values.color}`}}>
                      <div>
                 {Boolean(values.imageUrl) ? 
                   <img src={commonUrl+values.imageUrl} className="imagecontainer"

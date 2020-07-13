@@ -56,7 +56,7 @@ export class NoteIcons extends Component {
                     <div className="button"><IconButton > <PersonAddOutlinedIcon onClick={() => this.handlercollaborator()} fontSize="small" /> </IconButton></div>
                 </Tooltip>
                 <Tooltip title="change Color">
-                    <div className="button"><IconButton> <ColourPallet  NoteId={this.props.data} refresh={() => this.props.refreshh()} closefontSize="small" /> </IconButton></div>
+                    <div className="button"><ColourPallet  NoteId={this.props.data} refresh={() => this.props.refreshh()} closefontSize="small" /></div>
                 </Tooltip>
                 
                 <Tooltip title="image add">

@@ -10,7 +10,7 @@ import {
 import ColorLensOutlinedIcon from '@material-ui/icons/ColorLensOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import DashbordService from "../../services/dashbordservices";
-
+import "../../CSS/DashbordScss/color.scss"
 const service = new DashbordService();
 const theme = createMuiTheme({
     overrides: {
@@ -57,6 +57,7 @@ export default class ColourPallet extends Component{
       }
       handleColor = (event) => {
         this.setState({ anchorEl: event.currentTarget });
+       // console.log("anchorEl",this.state.anchorEl)
       };
       updateColor=(color)=>{
         console.log(color)
@@ -74,6 +75,7 @@ export default class ColourPallet extends Component{
         }).catch((err)=>{
             console.log(err)
         })
+        this.props.refresh()
       }
     render(){
         const color = this.state.colours.map((key,index)=>{
@@ -89,19 +91,20 @@ export default class ColourPallet extends Component{
                   width: "28px",
                 }}
                 onClick={() => this.updateColor(key)}
+               
               ></div>
             
             );
         })
         return(
         <div >
-            <IconButton aria-owns={this.state.anchorEl ? "color-menu" : undefined}
-            aria-haspopup="true" onClick={this.handleColor}>
+            <IconButton 
+            onClick={this.handleColor}>
             <ColorLensOutlinedIcon/>
           </IconButton>
           <MuiThemeProvider theme={theme} >
           <Menu
-            // id="color-menu"
+             id="color-menu"
             anchorEl={this.state.anchorEl}
             placement={"bottom"}
             open={Boolean(this.state.anchorEl)}
