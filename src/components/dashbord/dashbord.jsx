@@ -171,7 +171,7 @@ export default function Dashboard() {
               <IconButton> <ViewStreamSharpIcon /> </IconButton>
             </div>
             <div className="account">
-            <Avatar style={{ backgroundColor: randomColor() }}
+            <Avatar style={{ "backgroundColor":  "red" }}
                                   alt={localStorage.getItem("firstName")} size="small" src="/"  ></Avatar>
 
             </div>

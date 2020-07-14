@@ -53,10 +53,12 @@ export class UpdateNotes extends Component {
     console.log("Data", this.props.title)
     console.log("Data", this.props.description)
     console.log("id", this.props.id)
+   
     return (
-      <div>
+      <div >
         <div className='dialogContainer'>
           <Dialog
+          
             open={this.props.OpenCard}
             onClose={this.props.close()}
             aria-labelledby="alert-dialog-title"
@@ -64,7 +66,7 @@ export class UpdateNotes extends Component {
             <div className='dialogField'>
             <div>
             {Boolean(this.props.imageUrl) ? 
-              <img src={commonUrl+this.props.imageUrl} style={{ paddingLeft : '10px' ,  paddingTop: '10px',height: '250px' , width: '400px' , marginRight : '10px'}} />
+              <img src={commonUrl+this.props.imageUrl} style={{ paddingLeft : '10px' , paddingRight : '10px' , paddingTop: '10px',height: '350px' , width: '450px' , marginRight : '10px'}} />
               : undefined
             }
         </div>

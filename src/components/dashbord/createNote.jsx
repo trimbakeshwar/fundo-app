@@ -11,6 +11,7 @@ import Container from "@material-ui/core/Container";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import DashbordService from "../../services/dashbordservices";
 import Button from '@material-ui/core/Button';
+const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
 const service = new DashbordService();
 export class CreateNote extends React.Component {
   constructor(props) {
@@ -87,11 +88,11 @@ export class CreateNote extends React.Component {
                    <div>
               {(this.state.file != "")? 
               <img
-                src={(this.state.file)}
+                src={`${URL.createObjectURL(this.state.file)}`}
                 alt="Curently image is not available"
-                width="300px"
-                height="200px"
-              
+                width="600px"
+                height="500px"
+                style={{paddingTop:"10px"}}
               />
               : "" 
               }

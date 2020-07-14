@@ -10,6 +10,7 @@ import Masonry from 'react-masonry-css';
 import UpdateNotes from "./updateNotes"
 import { Tooltip, Avatar } from "@material-ui/core";
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
+import Collaborator from "./collaborator";
 const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
 function randomColor() {
     let hex = Math.floor(Math.random() * 0xFFFFFF);
@@ -26,6 +27,7 @@ export class Display extends Component {
             ID: "",
             openCard: false,
             Data: "",
+            color:"",
             breakpointColumnsObj: {
                 default: 4,
                 1717: 4,
@@ -63,6 +65,7 @@ export class Display extends Component {
         })
     }
     render() {
+      
         const notes = this.props.data.reverse().map((values, index) => {
             return (
                 <Card className="cardContainer" 
@@ -79,13 +82,15 @@ export class Display extends Component {
               </div>
                     <div className="title" onClick={() => this.updatenote(values)}> {values.title} </div>
                     <div className="Description" onClick={() => this.updatenote(values)}> {values.description}</div>
+                   
                     <div className="collaboratorsetting">
-        {Boolean(values.collaborators)?
-        values.collaborators.map((colaboratorData, index)=>{
+        { 
+        Boolean(values.collaborators)?
+       values.collaborators.map((colaboratorData, index)=>{
             return(
                 <div className="colaborater">
                     <Tooltip title={colaboratorData.email} placement="bottom">
-                        <Avatar style={{ backgroundColor: randomColor() }} alt={colaboratorData.firstName} size="small" src="/" ></Avatar>
+                        <Avatar style={{ "backgroundColor":  "green" }} alt={colaboratorData.firstName} size="small" src="/" ></Avatar>
                     </Tooltip>
                 </div>
             );
@@ -118,6 +123,7 @@ export class Display extends Component {
                 </div>
                 <div>
                     <UpdateNotes OpenCard={this.state.openCard}
+                    
                         id={this.state.Data.id}
                         imageUrl={this.state.Data.imageUrl}
                         title={this.state.Data.title}

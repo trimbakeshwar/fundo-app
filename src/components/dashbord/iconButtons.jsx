@@ -85,7 +85,8 @@ export class NoteIcons extends Component {
                      onClose={this.state.collaboratorclose}
                    >
                          <Collaborator NoteId={this.props.data} 
-                          closeCollaborater={()=>this.CloseCollaborater()}/>
+                          closeCollaborater={()=>this.CloseCollaborater()}
+                          refresh={() => this.props.refreshh()}/>
                      </Dialog>
                ):(<Collaborator NoteId={this.props.data} />)):undefined}
            </div>
