@@ -62,6 +62,14 @@ justify-content: start;
   width: 80%;
   
 }
+.displaychecklistSetting{
+  display:flex;
+  flex-direction:column;
+}
+.displayListItem{
+  display:flex;
+  flex-direction:row;
+}
 /*.storage{
   width: 60%;
   top:50px;

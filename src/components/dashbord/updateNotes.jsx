@@ -6,6 +6,7 @@ import NoteIcons from "./iconButtons"
 import DashbordService from "../../services/dashbordservices";
 import "../../CSS/DashbordScss/update.scss"
 
+import { Checkbox, Divider } from "@material-ui/core";
 const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
 const service = new DashbordService();
 export class UpdateNotes extends Component {
@@ -18,9 +19,36 @@ export class UpdateNotes extends Component {
       file: "",
       imageUrl: "",
       openDilogBox: false,
-      closeDilogBox: true
+      closeDilogBox: true,
+      checklistId: "",
+     checkList: this.props.data.noteCheckLists
     };
   }
+  check = (item, index) => {
+   
+    const changedItem = {
+      itemName: item.itemName,
+      status: "close",
+      isDeleted: item.isDeleted,
+      notesId: item.notesId,
+    };
+    console.log("changedItem",changedItem)
+  
+      service
+        .UpdateCheckList(
+          item.notesId,
+          item.id,
+          changedItem,
+          
+        )
+        .then((json) => {
+          console.log(json);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+   
+  };
   onTitleChange = (e) => {
     this.setState({ title: e.target.value })
   }
@@ -50,10 +78,10 @@ export class UpdateNotes extends Component {
   handleClose = () => { };
   render() {
     console.log("card", this.props.openCard)
-    console.log("Data", this.props.title)
-    console.log("Data", this.props.description)
+    console.log("title", this.props.title)
+    console.log("description", this.props.description)
     console.log("id", this.props.id)
-   
+    console.log("noteCheckLists", this.props.data.noteCheckLists)
     return (
       <div >
         <div className='dialogContainer'>
@@ -92,6 +120,25 @@ export class UpdateNotes extends Component {
                   onChange={this.onBodyTextChange}
                 />
               </div>
+               <div>
+                { (Boolean(this.props.data.noteCheckLists)) ? 
+                    this.props.data.noteCheckLists.filter((checklist)=> checklist.status === 'open')
+                                                .map((checklist,index)=>{  
+                      return(          
+                        <div className='checklistFileds'>      
+                          <div key={checklist.id}>
+                            <Checkbox fontSize='small' size='small'onClick={()=>this.check(checklist,index)} />
+                          </div>
+                          <div>
+                            { checklist.itemName}
+                          </div> 
+                        </div> 
+                      );
+                    })                  
+                  : undefined                                  
+                }
+                
+              </div> 
               <div className='iconfordialog' >
                 <div className='IconsContainer' > <NoteIcons /> </div>
                 <Button onClick={this.onClose} style={{ "padding-left": "50px" }} float='right'>Close</Button>

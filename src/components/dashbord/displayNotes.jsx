@@ -67,7 +67,7 @@ export class Display extends Component {
         })
     }
     updateChecklist=()=>{
-        
+
     }
     render() {
       
@@ -102,37 +102,37 @@ export class Display extends Component {
         }):undefined}
 
     </div>
-    <div>
+    <div className="displaychecklistSetting">
     {Boolean(values.noteCheckLists)?values.noteCheckLists.filter((checklist)=>checklist.status === "open")
     .map((checklist,index)=>{
         return(
-            <div onClick={()=>this.updateChecklist(values)}>
+            <div className="displayListItem" onClick={()=>this.updateChecklist(values)}>
         <div key={checklist.id}>
             <Checkbox checked={
                 checklist.status !== "open" ? "checked" : null
             }  style={{ color: "black" }}/>
             
         </div>
-        <div>{checklist.itemName}</div>
+        <div style={{paddingTop:"10px"}}>{checklist.itemName}</div>
         </div>
         );
     }):undefined
     }
-    {Boolean(values.noteCheckLists)?values.noteCheckLists.filter((checklist)=>checklist.status === "close")
+    {Boolean(values.noteCheckLists)?
+    values.noteCheckLists.filter((checklist)=>checklist.status === "close")
     .map((checklist,index)=>{
         return(
-<div>
-    <Divider />
-</div>
-            <div onClick={()=>this.updateChecklist(values)}>
+
+            <div className="displayListItem" onClick={()=>this.updateChecklist(values)}>
         <div key={checklist.id}>
             <Checkbox checked={
-                checklist.status !== "close" ? "checked" : null
+                checklist.status !== "open" ? "checked" : null
             }  style={{ color: "black" }}/>
             
         </div>
-        <div>{checklist.itemName}</div>
+        <div style={{paddingTop:"10px"}}>{checklist.itemName}</div>
         </div>
+      
         );
     }):undefined}
     </div>
@@ -164,6 +164,7 @@ export class Display extends Component {
                     <UpdateNotes OpenCard={this.state.openCard}
                     
                         id={this.state.Data.id}
+                        data={this.state.Data}
                         color={this.state.Data.color}
                         imageUrl={this.state.Data.imageUrl}
                         title={this.state.Data.title}

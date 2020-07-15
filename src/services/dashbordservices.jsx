@@ -36,6 +36,8 @@ const Axios = new AxiosServices();
   AddCollaborator(id , data){
     return Axios.Post(config.url+"notes/"+id+"/AddcollaboratorsNotes", data );	
   }
-	
+	UpdateCheckList(id,checklistId,data){
+    return Axios.Post(config.url+"notes/"+id+"/checklist/"+checklistId+"/update",data)
+  }
 }
 export default DashbordService;
