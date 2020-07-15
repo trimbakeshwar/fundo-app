@@ -125,6 +125,7 @@ export class Display extends Component {
                     <UpdateNotes OpenCard={this.state.openCard}
                     
                         id={this.state.Data.id}
+                        color={this.state.Data.color}
                         imageUrl={this.state.Data.imageUrl}
                         title={this.state.Data.title}
                         description={this.state.Data.description}

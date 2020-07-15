@@ -10,7 +10,14 @@
    
 }
 
-
+.checklistSetting{
+display: flex;
+flex-direction: column;
+}
+.checklistContainer{
+    display: flex;
+    flex-direction: row;
+}
 
 .titleNoteContainer{
     width: 45em ;    
