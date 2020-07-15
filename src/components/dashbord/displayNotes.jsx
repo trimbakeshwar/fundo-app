@@ -8,6 +8,8 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import RestoreFromTrashIcon from '@material-ui/icons/RestoreFromTrash';
 import Masonry from 'react-masonry-css';
 import UpdateNotes from "./updateNotes"
+
+import { Checkbox } from "@material-ui/core";
 import { Tooltip, Avatar } from "@material-ui/core";
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import Collaborator from "./collaborator";
@@ -96,6 +98,22 @@ export class Display extends Component {
             );
         }):undefined}
 
+    </div>
+    <div>
+    {Boolean(values.noteCheckLists)?values.noteCheckLists.filter((checklist)=>checklist.status === "open")
+    .map((checklist,index)=>{
+        return(
+            <div onClick={()=>this.updateChecklist(values)}>
+        <div key={checklist.id}>
+            <Checkbox checked={
+                checklist.status !== "open" ? "checked" : null
+            }  style={{ color: "black" }}/>
+            
+        </div>
+        <div>{checklist.itemName}</div>
+        </div>
+        );
+    }):undefined}
     </div>
                     {values.isDeleted ?
                         <div className={(this.state.ID === values.id) ? 'ShowIconButton' : 'hideIconButton'} >
