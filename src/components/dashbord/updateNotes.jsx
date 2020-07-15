@@ -5,7 +5,7 @@ import { TextField } from '@material-ui/core'
 import NoteIcons from "./iconButtons"
 import DashbordService from "../../services/dashbordservices";
 import "../../CSS/DashbordScss/update.scss"
-
+import ClearIcon from '@material-ui/icons/Clear';
 import { Checkbox, Divider } from "@material-ui/core";
 const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
 const service = new DashbordService();
@@ -25,20 +25,13 @@ export class UpdateNotes extends Component {
     };
   }
   check = (item, index) => {
-    /*const tempList = this.state.checkList.slice();
-    const i = tempList.findIndex((element) => element.id === item.id);
-    console.log("check", i);
-*/
+  
     const changedItem = {
       itemName: item.itemName,
       status: "close",
       isDeleted: item.isDeleted,
       notesId: item.notesId,
     };
-  //  tempList.splice(i, 1, changedItem);
-    // tempList[i] = changedItem;
-
-   // this.setState({ checkList: tempList }, () => {
       service
         .UpdateCheckList(
           item.notesId,
@@ -55,20 +48,13 @@ export class UpdateNotes extends Component {
    
   };
   uncheck = (item, index) => {
-    /*const tempList = this.state.checkList.slice();
-    const i = tempList.findIndex((element) => element.id === item.id);
-    console.log("check", i);
-*/
+ 
     const changedItem = {
       itemName: item.itemName,
       status: "open",
       isDeleted: item.isDeleted,
       notesId: item.notesId,
     };
-  //  tempList.splice(i, 1, changedItem);
-    // tempList[i] = changedItem;
-
-   // this.setState({ checkList: tempList }, () => {
       service
         .UpdateCheckList(
           item.notesId,
@@ -84,7 +70,17 @@ export class UpdateNotes extends Component {
         });
    
   };
-
+  deleteItem=(Item)=>{
+    service.RemoveItem(
+      Item.notesId,
+      Item.id,
+     
+    )
+    .then((json) => {
+      console.log(json);
+      this.props.onChange();
+    });
+  }
   onTitleChange = (e) => {
     this.setState({ title: e.target.value })
   }
@@ -163,11 +159,15 @@ export class UpdateNotes extends Component {
                       return(          
                         <div className='checklistFileds'>      
                           <div key={checklist.id}>
-                            <Checkbox fontSize='small' size='small'onClick={()=>this.check(checklist,index)}   style={{color : 'black'}}/>
+                            <Checkbox fontSize='small' size='small'onClick={()=>this.check(checklist)}   style={{color : 'black'}}/>
                           </div>
                           <div>
                             { checklist.itemName}
+                            
                           </div> 
+                          <div>
+                          <ClearIcon fontSize="small" onClick={()=>this.deleteItem(checklist,index)} />
+                            </div>
                         </div> 
                       );
                     })                  
@@ -180,11 +180,14 @@ export class UpdateNotes extends Component {
                       return(          
                         <div className='checklistFileds'>      
                           <div key={checklist.id}>
-                            <Checkbox fontSize='small' size='small' onClick={()=>this.uncheck(checklist,index)}  style={{color : 'black'}}/>
+                            <Checkbox fontSize='small' size='small' onClick={()=>this.uncheck(checklist)}  style={{color : 'black'}}/>
                           </div>
                           <div textDecorationLine = 'line-through'>
                             { checklist.itemName}
                           </div> 
+                          <div>
+                          <ClearIcon fontSize="small" onClick={()=>this.deleteItem(checklist,index)} />
+                            </div>
                         </div> 
                       );
                     })                  

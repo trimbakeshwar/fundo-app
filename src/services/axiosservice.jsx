@@ -9,4 +9,8 @@ export default class AxiosServices{
         return axios.get(url,{headers: { Authorization: localStorage.getItem("token") }})
     }
 
+    Delete(url, id){
+        return axios.delete(url,id,{headers: { Authorization: localStorage.getItem("token") }})
+    }
+
 }

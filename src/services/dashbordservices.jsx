@@ -39,5 +39,8 @@ const Axios = new AxiosServices();
 	UpdateCheckList(id,checklistId,data){
     return Axios.Post(config.url+"notes/"+id+"/checklist/"+checklistId+"/update",data)
   }
+  RemoveItem(id, checklistId){
+    return Axios.Delete(config.url+"notes/"+id+"/noteCheckLists/"+checklistId)
+  }
 }
 export default DashbordService;
