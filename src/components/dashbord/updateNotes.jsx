@@ -25,15 +25,20 @@ export class UpdateNotes extends Component {
     };
   }
   check = (item, index) => {
-   
+    /*const tempList = this.state.checkList.slice();
+    const i = tempList.findIndex((element) => element.id === item.id);
+    console.log("check", i);
+*/
     const changedItem = {
       itemName: item.itemName,
       status: "close",
       isDeleted: item.isDeleted,
       notesId: item.notesId,
     };
-    console.log("changedItem",changedItem)
-  
+  //  tempList.splice(i, 1, changedItem);
+    // tempList[i] = changedItem;
+
+   // this.setState({ checkList: tempList }, () => {
       service
         .UpdateCheckList(
           item.notesId,
@@ -49,6 +54,37 @@ export class UpdateNotes extends Component {
         });
    
   };
+  uncheck = (item, index) => {
+    /*const tempList = this.state.checkList.slice();
+    const i = tempList.findIndex((element) => element.id === item.id);
+    console.log("check", i);
+*/
+    const changedItem = {
+      itemName: item.itemName,
+      status: "open",
+      isDeleted: item.isDeleted,
+      notesId: item.notesId,
+    };
+  //  tempList.splice(i, 1, changedItem);
+    // tempList[i] = changedItem;
+
+   // this.setState({ checkList: tempList }, () => {
+      service
+        .UpdateCheckList(
+          item.notesId,
+          item.id,
+          changedItem,
+          
+        )
+        .then((json) => {
+          console.log(json);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+   
+  };
+
   onTitleChange = (e) => {
     this.setState({ title: e.target.value })
   }
@@ -127,7 +163,7 @@ export class UpdateNotes extends Component {
                       return(          
                         <div className='checklistFileds'>      
                           <div key={checklist.id}>
-                            <Checkbox fontSize='small' size='small'onClick={()=>this.check(checklist,index)} />
+                            <Checkbox fontSize='small' size='small'onClick={()=>this.check(checklist,index)}   style={{color : 'black'}}/>
                           </div>
                           <div>
                             { checklist.itemName}
@@ -137,7 +173,23 @@ export class UpdateNotes extends Component {
                     })                  
                   : undefined                                  
                 }
-                
+                { (Boolean(this.props.data.noteCheckLists)) ? 
+                    this.props.data.noteCheckLists.filter((checklist)=> checklist.status === 'close')
+                                                .map((checklist,index)=>{ 
+                                                  console.log("checklist",checklist); 
+                      return(          
+                        <div className='checklistFileds'>      
+                          <div key={checklist.id}>
+                            <Checkbox fontSize='small' size='small' onClick={()=>this.uncheck(checklist,index)}  style={{color : 'black'}}/>
+                          </div>
+                          <div textDecorationLine = 'line-through'>
+                            { checklist.itemName}
+                          </div> 
+                        </div> 
+                      );
+                    })                  
+                  : undefined                                  
+                }
               </div> 
               <div className='iconfordialog' >
                 <div className='IconsContainer' > <NoteIcons /> </div>
