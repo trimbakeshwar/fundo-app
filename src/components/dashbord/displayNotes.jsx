@@ -9,7 +9,7 @@ import RestoreFromTrashIcon from '@material-ui/icons/RestoreFromTrash';
 import Masonry from 'react-masonry-css';
 import UpdateNotes from "./updateNotes"
 
-import { Checkbox } from "@material-ui/core";
+import { Checkbox, Divider } from "@material-ui/core";
 import { Tooltip, Avatar } from "@material-ui/core";
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import Collaborator from "./collaborator";
@@ -66,6 +66,9 @@ export class Display extends Component {
             openCard: false
         })
     }
+    updateChecklist=()=>{
+        
+    }
     render() {
       
         const notes = this.props.data.reverse().map((values, index) => {
@@ -107,6 +110,24 @@ export class Display extends Component {
         <div key={checklist.id}>
             <Checkbox checked={
                 checklist.status !== "open" ? "checked" : null
+            }  style={{ color: "black" }}/>
+            
+        </div>
+        <div>{checklist.itemName}</div>
+        </div>
+        );
+    }):undefined
+    }
+    {Boolean(values.noteCheckLists)?values.noteCheckLists.filter((checklist)=>checklist.status === "close")
+    .map((checklist,index)=>{
+        return(
+<div>
+    <Divider />
+</div>
+            <div onClick={()=>this.updateChecklist(values)}>
+        <div key={checklist.id}>
+            <Checkbox checked={
+                checklist.status !== "close" ? "checked" : null
             }  style={{ color: "black" }}/>
             
         </div>
