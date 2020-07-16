@@ -58,10 +58,13 @@ export class Collaborator extends Component {
             this.props.closeCollaborater();
 
         } else {
+            console.log("addcollaborator", this.props)
             this.props.addcollaborator(data);
+           
         }
 
     }
+   
     UserList = (event) => {
         this.setState({
             collabatorName: event.target.value,
@@ -116,7 +119,7 @@ export class Collaborator extends Component {
                                 </div>
                             </div>
                         </div>
-                        { 
+                         { 
   
                     
      
@@ -137,7 +140,7 @@ export class Collaborator extends Component {
       );
   }) 
 
-}
+} 
 
                         <div className="SearchMail">
                             <div className="Collaboratorimage"><PersonAddOutlinedIcon /> </div>

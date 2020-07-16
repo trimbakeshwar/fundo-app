@@ -70,7 +70,10 @@ export class CreateNote extends React.Component {
       console.log("data of request", apiInputData)
       service.AddNote(apiInputData).then((Response) => {
         console.log("add data",Response)
-        this.setState({ noteOpen: false });
+        this.setState({ noteOpen: false ,
+          checklistOpen:false,
+          checkList: [""],
+        });
         console.log(this.state);
       }).catch((err) => {
         console.log(err)
@@ -80,7 +83,7 @@ export class CreateNote extends React.Component {
 
     this.props.updateOnAdd();
     this.setState({
-
+   
       file: ''
     })
   }
@@ -127,20 +130,20 @@ export class CreateNote extends React.Component {
   }
   clearIconOffhover = () => {
     if (!this.state.isClickOn) {
-      this.setState({ ClearIcon: false });
+      this.setState({ clearIcon: false });
     }
   };
   clearIconOnHover = () => {
-    this.setState({ ClearIcon: true });
+    this.setState({ clearIcon: true });
   };
   clarClickAway = () => {
     if (this.state.isClickOn) {
-      this.setState({ ClearIcon: false });
+      this.setState({ clearIcon: false });
     }
   };
  clearIconClick = () => {
     if (!this.state.isClickOn) {
-      this.setState({ ClearIcon: false });
+      this.setState({ clearIcon: false });
 
     }
   }
@@ -149,7 +152,7 @@ export class CreateNote extends React.Component {
       <Container >
         <ClickAwayListener onClickAway={this.onHandleClickaway} >
           <div>
-            {this.state.noteOpen ?
+            {(this.state.noteOpen || this.state.checklistOpen)?
               (
                 <div className='noteCotainer' onHandleClickaway={this.onHandleClickaway}>
                   <div>
@@ -189,7 +192,7 @@ export class CreateNote extends React.Component {
 
                             <ClickAwayListener
                               onClickAway={this.onHandleClickaway} 
-                              onClickAway={this.clarClickAway} >
+                               >
 
                               <div className="checklistContainer"
                                

@@ -98,7 +98,7 @@ export class UpdateNotes extends Component {
       noteId: this.props.id,
       title: (this.state.title === "") ? this.props.title : this.state.title,
       description: (this.state.description === "") ? this.props.description : this.state.description,
-      file : (Boolean (this.state.newFile)) ?  this.state.newFile : this.props.imageUrl
+      file : (Boolean (this.state.file)) ?  this.state.file : this.props.imageUrl
     }
     service.UpdateNotes(requestData).then((Response => {
       console.log(Response)
@@ -152,22 +152,22 @@ export class UpdateNotes extends Component {
                   onChange={this.onBodyTextChange}
                 />
               </div>
-               <div>
+               <div className='displaychecklistSetting'>
                 { (Boolean(this.props.data.noteCheckLists)) ? 
                     this.props.data.noteCheckLists.filter((checklist)=> checklist.status === 'open')
                                                 .map((checklist,index)=>{  
                       return(          
-                        <div className='checklistFileds'>      
+                        <div className='displayListItem'>      
                           <div key={checklist.id}>
                             <Checkbox fontSize='small' size='small'onClick={()=>this.check(checklist)}   style={{color : 'black'}}/>
                           </div>
-                          <div>
+                                           <div style={{paddingTop:"7px"}}>
                             { checklist.itemName}
                             
                           </div> 
-                          <div>
+                          {/* <div  style={{paddingTop:"7px"}}>
                           <ClearIcon fontSize="small" onClick={()=>this.deleteItem(checklist,index)} />
-                            </div>
+                            </div> */}
                         </div> 
                       );
                     })                  
@@ -178,16 +178,16 @@ export class UpdateNotes extends Component {
                                                 .map((checklist,index)=>{ 
                                                   console.log("checklist",checklist); 
                       return(          
-                        <div className='checklistFileds'>      
+                        <div className='displayListItem'>      
                           <div key={checklist.id}>
                             <Checkbox fontSize='small' size='small' onClick={()=>this.uncheck(checklist)}  style={{color : 'black'}}/>
                           </div>
-                          <div textDecorationLine = 'line-through'>
+                          <div style={{paddingTop:"7px"}}textDecorationLine = 'line-through'>
                             { checklist.itemName}
                           </div> 
-                          <div>
+                          {/* <div  style={{paddingTop:"7px"}} >
                           <ClearIcon fontSize="small" onClick={()=>this.deleteItem(checklist,index)} />
-                            </div>
+                            </div> */}
                         </div> 
                       );
                     })                  

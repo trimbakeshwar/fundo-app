@@ -55,6 +55,16 @@ font-size: 20px;
     
    
 }
+.displaychecklistSetting{
+    display:flex;
+    flex-direction:column;
+    
+  }
+  .displayListItem{
+    display:flex;
+    flex-direction:row;
+   
+  }
 @media only screen and (max-width: 414pX) {
     .iconfordialog{
         display: flex;

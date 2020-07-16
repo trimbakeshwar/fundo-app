@@ -46,6 +46,10 @@ export class NoteIcons extends Component {
     }
     handlercollaborator=()=>{
         this.setState({ collaboratorOpen: true });
+        console.log("source",this.props)
+        if (this.props.source === "createNote") {
+            this.props.CollaboratorIcon();
+          }
     }
     CloseCollaborater=()=>{
         this.setState({ collaboratorOpen: false });
