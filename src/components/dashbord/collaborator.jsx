@@ -4,6 +4,7 @@ import "../../CSS/DashbordScss/colaborator.scss"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import Card from "@material-ui/core/Card";
+import ClearIcon from '@material-ui/icons/Clear';
 import { MenuItem, Divider, TextField, Popover, MenuList, Button } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import DashbordService from "../../services/dashbordservices";
@@ -64,7 +65,25 @@ export class Collaborator extends Component {
         }
 
     }
-   
+    removeColaborator=(colaboratorData)=>{
+       
+            const notesId = this.props.NoteId.id;
+        
+            const item = this.state.userData
+            console.log("notesId",notesId,"item", colaboratorData.userId);
+        
+            service
+              .RemoveCollaborator(
+                notesId,
+                colaboratorData.userId,
+               
+              )
+              .then((json) => {
+                console.log("collab removed", json);
+              });
+          };
+        
+    
     UserList = (event) => {
         this.setState({
             collabatorName: event.target.value,
@@ -131,9 +150,14 @@ export class Collaborator extends Component {
                   <div ><Avatar style={{ "backgroundColor":  "blue" }}
                       alt={colaboratorData.firstName} size="small" src="/"  ></Avatar> </div>
                   <div className="information">
+                      <div>
                       <div>{colaboratorData.firstName + " " +
                           colaboratorData.lastName}</div>
                       <div>{colaboratorData.email}</div>
+                      </div>
+                      <div>
+                           <ClearIcon onClick={()=>this.removeColaborator(colaboratorData)}/>                   
+                     </div>
                   </div>
               </div>
           </div>

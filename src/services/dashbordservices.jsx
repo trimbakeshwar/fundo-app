@@ -42,5 +42,8 @@ const Axios = new AxiosServices();
   RemoveItem(id, checklistId){
     return Axios.Delete(config.url+"notes/"+id+"/noteCheckLists/"+checklistId)
   }
+  RemoveCollaborator( notesId,userId){
+    return Axios.Delete(config.url+"notes/"+notesId+"/removeCollaboratorsNotes/"+userId)
+  }
 }
 export default DashbordService;
