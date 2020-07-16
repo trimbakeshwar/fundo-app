@@ -11,10 +11,14 @@ import Container from "@material-ui/core/Container";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import DashbordService from "../../services/dashbordservices";
 import Button from '@material-ui/core/Button';
+import Tooltip from "@material-ui/core/Tooltip";
 import {
   Checkbox,
-
+Avatar
 } from "@material-ui/core";
+
+import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
+import Collaborator from "./collaborator"
 import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
 const commonUrl = "http://fundoonotes.incubation.bridgelabz.com/"
 const service = new DashbordService();
@@ -26,6 +30,8 @@ export class CreateNote extends React.Component {
       title: '',
       description: '',
       file: '',
+      collaboratorOpen: false,
+      collaboratorData: "",
       checklistOpen: false,
       checklist: "",
       checkList: [""],
@@ -61,6 +67,7 @@ export class CreateNote extends React.Component {
       apiInputData.set("description", Boolean(this.state.description) ? this.state.description : "")
       apiInputData.set("file", Boolean(this.state.file) ? this.state.file : "")
       apiInputData.set("checklist", JSON.stringify(this.state.checkList));
+      apiInputData.set("collaboratorData", JSON.stringify(this.state.collaboratorData));
       /*
             let requestData = {
               title: this.state.title,
@@ -147,12 +154,22 @@ export class CreateNote extends React.Component {
 
     }
   }
+  addcollaborator = (data) => {
+    this.setState({
+      collaboratorOpen: !this.state.collaboratorOpen,
+      collaboratorData: data
+    });
+    console.log("collab", this.state);
+  };
   render() {
     return (
       <Container >
         <ClickAwayListener onClickAway={this.onHandleClickaway} >
           <div>
             {(this.state.noteOpen || this.state.checklistOpen)?
+            this.state.collaboratorOpen ? (
+              <Collaborator addcollaborator={this.addcollaborator} />
+            ):
               (
                 <div className='noteCotainer' onHandleClickaway={this.onHandleClickaway}>
                   <div>
@@ -244,10 +261,24 @@ export class CreateNote extends React.Component {
                         </div>
                       )}
                   </div>
+ <div className="collaborator">
+              {Boolean(this.state.collaboratorData) ? (
+                <div>
+                 <Tooltip title={this.state.collaboratorData.email} placement="bottom">
+                        <Avatar
+                          alt={this.state.collaboratorData.firstName}
+                          src="/"
+                        ></Avatar>
+                      </Tooltip>
 
+                </div>
+              ) : undefined}
+              </div>
                   <div className="iconPositionSetting" >
                     <div>
-                      <NoteIcons image={(data) => this.GetImage(data)} />
+                      <NoteIcons variant="createNote" image={(data) => this.GetImage(data)}
+                       CollaboratorIcon={()=>this.props.collaboratorOpen} />
+                    
                     </div>
                     <div className="closeButtonSetting">
                       <Button color="primary" onClick={this.close}>close</Button>

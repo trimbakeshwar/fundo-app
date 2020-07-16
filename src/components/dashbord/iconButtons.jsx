@@ -4,6 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreOptions from "./optionMenue";
 import AddAlertOutlinedIcon from '@material-ui/icons/AddAlertOutlined';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
+
 import ColourPallet from "./colorPallet"
 import ColorLensOutlinedIcon from '@material-ui/icons/ColorLensOutlined';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
@@ -45,11 +46,14 @@ export class NoteIcons extends Component {
         this.props.image(event.target.files[0]);
     }
     handlercollaborator=()=>{
-        this.setState({ collaboratorOpen: true });
-        console.log("source",this.props)
-        if (this.props.source === "createNote") {
-            this.props.CollaboratorIcon();
+        
+        console.log("sourcehgc",this.props.CollaboratorIcon())
+        if (this.props.variant ==="createNote") {
+            this.props.CollaboratorIcon( true);
           }
+         
+            this.setState({ collaboratorOpen: true });
+        
     }
     CloseCollaborater=()=>{
         this.setState({ collaboratorOpen: false });
@@ -60,6 +64,7 @@ export class NoteIcons extends Component {
                 <Tooltip title="Reminde me">
                     <div className="button" ><IconButton > <AddAlertOutlinedIcon fontSize="small" /> </IconButton></div>
                 </Tooltip>
+                
                 <Tooltip title="Colabrator">
                     <div className="button"><IconButton > <PersonAddOutlinedIcon onClick={() => this.handlercollaborator()} fontSize="small" /> </IconButton></div>
                 </Tooltip>

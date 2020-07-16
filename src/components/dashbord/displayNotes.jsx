@@ -8,7 +8,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import RestoreFromTrashIcon from '@material-ui/icons/RestoreFromTrash';
 import Masonry from 'react-masonry-css';
 import UpdateNotes from "./updateNotes"
-
+import { TextField } from '@material-ui/core'
 import { Checkbox, Divider } from "@material-ui/core";
 import { Tooltip, Avatar } from "@material-ui/core";
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
@@ -30,6 +30,7 @@ export class Display extends Component {
             openCard: false,
             Data: "",
             color:"",
+            checkList: [""],
             breakpointColumnsObj: {
                 default: 4,
                 1717: 4,
@@ -69,6 +70,9 @@ export class Display extends Component {
     updateChecklist=()=>{
 
     }
+  
+  
+    
     render() {
       
         const notes = this.props.data.reverse().map((values, index) => {
@@ -110,9 +114,11 @@ export class Display extends Component {
         <div key={checklist.id}>
             <Checkbox checked={
                 checklist.status !== "open" ? "checked" : null
-            }  style={{ color: "black" }}/>
+            }   style={{ color: "black" }}/>
             
         </div>
+      
+
         <div style={{paddingTop:"10px"}}>{checklist.itemName}</div>
         </div>
         );
@@ -129,7 +135,8 @@ export class Display extends Component {
                 checklist.status !== "open" ? "checked" : null
             }  style={{ color: "black" }}/>
             
-        </div>
+        </div> 
+
         <div style={{paddingTop:"10px"}}>{checklist.itemName}</div>
         </div>
       

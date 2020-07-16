@@ -68,18 +68,19 @@ export class Collaborator extends Component {
     removeColaborator=(colaboratorData)=>{
        
             const notesId = this.props.NoteId.id;
-        
-            const item = this.state.userData
+            const item = colaboratorData.userId
             console.log("notesId",notesId,"item", colaboratorData.userId);
         
             service
               .RemoveCollaborator(
                 notesId,
-                colaboratorData.userId,
+                item
                
               )
               .then((json) => {
                 console.log("collab removed", json);
+              }).catch((err)=>{
+                console.log("err", err);
               });
           };
         
@@ -143,26 +144,26 @@ export class Collaborator extends Component {
                     
      
       
-  this.props.NoteId.collaborators.map((colaboratorData, index) => {
-      return (
-          <div className="userInformation">
-              <div className="userProfile">
-                  <div ><Avatar style={{ "backgroundColor":  "blue" }}
-                      alt={colaboratorData.firstName} size="small" src="/"  ></Avatar> </div>
-                  <div className="information">
-                      <div>
-                      <div>{colaboratorData.firstName + " " +
-                          colaboratorData.lastName}</div>
-                      <div>{colaboratorData.email}</div>
-                      </div>
-                      <div>
-                           <ClearIcon onClick={()=>this.removeColaborator(colaboratorData)}/>                   
-                     </div>
-                  </div>
-              </div>
-          </div>
-      );
-  }) 
+//   this.props.NoteId.collaborators.map((colaboratorData, index) => {
+//       return (
+//           <div className="userInformation">
+//               <div className="userProfile">
+//                   <div ><Avatar style={{ "backgroundColor":  "blue" }}
+//                       alt={colaboratorData.firstName} size="small" src="/"  ></Avatar> </div>
+//                   <div className="information">
+//                       <div>
+//                       <div>{colaboratorData.firstName + " " +
+//                           colaboratorData.lastName}</div>
+//                       <div>{colaboratorData.email}</div>
+//                       </div>
+//                       <div>
+//                            <ClearIcon onClick={()=>this.removeColaborator(colaboratorData)}/>                   
+//                      </div>
+//                   </div>
+//               </div>
+//           </div>
+//       );
+//   }) 
 
 } 
 

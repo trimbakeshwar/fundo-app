@@ -7,6 +7,13 @@ import DashbordService from "../../services/dashbordservices";
 import "../../CSS/DashbordScss/update.scss"
 import ClearIcon from '@material-ui/icons/Clear';
 import { Checkbox, Divider } from "@material-ui/core";
+import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from "@material-ui/core/Tooltip";
+import {
+
+Avatar
+} from "@material-ui/core";
 const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
 const service = new DashbordService();
 export class UpdateNotes extends Component {
@@ -21,6 +28,7 @@ export class UpdateNotes extends Component {
       openDilogBox: false,
       closeDilogBox: true,
       checklistId: "",
+      collaboraterData:"",
      checkList: this.props.data.noteCheckLists
     };
   }
@@ -45,7 +53,7 @@ export class UpdateNotes extends Component {
         .catch((err) => {
           console.log(err);
         });
-   
+        this.props.refreshh();
   };
   uncheck = (item, index) => {
  
@@ -68,7 +76,7 @@ export class UpdateNotes extends Component {
         .catch((err) => {
           console.log(err);
         });
-   
+        this.props.refreshh();
   };
   deleteItem=(Item)=>{
     service.RemoveItem(
@@ -78,8 +86,9 @@ export class UpdateNotes extends Component {
     )
     .then((json) => {
       console.log(json);
-      this.props.onChange();
+     
     });
+    this.props.refreshh();
   }
   onTitleChange = (e) => {
     this.setState({ title: e.target.value })
@@ -98,6 +107,7 @@ export class UpdateNotes extends Component {
       noteId: this.props.id,
       title: (this.state.title === "") ? this.props.title : this.state.title,
       description: (this.state.description === "") ? this.props.description : this.state.description,
+      collaborators : this.state.collaboraterData,
       file : (Boolean (this.state.file)) ?  this.state.file : this.props.imageUrl
     }
     service.UpdateNotes(requestData).then((Response => {
@@ -159,15 +169,15 @@ export class UpdateNotes extends Component {
                       return(          
                         <div className='displayListItem'>      
                           <div key={checklist.id}>
-                            <Checkbox fontSize='small' size='small'onClick={()=>this.check(checklist)}   style={{color : 'black'}}/>
+                            <Checkbox fontSize='small' size='small' onClick={()=>this.check(checklist)}   style={{color : 'black'}}/>
                           </div>
                                            <div style={{paddingTop:"7px"}}>
                             { checklist.itemName}
                             
                           </div> 
-                          {/* <div  style={{paddingTop:"7px"}}>
+                          <div  style={{paddingTop:"7px"}}>
                           <ClearIcon fontSize="small" onClick={()=>this.deleteItem(checklist,index)} />
-                            </div> */}
+                            </div>
                         </div> 
                       );
                     })                  
@@ -185,14 +195,31 @@ export class UpdateNotes extends Component {
                           <div style={{paddingTop:"7px"}}textDecorationLine = 'line-through'>
                             { checklist.itemName}
                           </div> 
-                          {/* <div  style={{paddingTop:"7px"}} >
+                          <div  style={{paddingTop:"7px"}} >
                           <ClearIcon fontSize="small" onClick={()=>this.deleteItem(checklist,index)} />
-                            </div> */}
+                            </div>
                         </div> 
                       );
                     })                  
                   : undefined                                  
                 }
+                 <div className='colaboratersContainer'>
+                {
+                  (Boolean(this.props.data.collaborators)) ?                    
+                 this.props.data.collaborators.map((colabData,index)=>{
+                    return(
+                      <div style={{paddingLeft:"15px"}}>
+                      <Tooltip title={colabData.email} placement="bottom">
+                        <Avatar
+                          alt={colabData.firstName}
+                          src="/"
+                        ></Avatar>
+                      </Tooltip>
+                      </div>
+                    )})
+                    :undefined
+                }
+              </div>
               </div> 
               <div className='iconfordialog' >
                 <div className='IconsContainer' > <NoteIcons /> </div>
