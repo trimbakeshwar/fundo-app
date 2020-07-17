@@ -46,13 +46,15 @@ export class NoteIcons extends Component {
         this.props.image(event.target.files[0]);
     }
     handlercollaborator=()=>{
-        
-        console.log("sourcehgc",this.props.CollaboratorIcon())
+       
+       // console.log("sourcehgc",this.props.CollaboratorIcon())
         if (this.props.variant ==="createNote") {
             this.props.CollaboratorIcon( true);
           }
-         
+         else{
             this.setState({ collaboratorOpen: true });
+         }
+           
         
     }
     CloseCollaborater=()=>{

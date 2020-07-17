@@ -74,19 +74,36 @@ export class Display extends Component {
   
     
     render() {
-      
+      var imge
         const notes = this.props.data.reverse().map((values, index) => {
             return (
+              
                 <Card className="cardContainer" 
                 onMouseEnter={() => this.onCard(values.id)}
                  onMouseLeave={() => this.leaveCard(values.id)}
               style={{
                 backgroundColor: `${values.color}`}}>
+                      <div>
+              
+               {Boolean(values.imageUrl.includes("client/"))?
+              <img src={commonUrl+values.imageUrl.replace("client/", "")} className="imagecontainer"
+              refreshh={() => this.props.updateOnAdd()} />: <img src={commonUrl+values.imageUrl.replace("client/", "")} className="imagecontainer"
+              refreshh={() => this.props.updateOnAdd()} />}
+                
+                </div>
                      <div>
-                {Boolean(values.imageUrl) ? 
-                  <img src={commonUrl+values.imageUrl} className="imagecontainer"
-                  refreshh={() => this.props.updateOnAdd()} />
-                  : undefined
+                
+               {/* {Boolean(values.imageUrl.includes("/client/"))?
+                    imge = values.imageUrl.replace("/client/", "/"):  imge = values.imageUrl
+                      */
+                    // <img src={commonUrl+imge} className="imagecontainer"
+              // refreshh={() => this.props.updateOnAdd()} />)*/}
+                    
+                // (
+                //   <img src={commonUrl+values.imageUrl.replace("client/", "")} className="imagecontainer"
+                //   refreshh={() => this.props.updateOnAdd()} />
+                // )
+                 
                 }
               </div>
                     <div className="title" onClick={() => this.updatenote(values)}> {values.title} </div>

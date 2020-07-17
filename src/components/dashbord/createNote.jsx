@@ -31,14 +31,15 @@ export class CreateNote extends React.Component {
       description: '',
       file: '',
       collaboratorOpen: false,
-      collaboratorData: "",
+      collaberators:"" ,
+      collaboratorData:"",
       checklistOpen: false,
       checklist: "",
       checkList: [""],
       isCheckList: false,
       clearIcon: true,
       isClickOn: false,
-      
+      dataa:false
     };
   }
   handleClick = () => {
@@ -61,36 +62,42 @@ export class CreateNote extends React.Component {
   }
   close = (eve) => {
 
-    
+    console.log("collaboratorData",this.state.collaboratorData)
       let apiInputData = new FormData();
       apiInputData.set("title", Boolean(this.state.title) ? this.state.title : "")
       apiInputData.set("description", Boolean(this.state.description) ? this.state.description : "")
       apiInputData.set("file", Boolean(this.state.file) ? this.state.file : "")
       apiInputData.set("checklist", JSON.stringify(this.state.checkList));
-      apiInputData.set("collaboratorData", JSON.stringify(this.state.collaboratorData));
-      /*
+      apiInputData.set(
+        "collaberators",
+        Boolean(this.state.collaboratorData)
+          ? JSON.stringify(this.state.collaboratorData)
+          : ""
+      );
+     // apiInputData.set("collaberators", JSON.stringify(this.state.collaboratorData));
+      
             let requestData = {
               title: this.state.title,
               description: this.state.description,
-              file:this.state.file
-            }*/
+              file:this.state.file,
+              checklist:this.state.checkList,
+              collaberators:this.state.collaberators
+            }
       console.log("data of request", apiInputData)
       service.AddNote(apiInputData).then((Response) => {
         console.log("add data",Response)
         this.setState({ noteOpen: false ,
           checklistOpen:false,
           checkList: [""],
+          dataa:false,
+          collaboratorData: "",
         });
         console.log(this.state);
       }).catch((err) => {
         console.log(err)
       });
-    
-    this.props.updateOnAdd();
-
     this.props.updateOnAdd();
     this.setState({
-   
       file: ''
     })
   }
@@ -156,10 +163,10 @@ export class CreateNote extends React.Component {
   }
   addcollaborator = (data) => {
     this.setState({
-      collaboratorOpen: !this.state.collaboratorOpen,
-      collaboratorData: data
+     collaboratorOpen: !this.state.collaboratorOpen,
+     collaboratorData: data
     });
-    console.log("collab", this.state);
+    console.log("collab", this.state.collaboratorData);
   };
   render() {
     return (
@@ -168,7 +175,9 @@ export class CreateNote extends React.Component {
           <div>
             {(this.state.noteOpen || this.state.checklistOpen)?
             this.state.collaboratorOpen ? (
-              <Collaborator addcollaborator={this.addcollaborator} />
+              <div style={{marginLeft:"23em",paddingTop:"20px"}}>
+              <Collaborator addcollaborator={(data)=>this.addcollaborator(data)} />
+              </div>
             ):
               (
                 <div className='noteCotainer' onHandleClickaway={this.onHandleClickaway}>
@@ -277,7 +286,7 @@ export class CreateNote extends React.Component {
                   <div className="iconPositionSetting" >
                     <div>
                       <NoteIcons variant="createNote" image={(data) => this.GetImage(data)}
-                       CollaboratorIcon={()=>this.props.collaboratorOpen} />
+                       CollaboratorIcon={(dataa)=>this.setState({collaboratorOpen:dataa})} />
                     
                     </div>
                     <div className="closeButtonSetting">

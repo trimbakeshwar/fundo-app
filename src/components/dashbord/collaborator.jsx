@@ -59,7 +59,7 @@ export class Collaborator extends Component {
             this.props.closeCollaborater();
 
         } else {
-            console.log("addcollaborator", this.props)
+            console.log("addcollaborator", data)
             this.props.addcollaborator(data);
            
         }

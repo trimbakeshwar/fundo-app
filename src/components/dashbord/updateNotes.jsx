@@ -119,11 +119,7 @@ export class UpdateNotes extends Component {
   }
   handleClose = () => { };
   render() {
-    console.log("card", this.props.openCard)
-    console.log("title", this.props.title)
-    console.log("description", this.props.description)
-    console.log("id", this.props.id)
-    console.log("noteCheckLists", this.props.data.noteCheckLists)
+
     return (
       <div >
         <div className='dialogContainer'>
@@ -210,7 +206,7 @@ export class UpdateNotes extends Component {
                     return(
                       <div style={{paddingLeft:"15px"}}>
                       <Tooltip title={colabData.email} placement="bottom">
-                        <Avatar
+                        <Avatar style={{ "backgroundColor": "green" }}
                           alt={colabData.firstName}
                           src="/"
                         ></Avatar>
