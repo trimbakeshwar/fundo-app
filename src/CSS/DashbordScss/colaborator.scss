@@ -27,7 +27,10 @@
 	 width:250px
  }
 .information{
-    padding-left: 15px;
+	padding-left: 15px;
+	flex-direction: row;
+	display: flex;
+
 } 
 .SearchMail{
     display: flex;
@@ -58,17 +61,22 @@
 	padding-left: 450px !important;
 	background-color: #E8E8E8;
 }
+.clearcollab{
+	justify-content: end;
+	width: 20em;
+}
+
 @media only screen and (max-width: 414pX) {
 	.collaborationdialog{
 		width: 300px;
 	
 	} 
-	.dialogbutton{
+	/*.dialogbutton{
 		flex-direction: row;
 		display: flex;
 		padding-top: 10px !important;
 		padding-bottom: 10px !important;
 		padding-left: 300px !important;
 		background-color: #E8E8E8;
-	}
+	}*/
 }

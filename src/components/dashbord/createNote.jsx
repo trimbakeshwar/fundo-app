@@ -71,7 +71,7 @@ export class CreateNote extends React.Component {
       apiInputData.set(
         "collaberators",
         Boolean(this.state.collaboratorData)
-          ? JSON.stringify(this.state.collaboratorData)
+          ? JSON.stringify([this.state.collaboratorData])
           : ""
       );
      // apiInputData.set("collaberators", JSON.stringify(this.state.collaboratorData));

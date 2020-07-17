@@ -108,8 +108,9 @@ export class UpdateNotes extends Component {
       title: (this.state.title === "") ? this.props.title : this.state.title,
       description: (this.state.description === "") ? this.props.description : this.state.description,
       collaborators : this.state.collaboraterData,
-      file : (Boolean (this.state.file)) ?  this.state.file : this.props.imageUrl
+      file : (Boolean (this.state.file)) ?  this.state.file :""
     }
+    console.log("updated data",requestData)
     service.UpdateNotes(requestData).then((Response => {
       console.log(Response)
     })).catch((err => {
@@ -136,6 +137,18 @@ export class UpdateNotes extends Component {
               : undefined
             }
         </div>
+        <div>
+                    {(this.state.file != "") ?
+                      <img
+                        src={`${URL.createObjectURL(this.state.file)}`}
+                        alt="Curently image is not available"
+                        width="600px"
+                        height="500px"
+                        style={{ paddingTop: "10px" }}
+                      />
+                      : ""
+                    }
+                  </div>
               <div className='dialogtextsFields'>
                 <TextField
                   className='tittle'
@@ -218,7 +231,10 @@ export class UpdateNotes extends Component {
               </div>
               </div> 
               <div className='iconfordialog' >
-                <div className='IconsContainer' > <NoteIcons /> </div>
+                <div className='IconsContainer' > <NoteIcons 
+                  image={(data) => {
+                      this.setState({ file: data });
+                    }} /> </div>
                 <Button onClick={this.onClose} style={{ "padding-left": "50px" }} float='right'>Close</Button>
               </div>
             </div>
