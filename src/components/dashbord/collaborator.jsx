@@ -109,7 +109,7 @@ export class Collaborator extends Component {
         })
     }
     render() {
-        console.log("map",this.props.NoteId)
+        
      
         
         const userList = this.state.userList.map((values, index) => {

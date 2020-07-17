@@ -236,6 +236,7 @@ export class CreateNote extends React.Component {
                                 <div className='textFieldContainer'>
                                   <TextField
                                     fullWidth
+                                    //id='description'
                                     className='textfield'
                                     placeholder='Take a Note'
                                     textdecaration='none'
@@ -261,6 +262,7 @@ export class CreateNote extends React.Component {
                     ) : (
                         <div className='textFieldContainer'>
                           <TextField
+                          id='description'
                             className='textfield'
                             placeholder='Take a Note'
                             textdecaration='none'
@@ -290,14 +292,14 @@ export class CreateNote extends React.Component {
                     
                     </div>
                     <div className="closeButtonSetting">
-                      <Button color="primary" onClick={this.close}>close</Button>
+                      <Button id="closed" color="primary" onClick={this.close}>close</Button>
                     </div>
                   </div>
                 </div>
               ) :
               (
                 <div className='titleNoteContainer'  >
-                  <div className='titleTextField' onClick={this.handleClick}>
+                  <div id="idOffhandleClick" className='titleTextField' onClick={this.handleClick}>
                     <TextField id='tittle' placeholder='Take a note..' textdecaration='none' value="" multiline InputProps={{ disableUnderline: true }} />
                   </div>
                   <div className='titleNoteIcons'>

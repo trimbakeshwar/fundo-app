@@ -4,6 +4,7 @@ import App from './App';
 import  { shallow} from 'enzyme';
 import Login from './components/login';
 import Registration from './components/registration'
+import CreateNote from './components/dashbord/createNote'
 import './setupTests'
 describe('Login Component', () => {
   //testing rendering of login component
@@ -126,18 +127,56 @@ describe('Email input', () => {
         expect(wrapper.state('password')).toEqual('Suraj@123');
       })
     })
-    describe('wrong Password input', () => {
-      it(' change event and change the Password of the registratrion Component', () => {
-        const wrapper = shallow( < Registration /> );
-        wrapper.find('#outlined-password')
-          .simulate('change', {
+  
+    describe('Notes Component', () => {
+     
+        it('should render without throwing an error', () => {
+            expect(shallow(< CreateNote />).exists()).toBe(true)
+        })
+       
+        it('renders a tittle', () => {
+            expect(shallow( < CreateNote /> ).find('#tittle').length).toEqual(1)
+          })
+        
+    })
+    describe('Title input', () => {
+     
+        it('should respond to change event and change the state of the Notestitle Component', () => {
+          const wrapper = shallow( < CreateNote /> );
+          wrapper.find('#tittle').simulate('change', {
             target: {
-              name: 'password',
-              value: ''
+              name: 'tittle',
+              value: 'data123'
             }
           });
-        expect(wrapper.state('passwordError')).toEqual('invalid password');
+          expect(wrapper.state('tittle')).not.toEqual('');
+        })
       })
-    })
-  
-   
+      describe('check CheckBoxOutlinedIcon', () => {
+     
+        it('should respond check CheckBoxOutlinedIcon', () => {
+          const wrapper = shallow( < CreateNote /> );
+          const spy = jest.spyOn(wrapper.instance(),"openChecklist")
+          wrapper.instance().forceUpdate();
+          wrapper.find('CheckBoxOutlinedIcon').simulate('click',{target: {eve: 'value'}})
+          expect(spy).toHaveBeenCalled();
+          });
+         
+        
+      })
+     
+      describe('check CheckBoxOutlinedIcon', () => {
+     
+        it('should respond check CheckBoxOutlinedIcon', () => {
+          const wrapper = shallow( < CreateNote /> );
+          const spy = jest.spyOn(wrapper.instance(),"openChecklist")
+          wrapper.instance().forceUpdate();
+          wrapper.find('CheckBoxOutlinedIcon').simulate('click',{target: {eve: 'value'}})
+          expect(spy).toHaveBeenCalled();
+          });
+         
+        
+      })
+     
+     
+     

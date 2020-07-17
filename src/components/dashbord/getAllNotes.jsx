@@ -17,7 +17,7 @@ export class GetAllNotes extends Component {
     }
     getAllNotes = () => {
         service.GetNotes().then((Response => {
-            console.log(Response)
+           
             this.setState({ AllNotes: Response.data.data.data })
         })).catch((err) => {
             console.log(err)

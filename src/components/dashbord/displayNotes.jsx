@@ -168,6 +168,7 @@ export class Display extends Component {
                         <div className={(this.state.ID === values.id) ? 'ShowIconButtons' : 'hideIconButtons'} >
                             <NoteIcons
                                 data={values}
+                                
                                 refreshh={() => this.props.updateOnAdd()} />
                         </div>}
                 </Card>
