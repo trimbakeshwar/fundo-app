@@ -50,17 +50,13 @@ justify-content: start;
   top:15px;
   left:80px;
   top: 10px;
-  
- 
 }
-
 .hideIconButtons{
   height: 25px;
   margin-top: 15px;
   visibility: hidden;
   align-self:center;
   width: 80%;
-  
 }
 .displaychecklistSetting{
   display:flex;
@@ -70,19 +66,6 @@ justify-content: start;
   display:flex;
   flex-direction:row;
 }
-/*.storage{
-  width: 60%;
-  top:50px;
-    height: auto;
-   
-    display: flex;
-    flex-direction: row; 
-    padding: 21px ;  
-    flex-wrap: wrap;
-   margin-left: 20em; 
-   align-items: flex-start;
-   justify-items: start;
-}*/
 .masonry-grid {
   width: 100%;
     display: -webkit-box; /* Not needed if autoprefixing */
@@ -111,7 +94,6 @@ justify-content: start;
 }
 .display{
   width:100%;
-  //width:1100px;
   display:flex;
   margin-top:50px;
   align-items:flex-start;
@@ -124,7 +106,6 @@ justify-content: start;
   flex-direction: row;
   padding-left: 0px;
   opacity: 1.0;
-  
 }
 .colaborater{
   padding-right: 5px;
@@ -136,7 +117,6 @@ justify-content: start;
   .displayContainer{    
     margin-left: 1px;  
   }
-  
   .cardContainer{
     width: 400px;
     min-height: 50px ;
@@ -146,9 +126,7 @@ justify-content: start;
     justify-items: start;
     padding: 21px ;  
     flex-wrap: wrap;
-   
    justify-content: stretch;
-  // align-items: flex-start;
    align-items:stretch ; ;
    
   }
@@ -156,7 +134,6 @@ justify-content: start;
     height: 300px ; width: 360px ; margin-Right : 10px;
  }
   .ShowIconButtons{
-    
     height : 35px;
   visibility: visible;
   align-self: flex-start;
@@ -165,10 +142,7 @@ justify-content: start;
   top:15px;
   left:100px;
   top: 10px;
-  
-   
   }
-  
   .masonry-grid {
     padding-left:15px;;
     padding-right:150px;
@@ -178,7 +152,5 @@ justify-content: start;
     padding-right: 15px;
     background-clip: padding-box;
     width: 296px !important;
-  }
-  
-  
+  } 
 }

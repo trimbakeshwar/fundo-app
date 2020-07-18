@@ -7,7 +7,6 @@ import Drawer from "@material-ui/core/Drawer";
 import "../../CSS/DashbordScss/toolBar.scss"
 import IconButton from '@material-ui/core/IconButton';
 import ViewStreamSharpIcon from '@material-ui/icons/ViewStreamSharp';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -16,9 +15,9 @@ import ArchiveOutlinedIcon from "@material-ui/icons/ArchiveOutlined";
 import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import RefreshSharpIcon from '@material-ui/icons/RefreshSharp';
-import { TextField, FormControl } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import keepimg from '../../image/keepimg.png'
-import {  Avatar } from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -33,12 +32,6 @@ import trashNotes from "./trashNotes";
 import archiveNote from "./archiveNote"
 const drawerWidth = 250;
 const drawerTopMargin = 69;
-function randomColor() {
-  let hex = Math.floor(Math.random() * 0xFFFFFF);
-  let color = "#" + hex.toString(16);
-
-  return color;
-}
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -171,9 +164,8 @@ export default function Dashboard() {
               <IconButton> <ViewStreamSharpIcon /> </IconButton>
             </div>
             <div className="account">
-            <Avatar style={{ "backgroundColor":  "red" }}
-                                  alt={localStorage.getItem("firstName")} size="small" src="/"  ></Avatar>
-
+              <Avatar style={{ "backgroundColor": "red" }}
+                alt={localStorage.getItem("firstName")} size="small" src="/"  ></Avatar>
             </div>
           </Toolbar>
         </AppBar>

@@ -3,7 +3,6 @@ import "../../CSS/DashbordScss/display.scss";
 import DashbordService from "../../services/dashbordservices";
 import CreateNote from "./createNote"
 import Display from "./displayNotes"
-import Collaborator from "./collaborator";
 const service = new DashbordService();
 export class GetAllNotes extends Component {
     constructor(props) {
@@ -17,7 +16,6 @@ export class GetAllNotes extends Component {
     }
     getAllNotes = () => {
         service.GetNotes().then((Response => {
-           
             this.setState({ AllNotes: Response.data.data.data })
         })).catch((err) => {
             console.log(err)
@@ -29,14 +27,12 @@ export class GetAllNotes extends Component {
                 <div className="refresh data">
                     <CreateNote updateOnAdd={() => this.getAllNotes()}></CreateNote>
                 </div>
-                <Display data ={this.state.AllNotes.filter((data) => data.isDeleted === false)
+                <Display data={this.state.AllNotes.filter((data) => data.isDeleted === false)
                     .filter((data) => data.isArchived === false)
                     .filter((data) => data.isPined === false)
                     .slice(0)}
                     updateOnAdd={() => this.getAllNotes()}
                 />
-               
-                  
             </div>
         );
     }

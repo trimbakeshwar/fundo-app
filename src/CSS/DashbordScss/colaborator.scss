@@ -1,6 +1,5 @@
 .collaboratorContainer{
     width: 600px;
-
 } 
 .Title{
 	padding-top: 12px;
@@ -10,7 +9,6 @@
 	font-weight: bold;
 }
 .userInformation{
-
     width: 500px !important;
 	padding-top: 20px;
 	padding-left: 20px;
@@ -22,7 +20,6 @@
 	padding-top: 10px;
 	padding-right: 100px;
 }
-
  .userLists{
 	 width:250px
  }
@@ -30,7 +27,6 @@
 	padding-left: 15px;
 	flex-direction: row;
 	display: flex;
-
 } 
 .SearchMail{
     display: flex;
@@ -69,14 +65,13 @@
 @media only screen and (max-width: 414pX) {
 	.collaborationdialog{
 		width: 300px;
-	
 	} 
-	/*.dialogbutton{
+	.dialogbutton{
 		flex-direction: row;
 		display: flex;
 		padding-top: 10px !important;
 		padding-bottom: 10px !important;
 		padding-left: 300px !important;
 		background-color: #E8E8E8;
-	}*/
+	}
 }

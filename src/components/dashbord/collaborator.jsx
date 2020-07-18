@@ -1,12 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
 import "../../CSS/DashbordScss/colaborator.scss"
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import Card from "@material-ui/core/Card";
 import ClearIcon from '@material-ui/icons/Clear';
 import { MenuItem, Divider, TextField, Popover, MenuList, Button } from '@material-ui/core';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import DashbordService from "../../services/dashbordservices";
 import { Avatar } from "@material-ui/core";
 const service = new DashbordService();
@@ -55,42 +53,32 @@ export class Collaborator extends Component {
             }).catch((err) => {
                 console.log("Collab Data", err);
             })
-
             this.props.closeCollaborater();
-
         } else {
             console.log("addcollaborator", data)
             this.props.addcollaborator(data);
-           
         }
-
     }
-    removeColaborator=(colaboratorData)=>{
-       
-            const notesId = this.props.NoteId.id;
-            const item = colaboratorData.userId
-            console.log("notesId",notesId,"item", colaboratorData.userId);
-        
-            service
-              .RemoveCollaborator(
+    removeColaborator = (colaboratorData) => {
+        const notesId = this.props.NoteId.id;
+        const item = colaboratorData.userId
+        console.log("notesId", notesId, "item", colaboratorData.userId);
+        service
+            .RemoveCollaborator(
                 notesId,
                 item
-               
-              )
-              .then((json) => {
+            )
+            .then((json) => {
                 console.log("collab removed", json);
-              }).catch((err)=>{
+            }).catch((err) => {
                 console.log("err", err);
-              });
-              this.props.refresh();
-          };
-        
-    
+            });
+        this.props.refresh();
+    };
     UserList = (event) => {
         this.setState({
             collabatorName: event.target.value,
         });
-
         let requestData = {
             searchWord: event.target.value,
         };
@@ -109,9 +97,6 @@ export class Collaborator extends Component {
         })
     }
     render() {
-        
-     
-        
         const userList = this.state.userList.map((values, index) => {
             return (
                 <MenuItem key={index} onClick={() => this.selectUser(values)}>
@@ -119,9 +104,6 @@ export class Collaborator extends Component {
                 </MenuItem>
             );
         });
-       
-
-
         return (
             <div>
                 <Card className="collaboratorContainer"
@@ -140,33 +122,29 @@ export class Collaborator extends Component {
                                 </div>
                             </div>
                         </div>
-  
-                         { 
-                         Boolean(this.props.NoteId)?(
-  
-  this.props.NoteId.collaborators.map((colaboratorData, index) => {
-      return (
-          <div className="userInformation">
-              <div className="userProfile">
-                  <div ><Avatar style={{ "backgroundColor":  "blue" }}
-                      alt={colaboratorData.firstName} size="small" src="/"  ></Avatar> </div>
-                  <div className="information">
-                      <div>
-                      <div>{colaboratorData.firstName + " " +
-                          colaboratorData.lastName}</div>
-                      <div>{colaboratorData.email}</div>
-                      </div>
-                      <div className="clearcollab"> 
-                           <ClearIcon onClick={()=>this.removeColaborator(colaboratorData)}/>                   
-                     </div>
-                  </div>
-              </div>
-          </div>
-      );
-  }) ):undefined
-
-} 
-
+                        {
+                            Boolean(this.props.NoteId) ? (
+                                this.props.NoteId.collaborators.map((colaboratorData, index) => {
+                                    return (
+                                        <div className="userInformation">
+                                            <div className="userProfile">
+                                                <div ><Avatar style={{ "backgroundColor": "blue" }}
+                                                    alt={colaboratorData.firstName} size="small" src="/"  ></Avatar> </div>
+                                                <div className="information">
+                                                    <div>
+                                                        <div>{colaboratorData.firstName + " " +
+                                                            colaboratorData.lastName}</div>
+                                                        <div>{colaboratorData.email}</div>
+                                                    </div>
+                                                    <div className="clearcollab">
+                                                        <ClearIcon onClick={() => this.removeColaborator(colaboratorData)} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })) : undefined
+                        }
                         <div className="SearchMail">
                             <div className="Collaboratorimage"><PersonAddOutlinedIcon /> </div>
                             <div className="collaboratortextfield">

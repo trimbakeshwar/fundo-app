@@ -1,4 +1,5 @@
 
+
 import React, {component} from "react";
 import { Redirect, Route } from "react-router-dom";
 import auth from "./auth"
@@ -13,10 +14,10 @@ export const PrivateRoute = ({ component:Component,...rest }) => {
 			{...rest}
 			render={props =>{
 				return <Component 	{...rest}/>
-			 if(auth.isAuthenticat()){
-          
-         }
-         else{
+        if(auth.isAuthenticated()){
+        
+        }
+        else{
           return(<Redirect
 						to={{
 							pathname: "/",
@@ -24,10 +25,10 @@ export const PrivateRoute = ({ component:Component,...rest }) => {
 						}}
 					/>)
         }
-				
+
 			}
 			}
 		/>
 	);
 };
-export default PrivateRoute;
+export default PrivateRoute; 

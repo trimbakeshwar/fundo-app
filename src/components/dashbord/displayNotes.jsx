@@ -8,18 +8,14 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import RestoreFromTrashIcon from '@material-ui/icons/RestoreFromTrash';
 import Masonry from 'react-masonry-css';
 import UpdateNotes from "./updateNotes"
-import { TextField } from '@material-ui/core'
-import { Checkbox, Divider } from "@material-ui/core";
+import { Checkbox } from "@material-ui/core";
 import { Tooltip, Avatar } from "@material-ui/core";
-import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
-import Collaborator from "./collaborator";
-const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
+const commonUrl = "http://fundoonotes.incubation.bridgelabz.com/"
 function randomColor() {
     let hex = Math.floor(Math.random() * 0xFFFFFF);
     let color = "#" + hex.toString(16);
-  
     return color;
-  }
+}
 export class Display extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +25,7 @@ export class Display extends Component {
             ID: "",
             openCard: false,
             Data: "",
-            color:"",
+            color: "",
             checkList: [""],
             breakpointColumnsObj: {
                 default: 4,
@@ -55,7 +51,6 @@ export class Display extends Component {
             Data: Notevalues,
             openCard: true
         })
-        console.log("update val", this.state.Data)
     }
     onClickOnClose = () => {
         this.setState({
@@ -67,99 +62,69 @@ export class Display extends Component {
             openCard: false
         })
     }
-    updateChecklist=()=>{
-
+    updateChecklist = () => {
     }
-  
-  
-    
     render() {
-      var imge
+        var imge
         const notes = this.props.data.reverse().map((values, index) => {
             return (
-              
-                <Card className="cardContainer" 
-                onMouseEnter={() => this.onCard(values.id)}
-                 onMouseLeave={() => this.leaveCard(values.id)}
-              style={{
-                backgroundColor: `${values.color}`}}>
-                      <div>
-              
-               {Boolean(values.imageUrl.includes("client/"))?
-              <img src={commonUrl+values.imageUrl.replace("client/", "")} className="imagecontainer"
-              refreshh={() => this.props.updateOnAdd()} />: <img src={commonUrl+values.imageUrl.replace("client/", "")} className="imagecontainer"
-              refreshh={() => this.props.updateOnAdd()} />}
-                
-                </div>
-                     <div>
-                
-               {/* {Boolean(values.imageUrl.includes("/client/"))?
-                    imge = values.imageUrl.replace("/client/", "/"):  imge = values.imageUrl
-                      */
-                    // <img src={commonUrl+imge} className="imagecontainer"
-              // refreshh={() => this.props.updateOnAdd()} />)*/}
-                    
-                // (
-                //   <img src={commonUrl+values.imageUrl.replace("client/", "")} className="imagecontainer"
-                //   refreshh={() => this.props.updateOnAdd()} />
-                // )
-                 
-                }
-              </div>
+                <Card className="cardContainer"
+                    onMouseEnter={() => this.onCard(values.id)}
+                    onMouseLeave={() => this.leaveCard(values.id)}
+                    style={{
+                        backgroundColor: `${values.color}`
+                    }}>
+                    <div>
+                        {Boolean(values.imageUrl.includes("client/")) ?
+                            <img src={commonUrl + values.imageUrl.replace("client/", "")} className="imagecontainer"
+                                refreshh={() => this.props.updateOnAdd()} /> : <img src={commonUrl + values.imageUrl.replace("client/", "")} className="imagecontainer"
+                                    refreshh={() => this.props.updateOnAdd()} />}
+                    </div>
                     <div className="title" onClick={() => this.updatenote(values)}> {values.title} </div>
                     <div className="Description" onClick={() => this.updatenote(values)}> {values.description}</div>
-                   
                     <div className="collaboratorsetting">
-        { 
-        Boolean(values.collaborators)?
-       values.collaborators.map((colaboratorData, index)=>{
-            return(
-                <div className="colaborater">
-                    <Tooltip title={colaboratorData.email} placement="bottom">
-                        <Avatar style={{ "backgroundColor":  "green" }} alt={colaboratorData.firstName} size="small" src="/" ></Avatar>
-                    </Tooltip>
-                </div>
-            );
-        }):undefined}
-
-    </div>
-    <div className="displaychecklistSetting">
-    {Boolean(values.noteCheckLists)?values.noteCheckLists.filter((checklist)=>checklist.status === "open")
-    .map((checklist,index)=>{
-        return(
-            <div className="displayListItem" onClick={()=>this.updateChecklist(values)}>
-        <div key={checklist.id}>
-            <Checkbox checked={
-                checklist.status !== "open" ? "checked" : null
-            }   style={{ color: "black" }}/>
-            
-        </div>
-      
-
-        <div style={{paddingTop:"10px"}}>{checklist.itemName}</div>
-        </div>
-        );
-    }):undefined
-    }
-    {Boolean(values.noteCheckLists)?
-    values.noteCheckLists.filter((checklist)=>checklist.status === "close")
-    .map((checklist,index)=>{
-        return(
-
-            <div className="displayListItem" onClick={()=>this.updateChecklist(values)}>
-        <div key={checklist.id}>
-            <Checkbox checked={
-                checklist.status !== "open" ? "checked" : null
-            }  style={{ color: "black" }}/>
-            
-        </div> 
-
-        <div style={{paddingTop:"10px"}}>{checklist.itemName}</div>
-        </div>
-      
-        );
-    }):undefined}
-    </div>
+                        {
+                            Boolean(values.collaborators) ?
+                                values.collaborators.map((colaboratorData, index) => {
+                                    return (
+                                        <div className="colaborater">
+                                            <Tooltip title={colaboratorData.email} placement="bottom">
+                                                <Avatar style={{ "backgroundColor": "green" }} alt={colaboratorData.firstName} size="small" src="/" ></Avatar>
+                                            </Tooltip>
+                                        </div>
+                                    );
+                                }) : undefined}
+                    </div>
+                    <div className="displaychecklistSetting">
+                        {Boolean(values.noteCheckLists) ? values.noteCheckLists.filter((checklist) => checklist.status === "open")
+                            .map((checklist, index) => {
+                                return (
+                                    <div className="displayListItem" onClick={() => this.updateChecklist(values)}>
+                                        <div key={checklist.id}>
+                                            <Checkbox checked={
+                                                checklist.status !== "open" ? "checked" : null
+                                            } style={{ color: "black" }} />
+                                        </div>
+                                        <div style={{ paddingTop: "10px" }}>{checklist.itemName}</div>
+                                    </div>
+                                );
+                            }) : undefined
+                        }
+                        {Boolean(values.noteCheckLists) ?
+                            values.noteCheckLists.filter((checklist) => checklist.status === "close")
+                                .map((checklist, index) => {
+                                    return (
+                                        <div className="displayListItem" onClick={() => this.updateChecklist(values)}>
+                                            <div key={checklist.id}>
+                                                <Checkbox checked={
+                                                    checklist.status !== "open" ? "checked" : null
+                                                } style={{ color: "black" }} />
+                                            </div>
+                                            <div style={{ paddingTop: "10px" }}>{checklist.itemName}</div>
+                                        </div>
+                                    );
+                                }) : undefined}
+                    </div>
                     {values.isDeleted ?
                         <div className={(this.state.ID === values.id) ? 'ShowIconButton' : 'hideIconButton'} >
                             <IconButton><DeleteForeverIcon /></IconButton>
@@ -168,13 +133,11 @@ export class Display extends Component {
                         <div className={(this.state.ID === values.id) ? 'ShowIconButtons' : 'hideIconButtons'} >
                             <NoteIcons
                                 data={values}
-                                
                                 refreshh={() => this.props.updateOnAdd()} />
                         </div>}
                 </Card>
             );
         })
-      
         return (
             <div>
                 <div className='display' >
@@ -187,7 +150,6 @@ export class Display extends Component {
                 </div>
                 <div>
                     <UpdateNotes OpenCard={this.state.openCard}
-                    
                         id={this.state.Data.id}
                         data={this.state.Data}
                         color={this.state.Data.color}
@@ -199,8 +161,6 @@ export class Display extends Component {
                     />
                 </div>
             </div>);
-
-            
     }
 }
 export default Display;

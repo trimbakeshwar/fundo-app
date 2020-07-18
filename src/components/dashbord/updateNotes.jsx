@@ -6,15 +6,12 @@ import NoteIcons from "./iconButtons"
 import DashbordService from "../../services/dashbordservices";
 import "../../CSS/DashbordScss/update.scss"
 import ClearIcon from '@material-ui/icons/Clear';
-import { Checkbox, Divider } from "@material-ui/core";
-import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
-import IconButton from '@material-ui/core/IconButton';
+import { Checkbox } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
 import {
-
-Avatar
+  Avatar
 } from "@material-ui/core";
-const commonUrl="http://fundoonotes.incubation.bridgelabz.com/"
+const commonUrl = "http://fundoonotes.incubation.bridgelabz.com/"
 const service = new DashbordService();
 export class UpdateNotes extends Component {
   constructor(props) {
@@ -28,66 +25,60 @@ export class UpdateNotes extends Component {
       openDilogBox: false,
       closeDilogBox: true,
       checklistId: "",
-      collaboraterData:"",
-     checkList: this.props.data.noteCheckLists
+      collaboraterData: "",
+      checkList: this.props.data.noteCheckLists
     };
   }
   check = (item, index) => {
-  
     const changedItem = {
       itemName: item.itemName,
       status: "close",
       isDeleted: item.isDeleted,
       notesId: item.notesId,
     };
-      service
-        .UpdateCheckList(
-          item.notesId,
-          item.id,
-          changedItem,
-          
-        )
-        .then((json) => {
-          console.log(json);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-        this.props.refreshh();
+    service
+      .UpdateCheckList(
+        item.notesId,
+        item.id,
+        changedItem,
+      )
+      .then((json) => {
+        console.log(json);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    this.props.refreshh();
   };
   uncheck = (item, index) => {
- 
     const changedItem = {
       itemName: item.itemName,
       status: "open",
       isDeleted: item.isDeleted,
       notesId: item.notesId,
     };
-      service
-        .UpdateCheckList(
-          item.notesId,
-          item.id,
-          changedItem,
-          
-        )
-        .then((json) => {
-          console.log(json);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-        this.props.refreshh();
+    service
+      .UpdateCheckList(
+        item.notesId,
+        item.id,
+        changedItem,
+      )
+      .then((json) => {
+        console.log(json);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    this.props.refreshh();
   };
-  deleteItem=(Item)=>{
+  deleteItem = (Item) => {
     service.RemoveItem(
       Item.notesId,
       Item.id,
-     
     )
-    .then((json) => {
-      console.log(json);
-     
-    });
+      .then((json) => {
+        console.log(json);
+      });
     this.props.refreshh();
   }
   onTitleChange = (e) => {
@@ -107,10 +98,10 @@ export class UpdateNotes extends Component {
       noteId: this.props.id,
       title: (this.state.title === "") ? this.props.title : this.state.title,
       description: (this.state.description === "") ? this.props.description : this.state.description,
-      collaborators : this.state.collaboraterData,
-      file : (Boolean (this.state.file)) ?  this.state.file :""
+      collaborators: this.state.collaboraterData,
+      file: (Boolean(this.state.file)) ? this.state.file : ""
     }
-    console.log("updated data",requestData)
+    console.log("updated data", requestData)
     service.UpdateNotes(requestData).then((Response => {
       console.log(Response)
     })).catch((err => {
@@ -120,35 +111,33 @@ export class UpdateNotes extends Component {
   }
   handleClose = () => { };
   render() {
-
     return (
       <div >
         <div className='dialogContainer'>
           <Dialog
-          
             open={this.props.OpenCard}
             onClose={this.props.close()}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description">
             <div className='dialogField'>
-            <div>
-            {Boolean(this.props.imageUrl) ? 
-              <img src={commonUrl+this.props.imageUrl} style={{ paddingLeft : '10px' , paddingRight : '10px' , paddingTop: '10px',height: '350px' , width: '450px' , marginRight : '10px'}} />
-              : undefined
-            }
-        </div>
-        <div>
-                    {(this.state.file != "") ?
-                      <img
-                        src={`${URL.createObjectURL(this.state.file)}`}
-                        alt="Curently image is not available"
-                        width="600px"
-                        height="500px"
-                        style={{ paddingTop: "10px" }}
-                      />
-                      : ""
-                    }
-                  </div>
+              <div>
+                {Boolean(this.props.imageUrl) ?
+                  <img src={commonUrl + this.props.imageUrl} style={{ paddingLeft: '10px', paddingRight: '10px', paddingTop: '10px', height: '350px', width: '450px', marginRight: '10px' }} />
+                  : undefined
+                }
+              </div>
+              <div>
+                {(this.state.file != "") ?
+                  <img
+                    src={`${URL.createObjectURL(this.state.file)}`}
+                    alt="Curently image is not available"
+                    width="600px"
+                    height="500px"
+                    style={{ paddingTop: "10px" }}
+                  />
+                  : ""
+                }
+              </div>
               <div className='dialogtextsFields'>
                 <TextField
                   className='tittle'
@@ -171,70 +160,70 @@ export class UpdateNotes extends Component {
                   onChange={this.onBodyTextChange}
                 />
               </div>
-               <div className='displaychecklistSetting'>
-                { (Boolean(this.props.data.noteCheckLists)) ? 
-                    this.props.data.noteCheckLists.filter((checklist)=> checklist.status === 'open')
-                                                .map((checklist,index)=>{  
-                      return(          
-                        <div className='displayListItem'>      
+              <div className='displaychecklistSetting'>
+                {(Boolean(this.props.data.noteCheckLists)) ?
+                  this.props.data.noteCheckLists.filter((checklist) => checklist.status === 'open')
+                    .map((checklist, index) => {
+                      return (
+                        <div className='displayListItem'>
                           <div key={checklist.id}>
-                            <Checkbox fontSize='small' size='small' onClick={()=>this.check(checklist)}   style={{color : 'black'}}/>
+                            <Checkbox fontSize='small' size='small' onClick={() => this.check(checklist)} style={{ color: 'black' }} />
                           </div>
-                                           <div style={{paddingTop:"7px"}}>
-                            { checklist.itemName}
-                            
-                          </div> 
-                          <div  style={{paddingTop:"7px"}}>
-                          <ClearIcon fontSize="small" onClick={()=>this.deleteItem(checklist,index)} />
-                            </div>
-                        </div> 
+                          <div style={{ paddingTop: "7px" }}>
+                            {checklist.itemName}
+                          </div>
+                          <div style={{ paddingTop: "7px" }}>
+                            <ClearIcon fontSize="small" onClick={() => this.deleteItem(checklist, index)} />
+                          </div>
+                        </div>
                       );
-                    })                  
-                  : undefined                                  
+                    })
+                  : undefined
                 }
-                { (Boolean(this.props.data.noteCheckLists)) ? 
-                    this.props.data.noteCheckLists.filter((checklist)=> checklist.status === 'close')
-                                                .map((checklist,index)=>{ 
-                                                  console.log("checklist",checklist); 
-                      return(          
-                        <div className='displayListItem'>      
+                {(Boolean(this.props.data.noteCheckLists)) ?
+                  this.props.data.noteCheckLists.filter((checklist) => checklist.status === 'close')
+                    .map((checklist, index) => {
+                      console.log("checklist", checklist);
+                      return (
+                        <div className='displayListItem'>
                           <div key={checklist.id}>
-                            <Checkbox fontSize='small' size='small' onClick={()=>this.uncheck(checklist)}  style={{color : 'black'}}/>
+                            <Checkbox fontSize='small' size='small' onClick={() => this.uncheck(checklist)} style={{ color: 'black' }} />
                           </div>
-                          <div style={{paddingTop:"7px"}}textDecorationLine = 'line-through'>
-                            { checklist.itemName}
-                          </div> 
-                          <div  style={{paddingTop:"7px"}} >
-                          <ClearIcon fontSize="small" onClick={()=>this.deleteItem(checklist,index)} />
-                            </div>
-                        </div> 
+                          <div style={{ paddingTop: "7px" }} textDecorationLine='line-through'>
+                            {checklist.itemName}
+                          </div>
+                          <div style={{ paddingTop: "7px" }} >
+                            <ClearIcon fontSize="small" onClick={() => this.deleteItem(checklist, index)} />
+                          </div>
+                        </div>
                       );
-                    })                  
-                  : undefined                                  
+                    })
+                  : undefined
                 }
-                 <div className='colaboratersContainer'>
-                {
-                  (Boolean(this.props.data.collaborators)) ?                    
-                 this.props.data.collaborators.map((colabData,index)=>{
-                    return(
-                      <div style={{paddingLeft:"15px"}}>
-                      <Tooltip title={colabData.email} placement="bottom">
-                        <Avatar style={{ "backgroundColor": "green" }}
-                          alt={colabData.firstName}
-                          src="/"
-                        ></Avatar>
-                      </Tooltip>
-                      </div>
-                    )})
-                    :undefined
-                }
+                <div className='colaboratersContainer'>
+                  {
+                    (Boolean(this.props.data.collaborators)) ?
+                      this.props.data.collaborators.map((colabData, index) => {
+                        return (
+                          <div style={{ paddingLeft: "15px" }}>
+                            <Tooltip title={colabData.email} placement="bottom">
+                              <Avatar style={{ "backgroundColor": "green" }}
+                                alt={colabData.firstName}
+                                src="/"
+                              ></Avatar>
+                            </Tooltip>
+                          </div>
+                        )
+                      })
+                      : undefined
+                  }
+                </div>
               </div>
-              </div> 
               <div className='iconfordialog' >
-                <div className='IconsContainer' > <NoteIcons 
+                <div className='IconsContainer' > <NoteIcons
                   image={(data) => {
-                      this.setState({ file: data });
-                    }} /> </div>
+                    this.setState({ file: data });
+                  }} /> </div>
                 <Button onClick={this.onClose} style={{ "padding-left": "50px" }} float='right'>Close</Button>
               </div>
             </div>

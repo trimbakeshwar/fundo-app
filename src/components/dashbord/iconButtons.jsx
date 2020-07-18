@@ -4,25 +4,22 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreOptions from "./optionMenue";
 import AddAlertOutlinedIcon from '@material-ui/icons/AddAlertOutlined';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
-
 import ColourPallet from "./colorPallet"
-import ColorLensOutlinedIcon from '@material-ui/icons/ColorLensOutlined';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import { Tooltip } from "@material-ui/core";
-
 import Dialog from "@material-ui/core/Dialog";
 import DashbordService from "../../services/dashbordservices";
 import Collaborator from "./collaborator"
 const service = new DashbordService();
 export class NoteIcons extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state={
-            file:'',
+        this.state = {
+            file: '',
             collaboratorOpen: false,
             collaboratorclose: false,
-            open:false
+            open: false
         }
         this.handlercollaborator = this.handlercollaborator.bind(this);
     }
@@ -38,26 +35,20 @@ export class NoteIcons extends Component {
         })
         this.props.refreshh();
     }
-    fileChangeHandler=(event)=>{
+    fileChangeHandler = (event) => {
         event.preventDefault();
         this.setState({ file: event.target.files[0] });
-        console.log("file",event.target.files[0])
-        console.log("prop",this.props)
         this.props.image(event.target.files[0]);
     }
-    handlercollaborator=()=>{
-       
-       // console.log("sourcehgc",this.props.CollaboratorIcon())
-        if (this.props.variant ==="createNote") {
-            this.props.CollaboratorIcon( true);
-          }
-         else{
+    handlercollaborator = () => {
+        if (this.props.variant === "createNote") {
+            this.props.CollaboratorIcon(true);
+        }
+        else {
             this.setState({ collaboratorOpen: true });
-         }
-           
-        
+        }
     }
-    CloseCollaborater=()=>{
+    CloseCollaborater = () => {
         this.setState({ collaboratorOpen: false });
     }
     render() {
@@ -66,41 +57,39 @@ export class NoteIcons extends Component {
                 <Tooltip title="Reminde me">
                     <div className="button" ><IconButton > <AddAlertOutlinedIcon fontSize="small" /> </IconButton></div>
                 </Tooltip>
-                
                 <Tooltip title="Colabrator">
                     <div className="button"><IconButton > <PersonAddOutlinedIcon onClick={() => this.handlercollaborator()} fontSize="small" /> </IconButton></div>
                 </Tooltip>
                 <Tooltip title="change Color">
-                    <div className="button"><ColourPallet  NoteId={this.props.data} refresh={() => this.props.refreshh()} closefontSize="small" /></div>
+                    <div className="button"><ColourPallet NoteId={this.props.data} refresh={() => this.props.refreshh()} closefontSize="small" /></div>
                 </Tooltip>
-                
                 <Tooltip title="image add">
                     <div className="button"><IconButton >
                         <input
-                         type="file" style={{ display: "none" }}
-                         onChange={this.fileChangeHandler}
-                         ref={(fileUpload) =>(this.fileUpload = fileUpload)}
+                            type="file" style={{ display: "none" }}
+                            onChange={this.fileChangeHandler}
+                            ref={(fileUpload) => (this.fileUpload = fileUpload)}
                         ></input>
-                         <ImageOutlinedIcon  onClick={() =>this.fileUpload.click()}
-                        fontSize="small" /> </IconButton></div>
+                        <ImageOutlinedIcon onClick={() => this.fileUpload.click()}
+                            fontSize="small" /> </IconButton></div>
                 </Tooltip>
                 <Tooltip title="Archive">
                     <div className="button"><IconButton onClick={this.ArchiveNoteHandler}> <ArchiveOutlinedIcon fontSize="small" /> </IconButton></div>
                 </Tooltip>
                 <div className="button"><IconButton > <MoreOptions NoteId={this.props.data} refresh={() => this.props.refreshh()} fontSize="small" /> </IconButton></div>
-           <div>
-               {this.state.collaboratorOpen?(Boolean(this.props.data)?(
-                   <Dialog id="collaboraterdilogBox"
-                    maxWidth="false"
-                     open={this.state.collaboratorOpen}
-                     onClose={this.state.collaboratorclose}
-                   >
-                         <Collaborator NoteId={this.props.data} 
-                          closeCollaborater={()=>this.CloseCollaborater()}
-                          refresh={() => this.props.refreshh()}/>
-                     </Dialog>
-               ):(<Collaborator NoteId={this.props.data} />)):undefined}
-           </div>
+                <div>
+                    {this.state.collaboratorOpen ? (Boolean(this.props.data) ? (
+                        <Dialog id="collaboraterdilogBox"
+                            maxWidth="false"
+                            open={this.state.collaboratorOpen}
+                            onClose={this.state.collaboratorclose}
+                        >
+                            <Collaborator NoteId={this.props.data}
+                                closeCollaborater={() => this.CloseCollaborater()}
+                                refresh={() => this.props.refreshh()} />
+                        </Dialog>
+                    ) : (<Collaborator NoteId={this.props.data} />)) : undefined}
+                </div>
             </div>
         );
     }
